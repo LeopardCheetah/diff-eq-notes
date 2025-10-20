@@ -7,7 +7,4 @@ by the end of this quarter (~1.5mo) or something.
 who knows.
 
 
-hopefully i'll end up doing ~20-40% of the problems in the book
-
-
-note that not everything may be correct :P
+Most exercises will not be done; only ~20-40% of all exercises will probably be done. Note also that not everything written here may be correct :|
