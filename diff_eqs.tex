@@ -3,21 +3,59 @@
 \usepackage{relsize}
 \usepackage{thmtools}
 
-\usepackage[left=0.75in,
-            right=0.75in,
-            top=0.75in,
-            bottom=0.75in,
-            footskip=.25in]{geometry}
+\usepackage{geometry}
+
+\geometry{
+    left = 0.75in, 
+    right = 0.75in,
+    top = 0.75in,
+    bottom = 0.75in, 
+    footskip = 0.25in,
+}
 
 \setlength{\parindent}{0pt} % no more stupid indentation
+
+\usepackage{theoremref}
+\usepackage[unicode]{hyperref}
+\hypersetup{
+    colorlinks = true,
+    filecolor = black,
+    linkcolor = blue,
+    linktoc = all,
+    urlcolor = black,
+    pdftitle = {Differential Equation Notes} % TO CHANGE LATER 
+}
+
+
+% for colorings.
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% horizontal bar
+% \newcommand{\hr}[1]{\rule{\linewidth}{#1}}
+\newcommand{\hr}{\rule{\linewidth}{1pt}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 
 \theoremstyle{definition}
 \newtheorem*{definition}{Definition}
 
-\newtheorem*{theorem}{Theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% from latex overflow
+% https://tex.stackexchange.com/questions/53978/custom-theorem-numbering
+\newtheorem{innercustomthm}{Exercise}
+\newenvironment{exercise}[1]{\renewcommand\theinnercustomthm{#1}\innercustomthm \phantom \\ }{\endinnercustomthm}
 
+% taken from analysis
+\tcolorboxenvironment{exercise}{colframe=Orange, colback=White, after skip=10pt}
+\AtEndEnvironment{exercise}{\qed}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -50,10 +88,8 @@ Hopefully, I'll also get around ~20-40\% of the problems in the textbook done.
 aka chapter 1
 
 \subsection{Introduction for the Introduction}
+\subfile{chapters/ch1/1-1.tex} 
 
-\begin{definition}[Differential Equations]
-    Equations containing derivatives.
-\end{definition}
 
 
 \end{document}

@@ -1,0 +1,63 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+
+\begin{definition}[Differential Equations]
+    Equations containing derivatives.
+\end{definition}
+
+\begin{definition}[Slope Field/Direction Field]
+    A buncha line segments on the plane that represent the ``motion'' of a diff-eq.
+\end{definition}
+
+Direction Fields are good for studying differential equations of the form $$\frac{dy}{dt} = f(t, y)\text{.}$$
+
+(Page 6 -- How to construct a diff-eq mathematical model from a real-world situation.)
+
+(7) Newton: Differential equations come in one of these 3 forms:
+\begin{enumerate}
+    \item $\mathlarger{ \frac{dy}{dx} = f(x) }$,
+    \item $\mathlarger{ \frac{dy}{dx} = f(y) }$,
+    \item $\mathlarger{ \frac{dy}{dx} = f(x, y) }$.
+\end{enumerate}
+
+
+\hr
+
+\begin{exercise}{11-16}
+
+    1.1.5 corresponds with \textbf{j}. \\
+    1.1.6 corresponds with \textbf{c}.   \\
+    1.1.7 corresponds with \textbf{g}.   \\
+    1.1.8 corresponds with \textbf{b}.   \\
+    1.1.9 corresponds with \textbf{h}.   \\
+    1.1.10 corresponds with \textbf{e}.   \\
+\end{exercise}
+
+\begin{exercise}{17}
+
+    (a) $$\frac{dC}{dt} = \text{[chemicals/hour going in]} - \text{[out]} = 0.01 \cdot 300 - 300 \cdot \frac{C}{1000000}$$ where $C$ is the number of gallons of said chemical in the pond and $t$ is time measured in hours. \\ 
+
+    \phantom \\ 
+
+    (b) After a very long time, 10000 gallons will be in the pond; this limiting amount is independent of starting conditions. 
+
+    \phantom \\ 
+
+    (c) Since $\mathlarger{ \text{concentration} = \frac{\text{Amount}}{\text{Volume}} }$, $C = \text{volume} \cdot c = c\cdot 10^6$ where $c$ stands for concentration. As such, $$\frac{dc}{dt} = \frac{1}{10^6} \frac{dC}{dt} = \frac{3}{10^6} - \frac{3(c \cdot 10^6)}{10^4 \cdot 10^6}$$
+    So in final, $\boxed{\mathlarger{\frac{dc}{dt} = \frac{3}{10^6} - \frac{3c}{10^4}}}$.
+\end{exercise}
+
+\begin{exercise}{18}
+    $$\frac{dV}{dt} = -k \cdot 4\pi r^2 = -k \cdot 4\pi \left(\frac{3}{4\pi}V\right)^{\frac{2}{3}}$$
+\end{exercise}
+
+\begin{exercise}{19}
+    $$\frac{dT}{dt} = -0.05*(T - 70)$$ where $T$ is the temperature of the object in Farenheit and $t$ is time in minutes.
+\end{exercise}
+    
+
+
+
+\end{document}

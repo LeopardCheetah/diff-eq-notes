@@ -8,3 +8,6 @@ who knows.
 
 
 hopefully i'll end up doing ~20-40% of the problems in the book
+
+
+note that not everything may be correct :P
