@@ -25,9 +25,73 @@ $$\frac{dy}{dt} = ay - b \Longrightarrow y(t) = \frac{b}{a} + \left(y_0 - \frac{
 
 \textlangle 14 - ``Further Remarks on Mathematical Modeling'' - essentially, the underlying assumptions we make may or may not be wrong. \textrangle
 
+\hr
+
+\begin{exercise}{1a}
+
+    $\mathlarger{\frac{dy}{dt} = -y + 5 \rightarrow \frac{1}{5 - y} dy = dt}$.
+
+    \phantom \\ 
+
+    So, $\ln(5 - y(t)) = t + C$. With initial condition $y(0) = k$, we get that $\ln(5 - k) = C$, so our solution becomes $y(t) = 5 - e^{t + \ln(5 - k)} = 5 - (5 - k)e^t$. (Note that $(5 - k)$ is constant.)
+\end{exercise}
 
 
+\begin{exercise}{9a}
+    
+    Since $F = ma$, $F = m\frac{dv}{dt}$. Since drag acts inversely to velocity (object falling faster has more air resistance), we should expect $\frac{dv}{dt}$ to be negative; thus, $\frac{dv}{dt} = -\frac{F}{10}$. Knowing that $F$ is proportional to the square of the velocity, we know that $F = av^2 - b$ for constants $a$, $b$. 
 
+    \phantom \\ 
+
+    Now, we plug in some known values. At $v = 0$, we expect $\frac{dv}{dt} = -\frac{(-b)}{10} = -9.8$ (gravity) so $b = -98$. At $v = 49$, we reach limiting velocity which implies $\frac{dv}{dt} = 0$ so $\frac{a(49^2) - 98}{10} = 0$ so $a = \frac{2}{49}$. Thus, in final, we get our differential equation as $$\frac{dv}{dt} = \frac{2}{49 \cdot 10}v^2 - \frac{98}{10}$$ which can be re-arranged to $$\frac{dv}{dt} = \frac{1}{245}\left(v^2 - 49\right)\text{.}$$
+\end{exercise}
+
+\begin{exercise}{9b}
+    
+    (I'm gonna go with their equation for simplicity - it doesn't matter too much though.) 
+
+    $$\frac{dv}{dt} = \frac{1}{245}\left(49^2 - v^2\right)$$
+    $$\rightarrow 245 \frac{1}{49^2 - v^2} \ dv = dt$$ 
+    $$\rightarrow 245 \int \frac{1}{49^2 - v^2} \ dv = t$$
+
+    Doing a trig sub ($v = 49 \sin \theta$, $dv = 49 \cos \theta \ d\theta$), $\mathlarger{\frac{dv}{49^2 - v^2}}$ becomes $\mathlarger{\frac{49 \cos \theta \ d\theta}{49^2 - 49 \sin^2 \theta}}$ so our integral ends up turning into 
+
+    $$\longrightarrow 245 \int \frac{d\theta}{49 \cos \theta} = t \Longrightarrow 5\left(\frac{1}{2} \ln\left(\frac{1 + \sin \theta}{1 - \sin \theta}\right)\right) = t + C\text{.}$$
+
+    Thus, 
+    $$t + C = \frac{5}{2} \ln \frac{1 + v/49}{1 - v/49}\text{.}$$ 
+
+    Plugging in our initial condition $v(0) = 0$, we get that $C = 0$. Thus, $$\ln\left(\frac{1 + v/49}{1 - v/49}\right) = \frac{2t}{5} \text{ so } 49 + v = (49 - v)(e^{2t/5})\text{.}$$
+
+    Simplifying, (by expanding and putting all the $v$s on one side of the equation) we find our final answer to be 
+    
+    $$v(t) = 49 \cdot \frac{e^{2t/5} - 1}{e^{2t/5} + 1} = 49\tanh(t)\text{.}$$
+
+\end{exercise}
+
+\begin{exercise}{13}
+    
+    (a)
+    $$\frac{dQ}{dt} = \frac{V}{R} - \frac{Q}{RC} = \frac{VC - Q}{RC}$$
+
+    $$\Rightarrow RC \int \frac{dQ}{VC - Q} = t + C$$
+
+    Integrating, we get that $t + C_1 = -RC\ln(VC - Q)$. Plugging in our initial condition $Q(0) = 0$, we get that $C_1 = -RC\ln(VC)$. Thus, we can substitute and simplify as follows:
+
+    $$RC \ln(VC - Q) = RC \ln(VC) - t \rightarrow \ln(VC - Q) - \ln(VC) = -\frac{t}{RC}$$
+    $$\rightarrow VC - Q = VCe^{-t/RC}$$
+
+    so $Q(t) = VC(1 - e^{-t/RC})$.
+
+    \emspacer 
+
+    (b) After a very long time ($t \sim \infty$), $Q \sim VC$ so $Q_L = VC$.
+
+    \emspacer
+
+    (c) Effectively, $-\frac{Q}{C} = R\frac{dQ}{dt}$ since after the battery is removed, charge flows in the opposite direction.\footnote{lowkey don't understand this fully - this just makes it work.} Thus, $t + C_1 = -RC\ln(Q)$. Evaluating in our initial condition, we get that $C_1 = -RC \ln(Q_L) + t_1$. As a result, $$-(t - t_1) = RC(\ln(Q) - \ln(Q_L))$$ so $$ Q = Q_L e^{-\frac{t - t_1}{RC}}\text{.}$$ 
+
+\end{exercise}
 
 
 
