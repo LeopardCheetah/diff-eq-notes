@@ -1,0 +1,60 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+\begin{document}
+
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{definition}[Ordinary Differential Equation]
+
+    An Ordinary Diffy Q (ODE) is an equation where the unknown function depends on a single independent variable.
+
+    E.g. (LRC Circuit)
+    $$L^2 \frac{d^2Q(t)}{dt^2} + R\frac{dQ(t)}{dt} + \frac{1}{C}Q(t) = E(t)$$ \\ 
+\end{definition}
+
+\begin{definition}[Partial Differential Equation]
+
+    A Partial Differential Eq (PDE) is when the unknown function depends on several independent variables. 
+
+    E.g. (Wave Equation) 
+    $$a^2 \frac{\partial^2 u(x, t)}{\partial x^2} = \frac{\partial^2 u(x, t)}{\partial t^2}$$ \\
+\end{definition}
+
+(17) - If you have $n$ unknown functions in a system of differential equations, then you gotta have at least $n$ diffy qs to solve that system completely.
+
+\begin{definition}[Order]
+    The \textbf{order} of a differential equation is the highest derivative that appears in the differential equation. Thus you can have a \textit{first-order} or \textit{second-order} or \textit{seventh-order} diffy q.
+
+    E.g.: $\mathlarger{ \alpha\frac{d^3x}{dk^3} + \beta\frac{d^2x}{dk^2} + \frac{\alpha}{\beta}x = \gamma }$ is a third-order (ordinary differential) equation (when $\alpha$, $\beta$, and $\gamma$ are constants and $x$ is a function of $k$). \\
+\end{definition}
+
+Generally then, a differential equation of order $n$ can be represented by the generic $F(t, x(t), x'(t), \dots, x^{(n)}t) = 0$ for some function $x(t)$. Replacing $y = x(t)$, we get that a general $n$th order differential equation is of the form $$F(t, y, y', \dots, y^{(n)}) = 0\text{.}\footnote{(18) Note: We assume it is always possible to solve for the highest derivative -- e.g. we can rearrange to get to the form of $y^{(n)} = f(t, y, y', y'', \dots, y^{(n-1)})$.}$$
+
+\begin{definition}[Linearity]
+    A differential equation is said to be \textbf{linear} if $F(t, y, y', \dots, y^{(n)}) = 0$ is a linear function of $t$, $y$, $y'$, \dots, $y^{(n)}$. 
+
+    As such, the general linear diffy q is of the form $0 = c(t) + a_0(t)y + a_1(t)y' + a_2(t)y'' + \dots + a_n(t)y^{(n)}$. \\
+\end{definition}
+
+\begin{definition}[Linearization]
+    Linearization is the process of approximating a non-linear diffy q by a linear one. Example given in the textbook is of approximating the motion of an oscillating pendulum.
+\end{definition}
+
+(19-20) - Questions of solvability and uniqueness for general differential equations. 
+
+\end{document}
