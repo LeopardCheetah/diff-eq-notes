@@ -24,7 +24,7 @@
     An Ordinary Diffy Q (ODE) is an equation where the unknown function depends on a single independent variable.
 
     E.g. (LRC Circuit)
-    $$L^2 \frac{d^2Q(t)}{dt^2} + R\frac{dQ(t)}{dt} + \frac{1}{C}Q(t) = E(t)$$ \\ 
+    $$L^2 \frac{d^2Q(t)}{dt^2} + R\frac{dQ(t)}{dt} + \frac{1}{C}Q(t) = E(t)$$ 
 \end{definition}
 
 \begin{definition}[Partial Differential Equation]
@@ -32,7 +32,7 @@
     A Partial Differential Eq (PDE) is when the unknown function depends on several independent variables. 
 
     E.g. (Wave Equation) 
-    $$a^2 \frac{\partial^2 u(x, t)}{\partial x^2} = \frac{\partial^2 u(x, t)}{\partial t^2}$$ \\
+    $$a^2 \frac{\partial^2 u(x, t)}{\partial x^2} = \frac{\partial^2 u(x, t)}{\partial t^2}$$ 
 \end{definition}
 
 (17) - If you have $n$ unknown functions in a system of differential equations, then you gotta have at least $n$ diffy qs to solve that system completely.
@@ -40,7 +40,7 @@
 \begin{definition}[Order]
     The \textbf{order} of a differential equation is the highest derivative that appears in the differential equation. Thus you can have a \textit{first-order} or \textit{second-order} or \textit{seventh-order} diffy q.
 
-    E.g.: $\mathlarger{ \alpha\frac{d^3x}{dk^3} + \beta\frac{d^2x}{dk^2} + \frac{\alpha}{\beta}x = \gamma }$ is a third-order (ordinary differential) equation (when $\alpha$, $\beta$, and $\gamma$ are constants and $x$ is a function of $k$). \\
+    E.g.: $\mathlarger{ \alpha\frac{d^3x}{dk^3} + \beta\frac{d^2x}{dk^2} + \frac{\alpha}{\beta}x = \gamma }$ is a third-order (ordinary differential) equation (when $\alpha$, $\beta$, and $\gamma$ are constants and $x$ is a function of $k$). 
 \end{definition}
 
 Generally then, a differential equation of order $n$ can be represented by the generic $F(t, x(t), x'(t), \dots, x^{(n)}t) = 0$ for some function $x(t)$. Replacing $y = x(t)$, we get that a general $n$th order differential equation is of the form $$F(t, y, y', \dots, y^{(n)}) = 0\text{.}\footnote{(18) Note: We assume it is always possible to solve for the highest derivative -- e.g. we can rearrange to get to the form of $y^{(n)} = f(t, y, y', y'', \dots, y^{(n-1)})$.}$$
@@ -48,7 +48,7 @@ Generally then, a differential equation of order $n$ can be represented by the g
 \begin{definition}[Linearity]
     A differential equation is said to be \textbf{linear} if $F(t, y, y', \dots, y^{(n)}) = 0$ is a linear function of $t$, $y$, $y'$, \dots, $y^{(n)}$. 
 
-    As such, the general linear diffy q is of the form $0 = c(t) + a_0(t)y + a_1(t)y' + a_2(t)y'' + \dots + a_n(t)y^{(n)}$. \\
+    As such, the general linear diffy q is of the form $0 = c(t) + a_0(t)y + a_1(t)y' + a_2(t)y'' + \dots + a_n(t)y^{(n)}$.
 \end{definition}
 
 \begin{definition}[Linearization]
@@ -56,5 +56,51 @@ Generally then, a differential equation of order $n$ can be represented by the g
 \end{definition}
 
 (19-20) - Questions of solvability and uniqueness for general differential equations. 
+
+
+\begin{exercise}{1-4}
+
+    1. Order is 2, and the differential equation is linear. \\
+    2. Order is 2, and the differential equation is NOT linear (because of the term $(1 + y^2)\frac{d^2y}{dt^2}$). \\ 
+    3. Order is 4, and the differential equation is linear. \\
+    4. Order is 2, and the differential equation is non-linear.
+\end{exercise}
+
+\begin{exercise}{10}
+
+    (I'm only doing this one because it looks fun)
+
+    We shall verify that $\mathlarger{y = e^{t^2}\left(1 + \int_0^t e^{-s^2} \ ds\right)}$ is a solution to the differential equation $\mathlarger{y' - 2ty = 1}$. 
+
+    First, we substitute $y$ into our equation. 
+    $$ \left[e^{t^2} + e^{t^2}\int_0^t e^{-s^2} \ ds\right]' = 1 + 2t \cdot e^{t^2}\left(1 + \int_0^t e^{-s^2} \ ds\right)$$
+
+    Next, we differentiate that left side and simplify the right. 
+    $$\longrightarrow 2te^{t^2} + \left(2te^{t^2}\right)\left(\int_0^t e^{-s^2} \ ds \right) + \left(e^{t^2}\right)\left(e^{-t^2}\right) = 1 + 2te^{t^2} + 2te^{t^2}\left(\int_0^t e^{-k^2} \ dk\right) $$
+
+    Finally, we cancel terms and arrive at the equation $$e^{t^2} \cdot e^{-t^2} = 1\text{,}$$
+
+    which is trivially true. Thus, we are done. 
+\end{exercise}
+
+\begin{exercise}{11-13}
+
+    Since $y = e^{rt}$, $y^{(n)} = r^ne^{rt}$. Thus, in each of problems 11-13, we're basically just solving a polynomial. To illustrate, consider problem 12:
+
+    $$y'' + y' - 6y = 0 \Longrightarrow r^2e^{rt} + re^{rt} - 6e^{rt} = e^{rt}\left(r^2 + r - 6\right) = 0\text{,}$$
+
+    which is (almost) isomorphic to solving the system $x^2 + x - 6 = 0$. Thus, we yield the solutions $r = 2, 3$ and maybe even $r = -\infty$ (which would make $e^{rt}$ be $0$). \\ 
+
+    Similar solutions follow for 11 and 13.
+\end{exercise}
+
+\begin{exercise}{16-18}
+
+    16: 2nd order linear partial differential eq. \\ 
+    17: 4th order linear PDE. \\
+    18: 2nd order non-linear PDE.
+\end{exercise}
+
+
 
 \end{document}

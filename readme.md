@@ -10,6 +10,7 @@ who knows.
 Most exercises in this book won't be completed (duh)
 
 Current progress:     
+- 10/25 - finished s1.3 (did problems), finished chapter 1.
 - 10/24 - started s1.3 
 - 10/19 - started this textbook   
 
