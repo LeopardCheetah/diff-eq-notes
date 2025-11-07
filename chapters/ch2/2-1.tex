@@ -19,8 +19,55 @@
 % \end{exercise}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% this is pdf page 38 // 24 in the actual textbook.
 
+If $\frac{dy}{dt} = f(t, y)$ and $f$ is linear (w.r.t $y$), then we can rewrite it in the following form (called the \textbf{first-order linear differential equation}):
 
-some chapter 2 stuff will be populated here
+$$ \frac{dy}{dt} + p(t)y = g(t) \Longleftrightarrow P(t)\frac{dy}{dt} + Q(t)y = G(t) \text{ (page 24)}$$ 
+
+\begin{definition}[Integrating Factor]
+    A \textbf{integrating factor} $\mu(t)$ is a function such that when a diffy q is multiplied by it, the equation is then immediately integratable (discovered by Leibniz). (page 25)
+\end{definition}
+
+\begin{exercise}{- Pauls Online Notes, Problem 4 (modified)}
+
+    Find the general solution to the ODE $$t\frac{dy}{dt} + 2y = t^2 - t + 1\text{.}$$
+
+    \hr
+
+    This diffy q looks hard. To start, we add on an integrating factor $\alpha(t)$ to the equation to get 
+    
+    $$t \alpha(t) \frac{dy}{dt} + 2 \alpha(t) y = \alpha(t)(t^2 - t + 1)\text{.}$$
+
+    From here, consider what happens when you take the derivative of $(t \cdot y \cdot \alpha(t))$:\footnote{This is not the \textit{actual} way to do it \textendash Paul's math notes first divides everything by $t$ so they only have to consider the derivative of $y \alpha(t)$.}
+
+    $$\frac{d}{dt} \left[t \cdot y \cdot \alpha(t)\right] = y\alpha(t) + t \alpha(t) \frac{dy}{dt} + ty \alpha'(t) = t \alpha(t) \frac{dy}{dt} + y(\alpha(t) + t\alpha'(t))\text{.}$$
+
+    For this equation to match the left hand side of the equation above, we then must have that $t\alpha(t) = t\alpha(t)$ and $2\alpha(t) = \alpha(t) + t \alpha'(t) \rightarrow \alpha(t) = t \alpha'(t)$. From that last equation, I recognized that the function $\alpha(t) = t$ works!
+    
+    And from there, after plugging things in and integrating, I ended up with my final answer that the general solution to the given ODE is $$y(t) = \boxed{\frac{t^2}{4} - \frac{t}{3} + \frac{1}{2} + \frac{C}{t^2}}\text{.}$$
+
+\end{exercise}
+
+So essentially, the process of solving diffy qs of the form $P(t)\frac{dy}{dt} + Q(t)y = G(t)$ is to first divide by $P(t)$, then find an integrating factor that ``matches up'' both sides of the equation. 
+
+Mathematically:
+
+$$ P(t)\frac{dy}{dt} + Q(t)y = G(t) \rightarrow \frac{dy}{dt} + \frac{Q(t)}{P(t)} y = \frac{G(t)}{P(t)} \rightarrow \kappa(t)\frac{dy}{dt} + \kappa(t) \frac{Q(t)}{P(t)}y = \kappa(t)\frac{G(t)}{P(t)}$$
+
+\vspace{12pt}
+
+Since $(y \kappa(t))' = \kappa(t) \cdot y' + \kappa'(t) y$, comparing terms on the LHS, we get that we just need to find some $\kappa(t)$ such that $\kappa'(t) = \kappa(t)\frac{Q(t)}{P(t)}$. If that nasty fraction $\left(\frac{Q(t)}{P(t)}\right)$ is some constant or basic polynomial, the equation is \textit{probably} solvable. 
+
+So assuming that some suitable $\kappa(t)$ is found, we then just kinda evaluate everything from there.
+$$ \longrightarrow \int \frac{d}{dt} \left[y \kappa(t)\right] = \int \kappa(t)\frac{G(t)}{P(t)} \Longrightarrow y(t) = \frac{C + \int \kappa(t)\frac{G(t)}{P(t)}}{\kappa(t)}\text{.}$$
+
+It's quite messy when written out.
+
+(27) For equations of the form $\mathlarger{\frac{dy}{dt} + ay = g(t)}$, the right integrating factor is $\mu(t) = e^{at}$. This can be rederived pretty easily (probably). \\
+
+If you want to integrate but the messy thing doesn't simplify, that's fine; put the bounds of your integral to be from some arbitrary $t_0$ to $t$, preferably in a way such that if an initial condition $y(y_0) = c_0$, $t_0 = y_0$. In this way, your integral will collapse on itself when evaluated at $y = y_0$ and any other value of your function will be computed by that constant given in the problem plus the accumulated gain/loss from the function as it goes to your desired $x$/$y$ value.
+
+%%%%%%%%%%%% exercises %%%%%%%%, page 31
 
 \end{document}
