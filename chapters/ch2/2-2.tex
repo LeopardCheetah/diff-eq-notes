@@ -1,0 +1,51 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% textbook page 33.
+
+A general first-order differential equation can be written as $\mathlarger{\frac{dy}{dx} = f(x, y)}$ which can be rearranged to become $\mathlarger{M(x, y) + N(x, y)\frac{dy}{dx} = 0}$. When $M$ is a function solely of $x$ and $N$ is a function solely of $y$, then we can rewrite the diffy q as
+$$M(x) dx + N(y) dy = 0$$
+
+which we call a \textbf{separable} equation. (A definition of a separable differential equation is a differential equation that can be written as the form above.)
+
+To solve these equations, it's just `simple'/`intuitive' integration. I'm not sure what exactly to write so.....
+
+Let $A'(x) = a(x)$ and $B'(y) = b(y)$. Then, 
+$$a(x) + b(y)\frac{dy}{dx} = 0$$
+simlifies down to 
+$$A(x) + B(y) = c$$ 
+for an arbitrary constant $c$. 
+
+%% on to problems! page 38.
+\begin{exercise}{1-4}
+
+    (Solutions only.) \\ 
+    1: $\mathlarger{\frac{y^2}{2} = \frac{x^3}{3} + C}$ or $\mathlarger{y = \sqrt{\frac{2}{3}x^3 + C}}$. \\ 
+    2: $\mathlarger{y = \frac{1}{C - \cos x}}$. \\ 
+    3: $\mathlarger{\frac{1}{2}\tan(2y) = \frac{x}{2} + \frac{\sin(2x)}{4} + C}$. Alternatively, the textbook gives the clever solution of $\mathlarger{y = \frac{\pi}{2}}$ (a constant) and similar solutions as $y' = 0$ and the RHS evaluates to 0. Very tricky (but nice) stuff. \\ 
+    4: $\mathlarger{\ln |x| + C = \arcsin y}$. Didn't fully get those inverse trig integrals right away :/. 
+
+    (The rest (5-8) look trivial as you just move terms to either side of the equation and integrate.)
+\end{exercise}
+
+% ill finish the rest later
+
+\end{document}
