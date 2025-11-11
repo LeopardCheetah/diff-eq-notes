@@ -74,5 +74,57 @@ for an arbitrary constant $c$.
     While it is true that $y(3) < y(-2)$, note that the function $y$ is discontinuous and plotting the graph on Desmos, we see that $y(3)$ is not `on' the particular branch of the solution we're focused on (namely, the piece of the function where $y(0) = 1$). 
 \end{exercise}
 
+\begin{exercise}{24}
+
+    Solve $$\frac{dQ}{dt} = r(a + bQ), \, Q(0) = Q_0\text{.}$$ 
+
+    (Note: for some reason this exercise does not have a solution in the back of the book.)
+
+    \zz 
+
+    We can rearrange to get the equation 
+    $$\int \frac{1}{a + bQ} dQ = \int r dt \longrightarrow \frac{1}{b} \ln|a + bQ| = rt + C$$ and evidently, $\mathlarger{C = \frac{\ln a + bQ_0}{b}}$.
+
+    Solving for $Q$, we eventually find that $$Q(t) = \frac{e^{rbt}(a + bQ_0) - a}{b}$$ so when $t \to \infty$, assuming that all constants are positive, $Q \to \infty$.
+\end{exercise}
+
+\begin{definition}[Homogeneous Equation]
+    (Note: This definition of a homogeneous diffy q will be different from other ones presented in this book.)
+
+    A homogeneous equation (for our purposes for now) is a first-order differential equation $\mathlarger{\frac{dy}{dx} = f(x, y)}$ that can be expressed as a function of the the expression $\mathlarger{\frac{y}{x}}$. In other words,  $\mathlarger{\frac{dy}{dx} = f(x, y) = g\left(\frac{y}{x}\right)}$ for some function $g$.     
+\end{definition}
+
+\vspace{0.3cm}
+
+In particular, a differential equation is a homogeneous equation, then it is separable `by a change of the dependent variable' by making the substitution $y = xv(x)$ (note that $y$ is a function of $x$ implicitly) and $\mathlarger{\frac{dy}{dx} = v + x\frac{dv}{dx}}$. See the exercise below for more information.
+
+\begin{exercise}{25}
+
+    25(a): Trivial. Multiply the numerator and denominator of the fraction by $\frac{1}{x}$ and simplify. \\ 
+
+    25(b):
+    $$y = xv \rightarrow \frac{dy}{dx} = v + x\frac{dv}{dx}\text{.}$$
+    Multiplying both sides by $dx$, our equation now becomes 
+    $$dy = v \ dx + x \ dv\text{,}$$
+    which we can directly substitute in for $dy$.
+
+    As such, to conclude, 
+
+    $$\frac{dy}{dx} = \frac{v \ dx + x \ dv}{dx} = \boxed{v + x\frac{dv}{dx}}\text{.}$$    
+
+    \phantom \\
+
+    25(c): Trivial. Literally just make the substitutions. \\ 
+
+    25(d + e): The key to this problem is partial fractions.
+
+    $$x \frac{dv}{dx} = \frac{v^2 - 4}{1 - v} \Rightarrow \ln|x| = \int \frac{1 - v}{v^2 - 4} \ dv + C$$
+
+    From here, using partial fractions, we find that the integrand is equal to $\mathlarger{\frac{-0.25}{v - 2} + \frac{-0.75}{v + 2}}$ which can be easily integrated to get our final answer.
+
+    As such, after integrating and substituting $v = \frac{y}{x}$ back into our equation, we get that $$\ln|x| + C = -0.75\ln\left|\frac{y}{x} + 2\right| - 0.25\ln\left|\frac{y}{x} - 2\right|\text{.}$$
+
+    (I'm lowkey not sure how to get rid of those absolute value signs from the $\frac{1}{x}$ integral so they'll stay for now.)
+\end{exercise}
 
 \end{document}
