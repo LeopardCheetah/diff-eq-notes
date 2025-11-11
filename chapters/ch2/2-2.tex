@@ -46,6 +46,33 @@ for an arbitrary constant $c$.
     (The rest (5-8) look trivial as you just move terms to either side of the equation and integrate.)
 \end{exercise}
 
-% ill finish the rest later
+\begin{exercise}{17}
+
+    Literally just separate and integrate. 
+    $$ \Rightarrow \int 3y^2 - 6y \ dy = \int 1 + 3x^2 \ dx + C \rightarrow y^3 - 3y^2 = x + x^3 + C$$
+
+    Plugging in our initial condition of $y(0) = 1$ (e.g. the values $x = 0$ and $y = 1$), we get that $C = 1 - 3 = -2$. 
+
+    To determine the interval in which the solution is valid, we simply look at when the denominator of $y'$ is 0 \textemdash $3y^2 - 6y = 0 \rightarrow y = 0, 2$ which correspond to the $x$ values of $0$, $\frac{-1 + \sqrt{3}}{2}$, $\frac{-1 - \sqrt{3}}{2}$, and $x = -1$ ($y(-1) = 2$ and $y$ of any of the other $x$ values is equal to 0).
+
+    I'm not sure how really to proceed from here but I think the way to actually do it is to recognize that $y(-1) = 2$, $y(1) = 0$, which given our initial condition $y(0) = 1$ means that our function $y$ is trapped between $-1$ and $1$ ($y$ is not exactly a ``function'' at these specific points so our domain then becomes $(-1, 1)$).
+
+    It's not a great solution :/.    
+\end{exercise}
+
+\begin{exercise}{19}
+
+    $$\frac{dy}{dx} = 2y^2 + xy^2 \rightarrow \int \frac{1}{y^2} \ dy = \int 2 + x \ dx \rightarrow y = \frac{1}{2x + \frac{x^2}{2} + C}\text{.}$$
+    
+    Plugging our initial condition $y(0) = 1$ nets $C = -1$.
+    
+    To find the minimum value of $y$, we simply find the derivative $y'$ and set it to 0;
+    $$y' = \frac{1}{\left(2x + \frac{x^2}{2} - 1\right)} \cdot (2 + x)\text{.}$$
+
+    Setting $y'$ to 0, the only solution we get is $x = -2$ so the minimum value of our function $y$ is $\mathlarger{y(-2) = -\frac{1}{-4 + 2 - 1} = \boxed{\frac{1}{3}}}$.
+
+    While it is true that $y(3) < y(-2)$, note that the function $y$ is discontinuous and plotting the graph on Desmos, we see that $y(3)$ is not `on' the particular branch of the solution we're focused on (namely, the piece of the function where $y(0) = 1$). 
+\end{exercise}
+
 
 \end{document}
