@@ -20,3 +20,10 @@ Current progress:
 - 10/19 - started this textbook   
 
 
+---
+
+Sections to do (as required by the university course that I'm shadowing or whatever):    
+2.3, 2.4, 2.5, 2.7, 2.8, 3.1-3.8, 4.1-4.3, 7.3, 7.4, 7.5, 7.6, 7.8, 7.9, 9.1, 10.1, 11.1
+
+For me to look at (in addition to sections listed above):    
+~basically all the other sections in the textbook
