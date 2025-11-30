@@ -46,4 +46,83 @@ To make a good mathematical model:
     As such, to find when the concentration of the dye reaches 1\% of its original value, we simply set $A(t) = 0.01$ and solve, yielding $\boxed{t \approxeq 460.517} (\text{minutes})$ (thanks Wolfram Alpha). 
 \end{exercise}
 
+\begin{exercise}{4}
+    
+    4(a): More clearly, Torricelli's principle states that the outflow velocity $v$ at the outlet is equal to the velocity of a particle in freefall from the height $h$ \textbf{when it reaches the height of the outlet}. \\
+    From mechanics, the velocity of a particle in free fall is $v(t) = gt$ since $v_0 = 0$ in our case. Since we don't have $t$, we must resort to finding it by relating the height fallen ($h$) and time: $h = \frac{1}{2}gt^2$ so $t = \frac{2h}{g}$. As such, combining this equation with the previous, we find that $\boxed{v = \sqrt{2gh}}$ as desired. \\
+
+    \phantom \\
+
+    4(b): $$\frac{dh}{dt} = \text{How much the height of the water drops with respect to (w.r.t) time} $$
+    $$= \frac{\text{How much water goes out w.r.t time}}{\text{Area of the cross section of the tank at height h}} = \frac{-\alpha a v}{A(h)}\text{,}$$
+
+    with that last ``jump'' in reasoning deriving from the fact that how much water goes out of the tank is equal to the velocity of the water ($v$) times the area of the outflow hole ($a$). And apparently since water flow isn't ideal, there's a constant ($\alpha$) tacked on to the ensure the equation matches with real world phenomena. \\
+
+    \phantom \\ 
+
+    4(c): In this specific scenario, $A(h) = \pi r^2$, $r = 1$, $a = \pi (0.1)^2$, and $h(0) = 3$. Plugging in these values, we get that $\mathlarger{\pi \frac{dh}{dt} = -\alpha \frac{\pi}{100}\sqrt{2gh}}$ so $\mathlarger{\frac{1}{\sqrt{h}}}\frac{dh}{dt} = -\alpha \frac{\sqrt{2g}}{100}$. Integrating and plugging in our initial condition from here, we find that $h(t) = (\sqrt(3) - \frac{\alpha\sqrt{2g}}{200}t)^2$ which means that when $h(t) = 0$, $\boxed{t = \frac{200\sqrt{3}}{\alpha\sqrt{2g}} \approx 130.41}$ (seconds).
+\end{exercise}
+
+\begin{exercise}{9}
+    
+    9(a): We are given that $\mathlarger{\frac{dQ}{dt} = -rQ}$ (so $Q(t) = Q_0e^{-rt}$) and that the halflife of carbon-14 is 5730 years. In other words, $Q(5730) = 0.5Q_0$ (half of the carbon-14 has decayed). As such, $r$ can be solved for and is approximately $\boxed{0.000120968}$. \\ 
+
+    9(b): Done. See above when I did it. \\ 
+
+    9(c): In this scenario, $\frac{Q(t)}{Q_0} = 0.2$ so $e^{-rt} = 0.2$. With the $r$ we solved for above, $t$ can be solved for and it turns out $\boxed{t = 13304.7}$ (years).
+\end{exercise}
+
+\begin{exercise}{14ab}
+
+    14(a): If you're having trouble with this problem, that's ok, I did too. Essentially, use an integrating factor of $e^{kt}$ and then work out the complicated mess that follows. Below is the abridged version of my work. \\ 
+
+    First, simplify and rearrange to the general form of a differential equation.
+
+    $$\frac{du}{dt} = -k(u - T(t)) \Longrightarrow \frac{du}{dt} + ku = kT(t)$$
+
+    This expression strongly suggests we use an integrating factor of $e^{kt}$, so let's do that!
+
+    $$\rightarrow \int \frac{d}{dt} \left[e^{kt} u(t)\right] = \int ke^{kt}T(t) \ dt$$
+
+    This integral would be terrible if $T(t)$ was weird but thankfully it's not; essentially, we can substitute the expression for $T(t)$ in and simplify the mess from there. 
+
+    $$\rightarrow e^{kt}u(t) = k\int e^{kt} T_0 \ dt + kT_1 \int e^{kt} \cos (\omega t) \ dt$$
+    $$= e^{kt}T_0 + kT_1 \cdot R + C$$
+
+    with $R$ being that second integral. Let's now go simplify it! (For those who are following along at home, integrate by parts twice.)
+
+    Using integration by parts ($\int \boxdot \ d \bigstar = \boxdot \bigstar - \int \bigstar \ d \boxdot$) with $\boxdot = \cos(\omega t)$ and $\bigstar = e^{kt}$, our integral ($R$) can now be rewritten as
+
+    $$R = \frac{1}{k}e^{kt}\cos(\omega t) + \frac{\omega}{k} \int e^{kt} \sin(\omega t) \ dt \text{.}$$
+
+    From here, we do integration by parts again ($\boxdot = \sin(\omega t)$ and $\bigstar = e^{kt}$) and we get that 
+
+    $$R = \frac{1}{k}e^{kt}\cos(\omega t) + \frac{\omega}{k} \cdot \frac{1}{k}e^{kt} \sin(\omega t) - \frac{\omega^2}{k^2} R$$ 
+
+    which can thus be simplified to obtain our final result, $$R = e^{kt}\frac{\omega \sin(\omega t) + k \cos (\omega t)}{k^2 + \omega^2}\text{.}$$
+
+    Returning to our original integral and problem (I told you this was messy), we thus reach our final answer for $u(t)$; $$\boxed{u(t) = \frac{C}{e^{kt}} + T_0 + kT_1\left(\frac{\omega \sin(\omega t) + k \cos (\omega t)}{k^2 + \omega^2}\right)}\text{.}$$  
+
+    \hr 
+
+    14(b): [Graphs not pictured] $\tau \approx 3.508$ and $R \approx 9.106$. It's interesting to note that the crossing points for $S(t)$ and $T(t)$ seem to happen exactly at the min/max points of $S(t)$ (which makes sense in the physical interpretation). 
+\end{exercise}
+
+\begin{exercise}{14c}
+
+    14(c): Setting the two sides equal to each other, we have that $$R\cos(\omega t - \omega \tau) = \frac{kT_1}{\omega^2 + k^2}(k\cos(\omega t) + \omega \sin (\omega  t))\text{.}$$
+    Expanding that left part (and ignoring the fraction for now), we have 
+    $$R'(\cos(\omega t)\cos(\omega \tau) + \sin(\omega t)\sin(\omega \tau)) = k\cos(\omega t) + \omega \sin (\omega  t)$$
+
+    where $R'$ is $R$ up to a constant. Anyways, from here, we intuit that $\cos(\omega \tau)$ and $\sin(\omega \tau)$ should be constants that maintain the relative proportions of $\cos (\omega t)$ and $\sin (\omega t)$. As such, we write $\mathlarger{\frac{w}{k} = \frac{\sin(\omega \tau)}{\cos(\omega \tau)}}$ and as such find that $\mathlarger{\tau = \frac{1}{\omega}\arcsin\left(\frac{\omega}{\sqrt{\omega^2 + k^2}}\right)}$. From here, some direct simplification and term comparison leads us to figure out that $R'= \sqrt{\omega^2 + k^2}$. 
+
+    Substituting this back into the original equation, we have 
+    $$R\cos(\omega t - \omega \tau) = \frac{kT_1}{\omega^2 + k^2}R'\cos(\omega t - \omega \tau)$$
+    
+    so $\boxed{\mathlarger{R = \frac{kT_1}{\sqrt{\omega^2 + k^2}}}}$.  
+\end{exercise}
+
+%%% pick up later somewhere.
+
+
 \end{document}
