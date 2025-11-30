@@ -1,0 +1,49 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% textbook page 39, pdf page 53 (i think)
+
+To make a good mathematical model:
+\begin{enumerate}
+    \item Construct the Model (in accordance with reality).
+    \item Analyze the model. Simplify functions/variables if needed, but always make sure the simplifications to the model make physical sense.
+    \item Compare the model with outside observations/experiments/data. Also take a look at long run behavior.
+\end{enumerate}
+
+// various examples are then shown of mathematical models. //
+
+\begin{exercise}{1}
+    
+    The concentration of dye in the tank can be represented by $\mathlarger{\frac{dA}{dt}}$ where $A(t)$ is the concentration of dye in the tank as a function of time ($t$) in minutes. Specifically, 
+    $$\frac{dA}{dt} = \text{rate in} - \text{rate out} = 0 - \frac{A}{200} \cdot 2$$
+
+    which is empirically explained as follows: \\ 
+    Since the water coming in is clean, rinse water, there is no dye in that water so the rate at which the dye is coming in the tank is 0. On the flip side, the rate at which the dye is going out is equal to the concentration of the dye ($\frac{\text{Amount}}{\text{Volume}} = \frac{A}{200L}$) times the amount of the water/dye mixture that flows out ($\frac{2L}{\text{min}}$). 
+
+    \vspace{0.3cm}
+
+    Solving for $A(t)$, we find that 
+    $$A(t) = e^{-\frac{t}{100}} \ \ (C = 0)\text{.}$$
+
+    As such, to find when the concentration of the dye reaches 1\% of its original value, we simply set $A(t) = 0.01$ and solve, yielding $\boxed{t \approxeq 460.517} (\text{minutes})$ (thanks Wolfram Alpha). 
+\end{exercise}
+
+\end{document}
