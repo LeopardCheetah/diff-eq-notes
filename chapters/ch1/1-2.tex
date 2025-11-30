@@ -37,6 +37,7 @@ $$\frac{dy}{dt} = ay - b \Longrightarrow y(t) = \frac{b}{a} + \left(y_0 - \frac{
 \end{exercise}
 
 
+
 \begin{exercise}{9a}
     
     Since $F = ma$, $F = m\frac{dv}{dt}$. Since drag acts inversely to velocity (object falling faster has more air resistance), we should expect $\frac{dv}{dt}$ to be negative; thus, $\frac{dv}{dt} = -\frac{F}{10}$. Knowing that $F$ is proportional to the square of the velocity, we know that $F = av^2 - b$ for constants $a$, $b$. 
@@ -45,6 +46,7 @@ $$\frac{dy}{dt} = ay - b \Longrightarrow y(t) = \frac{b}{a} + \left(y_0 - \frac{
 
     Now, we plug in some known values. At $v = 0$, we expect $\frac{dv}{dt} = -\frac{(-b)}{10} = -9.8$ (gravity) so $b = -98$. At $v = 49$, we reach limiting velocity which implies $\frac{dv}{dt} = 0$ so $\frac{a(49^2) - 98}{10} = 0$ so $a = \frac{2}{49}$. Thus, in final, we get our differential equation as $$\frac{dv}{dt} = \frac{2}{49 \cdot 10}v^2 - \frac{98}{10}$$ which can be re-arranged to $$\frac{dv}{dt} = \frac{1}{245}\left(v^2 - 49\right)\text{.}$$
 \end{exercise}
+
 
 \begin{exercise}{9b}
     
@@ -69,6 +71,8 @@ $$\frac{dy}{dt} = ay - b \Longrightarrow y(t) = \frac{b}{a} + \left(y_0 - \frac{
 
 \end{exercise}
 
+
+
 \begin{exercise}{13}
     
     (a)
@@ -92,8 +96,6 @@ $$\frac{dy}{dt} = ay - b \Longrightarrow y(t) = \frac{b}{a} + \left(y_0 - \frac{
     (c) From Kirchoff's voltage rule, $R\frac{dQ}{dt} + \frac{Q}{C} = 0 \longrightarrow -\frac{Q}{C} = R\frac{dQ}{dt}$. Thus, $t + C_1 = -RC\ln(Q)$. Evaluating in our initial condition, we get that $C_1 = -RC \ln(Q_L) + t_1$. As a result, $$-(t - t_1) = RC(\ln(Q) - \ln(Q_L))$$ so $$ Q = Q_L e^{-\frac{t - t_1}{RC}}\text{.}$$ 
 
 \end{exercise}
-
-
 
 
 

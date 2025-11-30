@@ -10,7 +10,7 @@ who knows.
 Most exercises in this book won't be completed (duh)
 
 Current progress:     
-- 11/29 - started working on 2.3.
+- 11/29 - started working on 2.3. did some problems.
 - 11/11 - finished 2.2 problems!
 - 11/10 - worked on some 2.2 problems
 - 11/09 - finished 2.1 problems, read ch 2.2, did some 2.2 problems
