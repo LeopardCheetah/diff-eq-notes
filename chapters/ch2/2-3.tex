@@ -132,7 +132,67 @@ To make a good mathematical model:
     so $\boxed{\mathlarger{R = \frac{kT_1}{\sqrt{\omega^2 + k^2}}}}$.  
 \end{exercise}
 
-%%% pick up later somewhere -- page 49/63
 
+
+\begin{exercise}{19a}
+
+    19(a): The strategy to attain maximum height $x_m$ is to first set up the differential equation, find $v(t)$, find $x(t)$, find $t_m$, then find $x_m$. 
+
+    For the first part, to set up the differential equation, since the medium in our question offers a \textbf{resistance} of $k|v|$, this is equivalent to the force from the resistance always being $-kv$. As such, using the handy dandy equation $F = ma = m\frac{dv}{dt}$, we can setup  our differential equation as $$m \frac{dv}{dt} = -mg - kv\text{.}$$
+
+    Solving (and remembering the $+C$), we find that $$v(t) = \frac{1}{k}\left((mg + kv_0) e^{-kt/m} - mg\right)\text{.}$$
+
+
+    To find $x(t)$, integrate $v(t)$. This is made simpler by the fact that $v(t)$ consists mostly of constants. Integrating and \textbf{remembering} the $+C$ (I spent ~20 minutes here since I forgor), you should find $$x(t) = -\frac{mgt}{k} - \frac{m}{k^2}(mg + kv_0)e^{-kt/m} + (mg + kv_0)\frac{m}{k^2}\text{.}$$
+
+
+    To find $t_m$, set $v(t_m) = 0$. The physical explanation for this is that at the moment the body is at its maximum height, it has no velocity going upwards (and none going downwards). As such, find $t_m$ by setting $v = 0$. Solving, you should find $$t = \frac{m}{k}\ln \left(\frac{mg + kv_0}{mg}\right)\text{.}$$
+    
+    Putting it all together and solving the actual problem (the maximum height $x_m$ the body reaches), we simply evaluate $x(t_m)$ to find $$x_m = \boxed{-\frac{m^2g}{k^2}\ln \left(\frac{mg + kv_0}{mg}\right) + \frac{mv_0}{k}}\text{.}$$
+\end{exercise}
+
+\begin{exercise}{19bc}
+
+    19(b): Use the taylor expansion of $\ln (1 + x)$ and substitute $x$ for $\frac{kv_0}{mg}$ in the above equations for $t_m$ and $x_m$. Note that this substitution is only valid when $\frac{kv_0}{mg} < 1$ as otherwise the taylor series approximation for $\ln (1 + x)$ might not converge.  
+
+    \vspace{0.3cm}
+
+    19(c): The quantity $mg$ represents a force (in Newtons). The quantity $kv_0$ also represents a force as resistance is a force (think of friction - friction is resistance and friction as a force). Thus the fraction $\frac{kv_0}{mg}$ is dimensionless. (There's lowkey not much to say here.)
+\end{exercise}
+
+\begin{exercise}{21}
+
+    21(a): When setting up our diffy q, we first take the downwards direction to be negative, take $g$ to be the scalar value $9.8m/s^2$, and assume that $V_{displaced} = V_{sphere}$. From here, using similar logic to 19(a), we conclude that the resistive force $R = -6\pi\mu av$. As such, the ultimate differential equation we get is 
+    $$m\frac{dv}{dt} = (w) + (R) + (B) = -mg - 6\pi\mu av + \rho' V_{sphere} g\text{.}$$
+
+    Note that at the limiting velocity $v_L$, $\frac{dv}{dt} = 0$. As such, to find $v_L$, we set $\frac{dv}{dt} = 0$ and solve for $v$ in the above equation yielding $\mathlarger{v_L = \boxed{(\rho' - \rho)\frac{2a^2g}{9\mu}}}$. Note that the difference in signage comes between my answer and the textbook comes down to the fact that in my answer I take $g$ to be a positive scalar value rather than a negative value (for me, $g = +9.8$ not $-9.8$).
+
+    \hr    
+
+    21(b): If the electron is held stationary, then $\frac{dv}{dt} = 0$ and $v = 0$. As such, we can directly simplify our differential equation (note the added term $E$ pointing upwards which ``holds'' the electron in place):
+
+    $$m\frac{dv}{dt} = (w) + (R) + (B) + (E) = -mg - 6\pi\mu av + \rho' V_{sphere}g + Ee \Longrightarrow 0 = -\rho V_{sphere} g + \rho' V_{sphere} g + Ee$$
+    
+    and as such $\mathlarger{e = \boxed{\frac{(\rho - \rho')V_{sphere}g}{E}}}$. 
+\end{exercise}
+
+\begin{exercise}{24}
+    Brachistochrone problem. \\
+    24(a): We isolate $y'$: $$(1 + y'^2)y = k^2 \rightarrow 1 + y'^2 = \frac{k^2}{y} \rightarrow y' = \sqrt{\frac{k^2}{y} - 1}\text{.}$$
+    We take the positive branch of this square root equation since generally our slope of the equation $\frac{\Delta y}{\Delta x} > 0$ and as such we expect $\frac{dy}{dx} > 0$ as well. 
+
+    24(b): From more or less direct simplication:
+    $$y' = \sqrt{\frac{k^2}{y} - 1} \rightarrow \frac{dy}{dx} = \sqrt{\frac{k^2}{k^2 \sin^2 t} - \frac{\sin^2 t}{\sin^2 t}} \rightarrow \frac{(k^2 2 \sin t \cos t \ dt)}{dx} = \frac{\cos t}{\sin t} \rightarrow \boxed{2k^2 \sin^2 t \ dt} = dx\text{.}$$
+
+    24(c): The equation given for $y$ is found by substituting $\sin^2 t$ for $\frac{1 - \cos 2t}{2}$ in (39) when the relationship between $y$ and $t$ is introduced. The equation given for $x$ is found by integrating what was found in 24(b) and is pretty direct if $\sin^2 t$ is substituted with the substitution given above.
+    
+    24(d): We basically need to solve the system of equations
+    $\mathlarger{\begin{cases}
+    k^2 (\theta - \sin \theta) = 2 \\
+    k^2 (1 - \cos \theta) = 4
+    \end{cases}}$.
+    Dividing both equations, we get that $2 \theta - 2 \sin \theta = 1 - \cos \theta$ which is not a very solvable equation so I used a calculator to find values for $k$ and $\theta$. Doing so, I find $k \approx \boxed{2.2}$.
+\end{exercise}
 
 \end{document}
+
