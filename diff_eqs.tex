@@ -28,8 +28,10 @@
 
 
 % for colorings.
+\usepackage{thmtools}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tcolorbox}
+
 
 
 \usepackage{subfiles} % Best loaded last in the preamble
@@ -38,22 +40,31 @@
 % horizontal bar
 % \newcommand{\hr}[1]{\rule{\linewidth}{#1}}
 \newcommand{\hr}{\rule{\linewidth}{1pt}}
-\newcommand{\zz}{\hr} % \hr will go to \hat so this is to prevent that
 \newcommand{\spacer}{\vspace{2mm} \hr \vspace{5mm}}
 \newcommand{\emspacer}{\phantom \\} % empty spacer
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
+\declaretheoremstyle[]{box}
 
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
+\declaretheorem[
+    style = box,
+    name = Definition,
+    numberwithin = section,
+    thmbox = {style=M,bodystyle=\normalfont}
+]{definition}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % from latex overflow
 % https://tex.stackexchange.com/questions/53978/custom-theorem-numbering
 \newtheorem{innercustomthm}{Exercise}
 \newenvironment{exercise}[1]{\renewcommand\theinnercustomthm{#1}\innercustomthm \phantom \\ }{\endinnercustomthm}
+
+
+
 
 % taken from analysis
 \tcolorboxenvironment{exercise}{colframe=Orange, colback=White, after skip=10pt}
@@ -130,8 +141,9 @@ for chapter 2, all diffy qs will be first order.
 \subsection{Differences Between Linear and Nonlinear Differential Equationss}
 \subfile{chapters/ch2/2-4.tex}
 
-
-%% TODO: snazz up the definition control sequence thing and make a box around it for better viewing
+\newpage 
+\subsection{Autonomous Differential Equations}
+\subfile{chapters/ch2/2-5.tex}
 
 %% todo: go over and redo the wording for all my solutions
 

@@ -38,23 +38,18 @@ $$\frac{dy}{dt} = ay - b \Longrightarrow y(t) = \frac{b}{a} + \left(y_0 - \frac{
 
 
 
-\begin{exercise}{9a}
+\begin{exercise}{9}
     
-    Since $F = ma$, $F = m\frac{dv}{dt}$. Since drag acts inversely to velocity (object falling faster has more air resistance), we should expect $\frac{dv}{dt}$ to be negative; thus, $\frac{dv}{dt} = -\frac{F}{10}$. Knowing that $F$ is proportional to the square of the velocity, we know that $F = av^2 - b$ for constants $a$, $b$. 
+    9a: Since $F = ma$, $F = m\frac{dv}{dt}$. Since drag acts inversely to velocity (object falling faster has more air resistance), we should expect $\frac{dv}{dt}$ to be negative; thus, $\frac{dv}{dt} = -\frac{F}{10}$. Knowing that $F$ is proportional to the square of the velocity, we know that $F = av^2 - b$ for constants $a$, $b$. 
 
-    \phantom \\ 
+    \phantom \\
 
-    Now, we plug in some known values. At $v = 0$, we expect $\frac{dv}{dt} = -\frac{(-b)}{10} = -9.8$ (gravity) so $b = -98$. At $v = 49$, we reach limiting velocity which implies $\frac{dv}{dt} = 0$ so $\frac{a(49^2) - 98}{10} = 0$ so $a = \frac{2}{49}$. Thus, in final, we get our differential equation as $$\frac{dv}{dt} = \frac{2}{49 \cdot 10}v^2 - \frac{98}{10}$$ which can be re-arranged to $$\frac{dv}{dt} = \frac{1}{245}\left(v^2 - 49\right)\text{.}$$
-\end{exercise}
+    Now, we plug in some known values. At $v = 0$, we expect $\frac{dv}{dt} = -\frac{(-b)}{10} = -9.8$ (gravity) so $b = -98$. At $v = 49$, we reach limiting velocity which implies $\frac{dv}{dt} = 0$ so $\frac{a(49^2) - 98}{10} = 0$ so $a = \frac{2}{49}$. Thus, in final, we get our differential equation as $$\frac{dv}{dt} = \frac{2}{49 \cdot 10}v^2 - \frac{98}{10}$$ which can be re-arranged for the desired equation.
+
+    \hr 
 
 
-\begin{exercise}{9b}
-    
-    (I'm gonna go with their equation for simplicity - it doesn't matter too much though.) 
-
-    $$\frac{dv}{dt} = \frac{1}{245}\left(49^2 - v^2\right)$$
-    $$\rightarrow 245 \frac{1}{49^2 - v^2} \ dv = dt$$ 
-    $$\rightarrow 245 \int \frac{1}{49^2 - v^2} \ dv = t$$
+    9b: $$\frac{dv}{dt} = \frac{1}{245}\left(49^2 - v^2\right) \rightarrow 245 \frac{1}{49^2 - v^2} \ dv = dt \rightarrow 245 \int \frac{1}{49^2 - v^2} \ dv = t$$
 
     Doing a trig sub ($v = 49 \sin \theta$, $dv = 49 \cos \theta \ d\theta$), $\mathlarger{\frac{dv}{49^2 - v^2}}$ becomes $\mathlarger{\frac{49 \cos \theta \ d\theta}{49^2 - 49 \sin^2 \theta}}$ so our integral ends up turning into 
 
@@ -75,10 +70,7 @@ $$\frac{dy}{dt} = ay - b \Longrightarrow y(t) = \frac{b}{a} + \left(y_0 - \frac{
 
 \begin{exercise}{13}
     
-    (a)
-    $$\frac{dQ}{dt} = \frac{V}{R} - \frac{Q}{RC} = \frac{VC - Q}{RC}$$
-
-    $$\Rightarrow RC \int \frac{dQ}{VC - Q} = t + C$$
+    (a) $$\frac{dQ}{dt} = \frac{V}{R} - \frac{Q}{RC} = \frac{VC - Q}{RC} \Longrightarrow  RC \int \frac{dQ}{VC - Q} = t + C$$
 
     Integrating, we get that $t + C_1 = -RC\ln(VC - Q)$. Plugging in our initial condition $Q(0) = 0$, we get that $C_1 = -RC\ln(VC)$. Thus, we can substitute and simplify as follows:
 
