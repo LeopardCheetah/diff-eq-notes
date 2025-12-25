@@ -1,0 +1,95 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% 2.4, textbook page 51, pdf page 65
+%%% todo: switch this to definition style
+\begin{definition}[Existence and Uniqueness Theorem (for First-Order Linear Equations)]
+
+    If $p$ and $q$ are continuous functions on an interval $I$: $\alpha < t < \beta$, then there exists a unique function $y = \phi(t)$ that satisfies the differential equation
+    $$\frac{dy}{dt} + p(t)y = q(t)$$
+    with initial condition $y(\gamma) = \delta$ with $\delta$ being an arbitrary intial value and $\gamma \in I$.
+
+\end{definition}
+
+Note that this theorem asserts both the \textbf{existence} and \textbf{uniqueness} of a solution to a given first order linear differential equation.
+
+\vspace{0.7cm}
+
+\begin{definition}[Existence and Uniqueness Theorem for (for First-Order Nonlinear Equations)]
+
+    Let $f$ and $\frac{\partial f}{\partial y}$ be continuous in some rectangle $\alpha < t < \beta$, $\gamma < y < \delta$ containing the point ($t_0$, $y_0$). Then, in some interval $t_0 - h < t < t_0 + h$ contained in $\alpha < t < \beta$, there is a unique solution $y = \phi(t)$ to the differential equation 
+
+    $$\frac{dy}{dt} = f(t, y), \; y(t_0) = y_0 \text{.}$$
+    
+\end{definition}
+
+Note: The conclusion that a differential equation exists can be established based on the continuity of $f$ alone. However, the given solution $\phi$ may or may not be unique.
+
+\vspace{0.3cm}
+
+(Example differential equations are then solved through examples to highlight example applications of the existence theorems in practice and show the necessity of the conditions.)
+
+\vspace{0.3cm}
+
+Note: For first order linear differential equations, its possible points of discontinuity/singularity can be found by examining the discontinuity of the coefficients $p$ and $g$.
+
+
+\vspace{0.3cm}
+
+Note (page 56): General solutions may not exist for non-linear differential equations. That is, there may be functions $\phi$ and $\psi$ that both satisfy the given differential equation yet not be of the same form as each other.
+
+
+\begin{exercise}{1-4}
+    
+    1. Rearranging, we get that the differential equation is $$\frac{dy}{dt} + \frac{\ln t}{t - 3}y = \frac{2t}{t - 3}\text{.}$$
+    Clearly, from the $(t - 3)$ in the denominator, our end function $y = \phi(t)$ will be discontinuous at $t = 3$. Similarly, since $\ln t$ is discontinuous for all $t \leq 0$\footnote{$\ln(-1) = i\pi$}, $\phi$ may be discontinuous at $t \leq 0$. As such, we know for sure that $\phi$ exists over the intervals $0 < t < 3$ and $3 < t < \infty$. \\
+    2. The function $\tan(t)$ is discontinuous at $\mathlarger{\{\dots, -\frac{3\pi}{2}, -\frac{\pi}{2}, \frac{\pi}{2}, \frac{3\pi}{2}, \dots\}}$ so the solution function $y = \phi(t)$ is certain to exist over the intervals $\mathlarger{n \pi + \frac{\pi}{2} < t <  (n + 1)\pi + \frac{\pi}{2}}$ for all integer values of $n$. \\
+    3. After rewriting the differential equation, $(4 - t^2)$ appears in the denominator of $p$ and $g$ meaning $\phi$ is certain to exist over the intervals $(\-infty, -2)$, $(-2, 2)$, $(2, \infty)$. \\ 
+    4. $\cot(t)$ is discontinuous at every multiple of $\pi$ and $\ln(t)$ (as mentioned before) is discontinuous for all $t \leq 0$. As such, $\phi$ is certain to exist over the intervals $n\pi < t < (n + 1)\pi$ for all nonnegative values of $n$.
+\end{exercise}
+
+% todo: refine wording.
+\begin{exercise}{9}
+    
+    We seperate the variables and integrate to get $\mathlarger{\frac{1}{2}y^2 = -2t^2 + C}$. With initial condition $y(0) = y_0$, $\mathlarger{C = \frac{1}{2} y_0^2}$. As such, the general solution to our differential equation is
+    $$y = \pm \sqrt{y_0^2 - 4t^2}$$ with the $\pm$ sign indicating directionality of the answer. Notably, if $y_0 < 0$, then the negative sign of the square root is taken while if $y_0 > 0$, the positive sign of the square root is taken. Also, note that $|t|$ must be less than $|y|/2$ to make the equation work; if $|t| = |y|/2$, then $y(t_0) = 0$ for some $t_0$ yet then our original differential equation ($y' = -4t/y$) has no solution for $y'$ when $y = 0$.
+\end{exercise}
+
+\begin{exercise}{10}
+    
+    The solution to the given differential equation is $\mathlarger{y = -\frac{1}{t^2 - \frac{1}{y_0}}}$. Given the discontinuity in the denominator, $t$ cannot be equal to $\mathlarger{\frac{1}{\sqrt{y_0}}}$ and as such the domain of $t$ will be restricted to $\mathlarger{-\frac{1}{\sqrt{y_0}} < t < \frac{1}{\sqrt{y_0}}}$ if $y_0 \geq 0$ (and $t$ is unrestricted if $y_0 < 0$.)
+\end{exercise}
+
+\begin{exercise}{11}
+
+    % t + C = 1/2y^2
+    The solution to the differential equation ends up being $\mathlarger{t + \frac{1}{2y_0^2} = \frac{1}{2y^2}}$ or $\mathlarger{y = \pm \frac{1}{\sqrt{2(t + 1/2y_0^2)}}}$. Like in exercise 9, the positive branch of the square root is taken if $y_0 > 0$ and the negative branch taken if $y_0 < 0$. Otherwise, the domain of $t$ is restricted to $t > -\frac{1}{2y_0^2}$.
+\end{exercise}
+
+\begin{exercise}{18}
+
+    (a) Verified. \\ 
+    (b) $\mathlarger{\frac{\partial f}{\partial y} = \frac{\partial}{\partial y} \left(\frac{-t + \sqrt{t^2 + 4y}}{2}\right) = \frac{1}{\sqrt{t^2 + 4y}}}$ is not continuous with the initial condition $y(2) = -1$. As such, while a solution to the differential equation $\phi$ can be guaranteed, the solution $\phi$ may or may not be unique as not all requirements of Theorem 2.4.2 are satisfied. \\ 
+    (c) Given that we know the second solution $y_2(t)$, it's pretty easy to check no constant $c$ plugged into the equation $y = ct + c^2$ can yield a $t^2$ term like in $y_2(t)$. Otherwise, fixing the initial condition $y(2) = -1$, plugging $t = 2$ and $y = -1$ \textbf{only} yields the solution $c = -1$.
+\end{exercise}
+
+\end{document}
