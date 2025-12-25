@@ -92,4 +92,46 @@ Note (page 56): General solutions may not exist for non-linear differential equa
     (c) Given that we know the second solution $y_2(t)$, it's pretty easy to check no constant $c$ plugged into the equation $y = ct + c^2$ can yield a $t^2$ term like in $y_2(t)$. Otherwise, fixing the initial condition $y(2) = -1$, plugging $t = 2$ and $y = -1$ \textbf{only} yields the solution $c = -1$.
 \end{exercise}
 
+
+\begin{exercise}{21}
+    
+    By direct simplification,
+    $$\frac{dy}{dt} + p(t)y \longrightarrow \frac{d}{dt}[y_1(t) + y_2(t)] + p(t)(y_1(t) + y_2(t)) = y_1'(t) + p(t)y_1(t) + y_2'(t) + p(t)y_2(t) = g(t)\text{.}$$
+\end{exercise}
+
+Discontinuous coefficients problems look daunting but really you're just solving more or less the same differential equation twice then gluing the pieces together.   
+
+\begin{exercise}{26}
+
+    Here, we solve $y' + 2y = g(t)$ by multiplying both sides by the integrating factor of $e^{2t}$. We then evaluate both cases ($t > 1$, $0 \leq t \leq 1$) separately, and glue together both functions when $t = 1$.
+
+    With the case of when $g(t) = 1 \ (0 \leq t \leq 1)$,
+    $$y' + 2y = 1 \rightarrow e^{2t}\frac{dy}{dt} + 2e^{2t}y = e^{2t} \longrightarrow \int \frac{d}{dt}\left[e^{2t}y\right] = \int e^{2t} \ dt \Longrightarrow y_\alpha(t) = \frac{e^{2t} + C_\alpha}{2e^{2t}}\text{.}$$
+
+    Since we have the initial condition of $y(0) = 0$, $C_\alpha = -1$ and $\mathlarger{y_\alpha(t) = \frac{e^{2t} - 1}{2e^{2t}}}$. 
+
+    The case when $g(t) = 0$ is simple enough to not warrant covering and the final equation obtained is $\mathlarger{y_\beta(t) = \frac{C_\beta}{e^{2t}} \ (t > 1)}$. To make the overall function $y(t)$ continuous ($y = y_\alpha \cup y_\beta$), we set $y_\alpha(1) = y_\beta(1)$. Namely, $\mathlarger{y_\alpha(1) = \frac{e^2 - 1}{2e^2}}$ and $\mathlarger{y_\beta(1) = \frac{C_\beta}{e^2}}$ so $\mathlarger{C_\beta = \frac{e^2 - 1}{2}}$.
+
+    Overall then,
+
+    $$\mathlarger{y(t) = \begin{cases} \frac{e^{2t} - 1}{2e^{2t}} \ \ 0 \leq t \leq 1 \\ \frac{e^2 - 1}{2e^{2t}} \ \ t > 1\end{cases}\text{.}}$$
+\end{exercise}
+
+
+\begin{exercise}{27}
+    
+    Setting up the differential equation to be separable, you should get that 
+    $$\frac{1}{p(t) y} \ dy = - \ dt\text{.}$$
+
+    For the case when $p(t) = 2$, $y_\alpha$ is correspondingly 
+    $$y_\alpha(t) = e^{-2t}$$ 
+    after plugging in initial condition $y(0) = y_\alpha(0) = 1$.
+
+    \vspace{0.3cm}
+
+    Similarly, when $p(t) = 1$, $y_\beta = e^{-t + C_\beta}$. \\
+    As such, `gluing' the functions together when $t = 1$, we find that $y_\alpha(t) = e^{-2}$ and $y_\beta(t) = e^{-1 + C_\beta}$ so $C_\beta = -1$ and the equation is solved.
+\end{exercise}
+
+
 \end{document}
