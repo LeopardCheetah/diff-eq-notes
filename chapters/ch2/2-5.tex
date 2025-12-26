@@ -19,8 +19,57 @@
 % \end{exercise}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+This section mostly examines the logistic equation modelling population growth in the context of differential equations and some goes somewhat in-depth about it.
+
+\begin{definition}[Autonomous Differential Equation]
+
+    A differential equation is \textbf{autonomous} if the independent variable does not appear explicitly. They have the form 
+
+    $$\frac{dy}{dt} = f(y)\text{.}$$
+
+    Note that the zeros of $f(y)$ ({$z | f(z) = 0$}) are called \textbf{critical points}.
+\end{definition}
+
+\begin{definition}[Logistic (Verhulst) Equation]
+    The equation of the form 
+    $$\frac{dy}{dt} = r\left(1 - \frac{y}{K}\right)y$$
+    which is commonly used to represent population growth.
+
+    Notably, $K$ is the \textbf{carrying capacity} for the population and $r$ is called the \textbf{intrinsic growth rate}.
+\end{definition}
+
+(65) - Logistic Growth with a Threshold: \\
+The equation 
+$$\frac{dy}{dt} = -r\left(1 - \frac{y}{T}\right)\left(1 - \frac{y}{K}\right)y$$
+represents a logistic growth function with a threshold (where $0 < T < K$) \textemdash graphing the solution to this function reveals that all initial values $y_0 > T$ gravitate towards $K$ like in logistic growth yet all initial values $y_0 < T$ eventually fade to 0.
 
 
+\begin{exercise}{5}
+    Semistable Equilibrium Solutions
 
+    5a: Trivial since if $y \not = 1$, then $(1 - y)^2$ will be non-zero by the trivial inequality.
+
+    \vspace{0.3cm}
+
+    5c: $$\frac{dy}{dt} = k(1 - y)^2 \rightarrow \frac{1}{(1 - y)^2} \ dy = k \ dt \rightarrow \frac{1}{1 - y} = kt + C\text{.}$$
+
+    With initial condition $y(0) = y_0$, $C = \frac{1}{1 - y_0}$ so $y(t) = \mathlarger{\boxed{1 - \frac{1 - y_0}{kt - kty_0 + 1}}}$.
+\end{exercise}
+
+\begin{exercise}{17a}
+
+    17(a): Separating, we get $$\frac{1}{\ln K - \ln y} \frac{1}{y} \ dy = r \ dt\text{.}$$
+    Integrating, we have $$rt + C = \int \frac{1}{y} \ dy \ \frac{1}{\ln K - \ln y}$$
+    from which we can make the substitution $\ln y = u$ (and $\frac{1}{y} \ dy = du$) so the RHS becomes $\mathlarger{\int \frac{1}{\ln k - n} \ dn}$. From here, integrating gets us $$rt + C = -\ln\left|\ln\left(\frac{K}{y}\right)\right|$$ and a multitude of substitutions leads us to find $C = \ln \frac{y_0}{K}$ so 
+
+
+    $$y(t) = K \text{exp}\left(\ln\left(\frac{y_0}{K}\right)e^{-rt}\right)\text{.}$$
+\end{exercise}
+
+% page 68
+\begin{exercise}{18? 19? 20?}
+
+
+\end{exercise}
 
 \end{document}

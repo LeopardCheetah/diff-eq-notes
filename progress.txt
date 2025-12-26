@@ -1,5 +1,5 @@
 Current progress:    
-- 12/25 - Finishing 2.4
+- 12/25 - Finishing 2.4, started 2.5
 - 12/15 - Doing more problems from sec 2.4
 - 12/13 - Read ch 2.4, started problems from 2.4.
 - 12/06 - Finished problems from ch 2.3. 
