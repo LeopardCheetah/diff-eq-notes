@@ -27,8 +27,10 @@ This section mostly examines the logistic equation modelling population growth i
 
     $$\frac{dy}{dt} = f(y)\text{.}$$
 
-    Note that the zeros of $f(y)$ ({$z | f(z) = 0$}) are called \textbf{critical points}.
+    Note that the zeros of $f(y)$ $\{z \ | \ f(z) = 0\}$ are called \textbf{critical points}.
 \end{definition}
+
+(Note: There's some definitions of \textbf{asymptotically stable} points and other terms that aren't noted down here (I don't care about those terms).)
 
 \begin{definition}[Logistic (Verhulst) Equation]
     The equation of the form 
@@ -56,6 +58,16 @@ represents a logistic growth function with a threshold (where $0 < T < K$) \text
     With initial condition $y(0) = y_0$, $C = \frac{1}{1 - y_0}$ so $y(t) = \mathlarger{\boxed{1 - \frac{1 - y_0}{kt - kty_0 + 1}}}$.
 \end{exercise}
 
+\begin{exercise}{13}
+    
+    To find the inflection points of $y(t)$, we can find the min/maxes of $f(y)$ since $y'(t) = f(y)$ (kinda). As such, we find those minimum/maximum points by setting $\mathlarger{\frac{df}{dy} = 0}$ then solving.
+    
+    Starting from (17), we apply a 3-part product rule to get 
+    $$f'(y) = -r\left[\left(1 - \frac{y}{T}\right)\left(-\frac{1}{K}\right)y + \left(-\frac{1}{T}\right)\left(1 - \frac{y}{K}\right)y - \left(1 - \frac{y}{T}\right)\left(1 - \frac{y}{K}\right)\right]\text{.}$$
+
+    The inside function is merely a quadratic (a very messy one) $\mathlarger{\left[y^2 \left(\frac{3}{KT}\right) - y\left(\frac{2}{K} + \frac{2}{T}\right) + 1\right]}$, which can be bashed using the quadratic formula to get the desired solutions.
+\end{exercise}
+
 \begin{exercise}{17a}
 
     17(a): Separating, we get $$\frac{1}{\ln K - \ln y} \frac{1}{y} \ dy = r \ dt\text{.}$$
@@ -67,9 +79,41 @@ represents a logistic growth function with a threshold (where $0 < T < K$) \text
 \end{exercise}
 
 % page 68
-\begin{exercise}{18? 19? 20?}
+\begin{exercise}{19}
 
+    19(a): Assuming $E < r$, to solve we set the RHS equal to 0:
+    $$r\left(1 - \frac{Y}{K}\right)y - Ey = 0 \rightarrow y\left(r - \left(1 - \frac{y}{K}\right) - E\right) = 0$$
+    meaning either $y_1 = 0$ or the inside function is 0. Simplifying that inside function reduces to the second solution, $y_2 = K\left(1 - \frac{E}{r}\right)$.
 
+    \vspace{0.3cm}
+    
+    19(b): The inside function is a parabola pointed downwards. As such, function values for $y$ values right below the first solution $y_1 = 0$ are negative and function values for $y$ values right above 0 are positive. This translates to values drifting away from $y = 0$ as negative values become even more negative and positive values continue to get more positive making $y_1$ an unstable equilibrium. \\ 
+    On the other hand, values slightly above $y_2$ have a negative $\frac{dy}{dt}$ and values slightly below $y_2$ have a positive $\frac{dy}{dt}$ so overall those values will drift towards $y_2$. Thus, $y_2$ is an asymptotically stable solution.
+
+    \vspace{0.3cm}
+
+    19(c): Since $Y = E \cdot y_2$, $Y = EK\left(1 - \frac{E}{r}\right)$.
+
+    19(d): The maximum of a parabola lies at its vertex $-\frac{b}{2a}$. In this case, $Y(E) = -E^2\frac{K}{r} + EK$ is maximized when $E = \frac{r}{2}$ and correspondingly $Y_m = \frac{KR}{4}$.
 \end{exercise}
+
+\begin{exercise}{27}
+
+    27(a): The limiting value of $x(t)$ as $t \to \infty$ is $x = \min\{p, \ q\}$. Slightly above this value $\frac{dx}{dt}$ is negative (meaning $x(t)$ decreases) and slightly below this value $\frac{dx}{dt}$ is positive.
+
+
+    We can solve the differential equation using partial fractions:
+    $$\frac{dx}{dt} = \alpha(p - x)(q - x) \rightarrow \int \frac{1}{(p - x)(q - x)} \ dx = \alpha t + C \rightarrow \frac{1}{q - p} \int \frac{1}{p - x} - \frac{1}{q - x} \ dx = \alpha t + C$$
+
+    so $\mathlarger{\frac{1}{q - p} \left( -\ln |p - x| + \ln |q - x|\right) = \alpha t + C}$ 
+    with $\mathlarger{C = \frac{\ln(q/p)}{q - p}}$. (The simplification afterwards for an explicit form of $x(t)$ gets really messy.)
+
+    \vspace{0.3cm}
+
+    27(b): As seen in problem 5, this is a equation with a semistable equilibrium solution $x(t) = p$ which happens when $t \to \infty$ with initial condition $x(0) = 0$. A simple integration shows $\int \frac{1}{(p - x)^2} \ dx = \frac{1}{p - x} + C$ and thus $x(t) = p(1 - \frac{1}{p\alpha t + 1})$.
+\end{exercise}
+
+
+
 
 \end{document}
