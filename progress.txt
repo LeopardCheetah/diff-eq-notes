@@ -1,4 +1,5 @@
 Current progress:    
+- 01/01 - Started + Finished section 2.6. (2026!)
 - 12/28 - Finish 2.5
 - 12/25 - Finishing 2.4, started 2.5
 - 12/15 - Doing more problems from sec 2.4
