@@ -1,0 +1,57 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Euler's method, famously shoved down students' throats in Calculus BC, is just basic (first-order?) numerical approximation of a given function.
+
+Essentially, the problem statement can be summed up by finding the value of the function $y$ at a certain point $t_1$ given differential equation $\mathlarger{\frac{dy}{dt} = f(t, y)}$ and initial point $(t_0, y_0)$. 
+
+Mathematically, since $\mathlarger{y(t_1) = \int_{t_0}^{t_1} f(t, y) \ dt + y_0  = \sum_{t_0}^{t_1} f(t, y) \cdot dt + y_0}$ (assuming $y$ is continuous), we can find $y(t_1)$ by approximating the summation with a non-infinitesimal $dt$ ($dt \rightarrow \Delta t$). 
+
+To Euler it up, determine how many steps $n$ you want to take. Next, to approximate $y(t_{\text{next}})$, take a `step' of size $\mathlarger{\frac{t_1 - t_0}{n}}$ and estimate $y(t_{\text{next}})$ as $y(t_{\text{now}}) + \frac{dy}{dt} \Delta t = y(t_{\text{now}}) + f(t_{\text{now}}, y)(t_{\text{next}} - t_{\text{now}})$ with $t_{\text{next}} = t_{\text{now}} + \frac{t_1 - t_0}{n}$. Iterate this until $t_{\text{next}} = t_1$, the desired endpoint.
+
+So that's basic numerical interpolation for you. Note that the step size need not be constant though usually it is. 
+
+Most exercises below are computation-related and they're frankly boring which is why almost none are done.
+
+\begin{exercise}{15}
+    \textbf{Convergence of Euler's Method.}
+
+    15(a). Assuming $\mu = \mu(t)$ leads us to find $\mu(t) = e^{-t}$ and a semi-messy integration reveals $\psi(t, y) = e^{-t}(y - t) = c$. Rearranging for $y$, we find $y = t + ce^t$ and plugging in point $(t_0, y_0)$ means $y_0 = t_0 + ce^{t_0}$ or $c = \frac{y_0 - t_0}{e^{t_0}}$ which matches the solution given in the problem.
+
+    \vspace{0.2cm}
+
+    15(b). $\mathlarger{y_k = y_{k - 1} + \frac{dy}{dt}h = y_{k - 1} + (1 - t_{k - 1} + y_{k - 1})h = y_{k - 1}(1 + h) + h - t_{k-1}h}$.
+
+    \vspace{0.2cm}
+
+    15(c). $y_2 = (1 + h)y_1 + h - ht_1 = (1 + h)y_1 + t_2 - t_1 - ht_1 = (1 + h)(y_1 - t_1) + t_2 \rightarrow (1 + h)((1 + h)(y_0 - t_0) + t_1 - t_1) + t_2$ so $y_2 = (1 + h)^2(y_0 - t_0) + t_2$. As such, by engineer's induction $y_n = (1 + h)^n(y_0 - t_0) + t_n$. 
+
+    \vspace{0.2cm}
+
+    15(d): I'm not sure what conditions this problem is throwing at me but essentially:
+    $$y_n = (1 + h)^n(y_0 - t_0) + t_n \rightarrow (1 + (t - t_0)/n )^n(y_0 - t_0) + t_n \Longrightarrow y_n \approxeq e^{t - t_0}(y_0 - t_0) + t = \phi(t) $$
+
+    as $n \to \infty$.
+\end{exercise}
+
+
+\end{document}
