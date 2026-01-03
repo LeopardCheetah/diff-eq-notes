@@ -20,7 +20,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+This long section is just kind of a proof of the existence and uniqueness of solutions of a continuous differential equation.
+
+The proof uses a method called ``method of successive approximations'' which solves a differential equation by considering the solution $\mathlarger{\phi(t) = \lim_{n \to \infty} \phi_n(t)}$ where 
+$$\phi_{n + 1}(t) = \int_0^t f(s, \phi_n(s)) \ ds$$
+
+($f$ is the thing you get when you rewrite a differential equation as $\frac{dy}{dt} = f(t, y)$.)
 
 
+\vspace{0.3cm}
+
+
+Essentially this whole section is just dedicated to the proof of an elementary yet powerful (but also cumbersome) theorem.
+
+
+\begin{exercise}{1}
+
+    $\mathlarger{\frac{dy}{dt} = (t + 1)^2 + (y + 2)^2}$.
+\end{exercise}
 
 \end{document}
