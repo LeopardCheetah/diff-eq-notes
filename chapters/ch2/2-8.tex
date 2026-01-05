@@ -39,4 +39,66 @@ Essentially this whole section is just dedicated to the proof of an elementary y
     $\mathlarger{\frac{dy}{dt} = (t + 1)^2 + (y + 2)^2}$.
 \end{exercise}
 
+
+\begin{exercise}{5a, 6a}
+    
+    5(a): A pattern clearly emerges calculating the first values of $\phi_n(t)$:
+    $$\phi_0(t) = t, \ \phi_1(t) = t, \ \phi_2(t) = \int_0^t t^2 + 1 = \frac{t^3}{3} + t, \phi_3(t) = \int_0^t s\left(\frac{s^3}{2} + s\right) + 1 \ ds = \frac{t^5}{3 \cdot 5} + \frac{t^3}{3} + t,$$
+    $$\phi_4(t) = \int_0^t s\left(\frac{s^5}{3 \cdot 5} + \frac{s^3}{3} + s\right) + 1 = \int_0^t \frac{s^6}{3 \cdot 5} + \frac{s^4}{3} + s^2 + 1 = \frac{t^7}{3 \cdot 5 \cdot 7} + \frac{t^5}{3 \cdot 5} + \frac{t^3}{3} + t$$
+    from which we can draw the conclusion that $\mathlarger{\phi_n(t) = \frac{t^{2n - 1}}{(1)(3) \cdots (2n - 1)} + \phi_{n - 1}(t)}$ so $\mathlarger{\phi_n(t) = \sum_{i = 1}^{n} \frac{t^{2i - 1}}{(2i - 1)!!}}$.
+
+    \vspace{2mm}
+    \hr
+    \vspace{2mm}
+
+    6(a): Following the same process of value bashing: 
+    $$\phi_0(t) = t, \ \phi_1(t) = -\frac{t^2}{2}, \phi_2(t) = \int_0^t -\frac{s^4}{2} - s \ ds = -\frac{t^5}{5 \cdot 2} - \frac{t^2}{2}, $$
+    $$ \phi_3(t) = \int_0^t -\frac{s^7}{5 \cdot 2} - \frac{s^4}{2} - s \ ds = -\frac{t^8}{8 \cdot 5 \cdot 2} - \frac{t^5}{5 \cdot 2} - \frac{t^2}{2}$$
+
+    so if we do engineer's induction we arrive at the conclusion that $\mathlarger{\phi_n(t) = -\sum_{i = 1}^n \frac{t^{3i - 1}}{(2)(5)\dots(3i - 4)(3i - 1)}}$.
+\end{exercise}
+
+
+
+\begin{exercise}{12}
+
+    12(a): We start by defining functions $f_n(x)$ and $g_n(x)$ such that $f_n(x) = 0$ and $\mathlarger{g_n(x) = \frac{2nx}{1 + nx^2 + \frac{n^2x^4}{2}} = \frac{2}{\frac{1}{nx} + x + \frac{nx^3}{2}} = \frac{2}{x + \frac{2 + n^2x^4}{2nx}}}$. 
+    
+    \vspace{0.2cm}
+    
+    Next, we note that $f_n(x) \leq \phi_n(x) \leq g_n(x)$ over the interval $0 \leq x \leq 1$ when $n > 3$. The former inequality $f_n(x) \leq \phi_n(x)$ is trivial to prove, and the latter inequality $\phi_n(x) \leq g_n(x)$ is derived from the fact that 
+    $$\phi_n(x) = \frac{2nx}{e^{nx^2}} = \frac{2nx}{1 + nx^2 + \frac{n^2x^4}{2} + \frac{n^3x^6}{6} + \frac{n^4x^8}{24} + \cdots} < \frac{2nx}{1 + nx^2 + \frac{n^2x^4}{2}} = g_n(x)\text{.}$$
+    
+    Evaluating the limits of each function, trivially $\mathlarger{\lim_{n \to \infty} f_n(x) = 0}$. For $g_n(x)$, 
+    $$\lim_{n \to \infty} g_n(x) = \lim_{n \to \infty} \frac{2}{x + \frac{2 + n^2x^4}{2nx}} \rightarrow \lim_{n \to \infty} \frac{2}{x + \frac{n^2x^4}{2nx}} = \lim_{n \to \infty} \frac{2}{x + nx^3/2} = 0$$ 
+
+    for fixed $x \not = 0$ ($g_n(0) = 0$ for all $n$). As such, by the squeeze theorem, since $f_n(x) \leq \phi_n(x) \leq g_n(x)$ and $\mathlarger{\lim_{n \to \infty} f_n(x) = \lim_{n \to \infty} g_n(x) = 0}$, $\mathlarger{\boxed{\lim_{n \to \infty} \phi_n(x) = 0}}$.
+
+    \vspace{0.2cm}
+    \hr
+    \vspace{0.2cm}
+    
+    12(b): Recognizing that $[-nx^2]' = -2nx$, 
+
+    % todo: make the bar when evaluating the integral better.
+    $$\int_0^1 2nxe^{-nx^2} \ dx = \int_1^0 -2nxe^{-nx^2} \ dx = [e^{-nx^2}]_1^0 = e^0 - e^{-n} = 1 - e^{-n}\text{.}$$
+\end{exercise}
+
+
+\begin{exercise}{13}
+
+    13(a): $$\phi(t) = \int_0^t (2s)(1 + \phi(s)) \ ds = \int_0^t (2s)\left(1 + s^2 + \frac{s^4}{2!} + \cdots + \frac{s^{2k}}{k!} + \cdots \right) \ ds $$ $$ \int_0^t 2s + 2s^3 + \frac{2s^5}{2} + \cdots + \frac{2s^{2k + 1}}{k!} + \cdots = t^2 + \frac{t^4}{2} + \frac{t^6}{2 \cdot 3} + \cdots + \frac{t^{2k + 2}}{(k + 1)!} + \cdots$$
+
+    with that final expression being exactly $\phi(t)$.
+
+    \vspace{0.3cm}
+
+    13(b): $\phi(0) = 0$. \\ 
+    13(c): $\mathlarger{\phi(t) = \sum_{k = 0}^{\infty} \frac{(t^2)^k}{k!} - 1 = e^{t^2} - 1}$. \\ 
+    13(d)/(e): (This is problem (8) by the way) $$y' = 2t(1 + y) \rightarrow 2t \ dt = \frac{1}{1 + y} \ dy \rightarrow t^2 + C = \ln|y + 1| \rightarrow y = e^{t^2 + C} - 1$$ 
+    with the constant being $C = 0$ found by plugging in the initial condition.
+\end{exercise}
+
+
+
 \end{document}
