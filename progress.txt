@@ -1,4 +1,5 @@
 Current progress:    
+- 01/08 - Section 2.9, Miscallaneous Problems (finish ch2!)
 - 01/04 - Finishing section 2.8.
 - 01/03 - 2.8 exercise 12.
 - 01/02 - Finished section 2.7, starting section 2.8.

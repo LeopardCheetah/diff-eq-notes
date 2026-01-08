@@ -1,0 +1,47 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{definition}[first-order difference equation]
+    An equation that takes on discrete values and is of the form $\mathlarger{y_{n + 1} = f(n, y_n)}$.
+
+    Further classifications can be derived from whether or not $f$ is linear (or non-linear) and whether or not an initial condition is provided.
+
+    A solution to the first-order difference equation is a set of values $\{y_n\}$ that satisfy the relation held above.    
+\end{definition}
+
+Assuming that $y_{n+1} = f(y_n)$ (recurrences!), we can find \textbf{equilibrium solutions} by solving $y_n = f(y_n)$.
+
+Page (93) analyzes a more complicated model of discrete population growth similar to that of a discretized lienar differential equation.
+
+
+\begin{exercise}{1-4}
+
+    1. Trivial; $y_n = -0.9^ny_0$ so the limit of $y_n$ is 0 as $|y_{n + 1}| < |y_n|$. 
+
+    2. In general, $y_n$ does not matter in the sense that since the fraction $\mathlarger{\sqrt{\frac{n+3}{n+1}}}$ is nearly 1, $y_n$ does not undergo any drastic changes. In fact, $\mathlarger{y_n = \sqrt{\frac{(n+2)(n+1)}{n(n-1)}}y_0}$ as most square roots end up cancelling each other. Thus, asymptotically, $y_{n + 1} \equiv y_n$.
+
+    3. Flip flop.
+
+    4. An equilibrium solution to this equation is $y_n = 12$. Since this equation is also linear and well-behaved, it's to be expected that any solution to this recurrence given an initial condition will converge to $y_n = 12$.
+\end{exercise}
+
+\end{document}
