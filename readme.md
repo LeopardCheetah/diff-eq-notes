@@ -11,12 +11,4 @@ Most exercises in this book won't be completed (duh)
 
 
 
-
-
-idea:
-//// move this out to progress.txt? ////
-
-
-
-
 Current progress and the sections I want to finish can be found in the file [`progress.txt`](progress.txt).
