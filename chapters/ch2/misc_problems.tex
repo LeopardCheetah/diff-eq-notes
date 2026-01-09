@@ -25,9 +25,133 @@ This section is dedicated to solving the end of chapter problems given on page 1
 
 \begin{exercise}{1}
     
+    I trolled on this problem for a long time :/. \\
+    Rewriting our differential equation, we have $\mathlarger{\frac{2}{x}y + \frac{dy}{dx} = x^2}$. Multiplying by a generic integrating factor $\mu$, our equation becomes $\mathlarger{\frac{2}{x}\mu y + \mu\frac{dy}{dx} = x^2\mu}$. Given that we want the left hand side of our equation to look something like $\mathlarger{\frac{d}{dx}[\mu y] = \mu' y + \frac{dy}{dx}\mu}$, we immediately have $\mathlarger{\mu' = \frac{2}{x}\mu \rightarrow \mu(x) = x^2}$. 
     
+    As such, we can plug that back into our equation and reformat our differential equation as 
+    $$2xy + \frac{dy}{dx}x^2 = x^4 \rightarrow \frac{d}{dx}[x^2y] = x^4$$ 
+    and integrate both sides to get 
+    $\frac{x^5}{5} + C = x^2y \rightarrow \mathlarger{\boxed{y(x) = \frac{x^3}{5} + \frac{C}{x^2}}}$.
+\end{exercise}
+
+\begin{exercise}{2}
+
+    $$\frac{dy}{dx} = \frac{1 + \cos x}{2 - \sin y} \rightarrow 1 + \cos x \ dx = 2 - \sin y \ dy \rightarrow \boxed{x + \sin x + C = 2y + \cos y}\text{.}$$
+\end{exercise}
+
+\begin{exercise}{3} 
+
+    We rewrite our diffy q as $\mathlarger{ (-2x - y) + (3 + 3y^2 - x)\frac{dy}{dx} = 0}$. Since $\mathlarger{\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x} = -1}$, our differential equation is \textbf{exact} and we can simply integrate $M = -2x - y$ with respect to $y$ and solve for the constant function to get $\psi(x, y) = -x^2 - xy + 3y + y^3$. With our initial condition $(0, 0)$, our differential equation is implicitly solved by $-x^2 - xy + 3y + y^3 = 0$.
+\end{exercise}
+
+\begin{exercise}{4}
+
+    $$\frac{dy}{dx} = 3 - 6x + y - 2xy \longrightarrow \frac{dy}{dx} = (3 + y)(1 - 2x) \Rightarrow y = Ce^{x - x^2} - 3\text{.}$$
+\end{exercise}
+
+\begin{exercise}{5}
+
+    $\rightarrow (2xy + y^2 + 1) + (x^2 + 2xy)\frac{dy}{dx}$. $\mathlarger{\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x} = 2x + 2y}$ so our differential equation is exact. As such, $\mathlarger{\psi(x, y) = \int x^2 + 2xy \ dy = \int 2xy + y^2 + 1 \ dx = x^2y + xy^2 + x \ ( = C)}$.
+\end{exercise}
+
+\begin{exercise}{6}
+
+    Since there's a $-y$ on the right hand side, we have to rearrange the left hand side to account for it:
+    $$x \frac{dy}{dx} + xy = 1 - y \rightarrow \frac{dy}{dx} + \frac{x + 1}{x}y = \frac{1}{x}$$
+
+    As such, we can recognize that an integrating factor of $\mu =  xe^x$ is needed $\left(\mu' = \frac{x + 1}{x}\mu\right)$ and as such we can integrate and get $e^x + C = xe^xy$. With initial condition, our solution thus becomes $\mathlarger{\boxed{y = \frac{1}{x} - \frac{e}{xe^x}}}$.
+\end{exercise}
+
+\begin{exercise}{7}
+
+    $$x \frac{dy}{dx} + 2y = \frac{\sin x}{x} \rightarrow x^2\frac{dy}{dx} + 2xy = \sin x \rightarrow \frac{d}{dx}[x^2y] = \sin x \rightarrow y = \frac{C - \cos x}{x^2} \Longrightarrow \boxed{y = \frac{4 + \cos 2 - \cos x}{x^2}}\text{.}$$
 \end{exercise}
 
 
+\begin{exercise}{8}
+
+    This differential equation is exact. 
+    $$(2xy + 1) + (x^2 + 2y)y' = 0 \rightarrow \psi(x, y) = x^2y + x + y^2\text{.}$$
+\end{exercise}
+
+\begin{exercise}{9}
+
+    Although this differential equation looks like it can be exact, it's actually separable.
+
+    $$(x^2y + xy - y) + (x^2y - 2x^2)\frac{dy}{dx} = 0 \rightarrow (y)(x^2 + x - 1) + (x^2)(y - 2)\frac{dy}{dx} = 0$$ 
+    $$\rightarrow -\frac{y(x^2 + x - 1)}{x^2(y - 2)} = \frac{dy}{dx} \rightarrow \frac{y - 2}{y} \ dy = \frac{1 - x - x^2}{x^2} \ dx\text{.}$$
+
+    As such (break apart the fractions!), $\mathlarger{\boxed{y - 2 \ln y = -x - \ln x - \frac{1}{x} + C}}$.
+\end{exercise}
+
+
+\begin{exercise}{10}
+
+    This time, the differential equation is exact. This makes our work super easy as we can just recognize $\psi(x, y) = \frac{x^3}{3} + xy + e^y$ which captures all solutions when paired with a level curve.
+\end{exercise}
+
+\begin{exercise}{11}
+
+    This differential equation is also exact. $\psi(x, y) = \frac{x^2}{2} + xy + y^2$ so with point $(2, 3)$, the solution is $\mathlarger{\frac{x^2}{2} + xy + y^2 = 17}$.
+\end{exercise}
+
+\begin{exercise}{12}
+    We can rewrite our differential equation to be separable and seperate to get 
+    $$\rightarrow \ln y = C + \int \frac{1 - e^x}{1 + e^x}\text{.}$$
+
+    Since this kind of looks $u$-subbable, we let $u = e^x + 1$; correspondingly, $du = e^x \ dx$ and $1 - e^x = 2 - u$. As such, our integral then becomes
+
+    $$= C + \int \frac{2 - u}{u(u - 1)} \ du = C + \int \frac{1}{u - 1} - \frac{2}{u} \ du\text{.}$$
+
+    As such, now integratable, we integrate and simplify to get $\mathlarger{\boxed{y = Ce^x \cdot (e^x + 1)^{-2}}}$.
+\end{exercise}
+
+\begin{exercise}{13}
+
+    This big scary equation is actually an exact differential equation. Solving, we get $\psi(x, y) = e^{-x}\cos y + e^{2y}\sin x$.
+\end{exercise}
+
+\begin{exercise}{14}
+    
+    $$-3y + \frac{dy}{dx} = e^{2x} \rightarrow e^{-x} = -3e^{-3x}y + e^{-3x}\frac{dy}{dx} \rightarrow -e^{-x} + C = e^{-3x}y\text{.}$$
+\end{exercise}
+
+\begin{exercise}{15}
+    Using integrating factor $e^{2x}$, we get $$e^{2x}y = \int e^{-x^2} \ dx + C$$
+    so $\mathlarger{y = e^{-2x} \frac{\sqrt{\pi}}{2} \text{erf}(x) + 3e^{-2x}}$.
+\end{exercise}
+
+\begin{exercise}{16}
+
+    Again, another big scary fraction that turns super tame when we rearrange it and find it's an exact differential equation. $\psi(x, y) = xy^3 + 2xy - x^3$ is the parent solution.
+\end{exercise}
+
+\begin{exercise}{17}
+    
+    $$y' = e^{x + y} \rightarrow e^{-y} \ dy = e^x \ dx \rightarrow -y = \ln(-e^x) \rightarrow y = -x(1 + i\pi)\text{.}$$
+\end{exercise}
+
+\begin{exercise}{18}
+
+    $\mathlarger{\psi(x, y) = 2xy^2 + 3x^2y - 4x + y^3}$.
+\end{exercise}
+
+
+\begin{exercise}{19}
+
+    Note: This problem is functionally equivalent to problem 6. The integrating factor is the same ($xe^x$) so the problem is basically identical.
+
+    $$t \frac{dy}{dt} + (t + 1)y = e^{2t} \rightarrow e^{3t} = te^t\frac{dy}{dt} + (t + 1)e^t y \rightarrow \frac{e^{3t}}{3} + C = te^ty \rightarrow y = \frac{e^{2t}}{3t} + \frac{C}{te^t}\text{.}$$
+\end{exercise}
+
+\begin{exercise}{20}
+    
+    This problem is very tricky and I almost got it. Essentially, we set $y = nx$, correspondingly find $\frac{dy}{dx} = n + \frac{dn}{dx}x$, then plug that back into our equation and solve. 
+
+    Eventually, we find $-e^{-n} = \ln x + C$ so $e^{-y/x} + \ln x = C$ is our solution.
+\end{exercise}
+
+\begin{exercise}{21}
+\end{exercise}
 
 \end{document}
