@@ -146,12 +146,61 @@ This section is dedicated to solving the end of chapter problems given on page 1
 
 \begin{exercise}{20}
     
-    This problem is very tricky and I almost got it. Essentially, we set $y = nx$, correspondingly find $\frac{dy}{dx} = n + \frac{dn}{dx}x$, then plug that back into our equation and solve. 
+    This problem is very tricky and I gave up on the problem (although I was close in trying to make a substitution). Essentially, to clear things up, we set $y = nx$ and correspondingly find $\mathlarger{\frac{dy}{dx} = n + \frac{dn}{dx}x}$. We then substitute this new $\frac{dy}{dx}$ back into our differential equation and solve. 
 
     Eventually, we find $-e^{-n} = \ln x + C$ so $e^{-y/x} + \ln x = C$ is our solution.
 \end{exercise}
 
 \begin{exercise}{21}
+
+    This problem is weird. Also, I wouldn't take the hint that the textbook gives. 
+    
+    \vspace{0.3cm}
+
+    Motivated by how bad the differential equation is when we first write it out $\mathlarger{\left(\frac{dy}{dx} = \frac{x}{y}\cdot \frac{1}{x^2 + y^2}\right)}$, we are somewhat motivated in making the substitution $v = x^2 + y^2$ to clean things up. Indeed, we can rewrite the whole differential equation in terms of $v$ and $x$: 
+
+    $$v = x^2 + y^2 \rightarrow \frac{dv}{dx} = 2x + 2y\frac{dy}{dx} \rightarrow \frac{dy}{dx} = \frac{\frac{dv}{dx} - 2x}{2y}$$
+    $$\Longrightarrow \frac{\frac{dv}{dx} - 2x}{2y} = \frac{x}{y}\cdot\frac{1}{v} \Rightarrow \frac{dv}{dx} = 2x\left(\frac{v+1}{v}\right)$$
+
+    from which the equation is separable and then easily integratable. 
+
+    \hr 
+
+    Lesson of the day then is to use clever substitutions to turn a non-linear differential equation (with term $y^3\frac{dy}{dx}$) into a linear, solvable differential equation.
+\end{exercise}
+
+
+\begin{exercise}{22}
+
+    Use the substitution $y = nx$ $\mathlarger{\left(\frac{dy}{dx} = n + \frac{dn}{dx}\right)}$ and rearrange:
+
+    $$\rightarrow n + \frac{dn}{dx}x = \frac{(n + 1)x}{(1 - n)x} \rightarrow \frac{dn}{dx} = \frac{1 + n^2}{1 - n} \cdot \frac{1}{x}$$
+
+    which is clearly solvable and might be integratable and might result in a solution that isn't deranged and unwritable.
+\end{exercise}
+
+
+\begin{exercise}{23}
+
+    I'm not even sure how this still works but once again the substitution $y = nx$ works (This time I figured it out by myself!!).
+
+    $y = nx$ so $\mathlarger{\frac{dy}{dx} = n + x\frac{dn}{dx}}$. Replacing this in our differential equation, we get:
+
+    $$3n^2x^2 + 2nx^2 - \left(n + x \frac{dn}{dx}\right)(2nx^2 + x^2) = 0 \rightarrow 3n^2 + 2n - \left[2n^2 + n + (2n + 1)x\frac{dn}{dx}\right] = 0$$
+
+    $$\rightarrow n^2 + n = (2n + 1)x\frac{dn}{dx} \rightarrow \frac{1}{x} \ dx = \frac{1}{n} + \frac{1}{n+1} \ dn$$ 
+
+    from which the equation is easily solvable :).
+
+    Lesson learned: Always substitute $y = nx$ if things look funky.
+\end{exercise}
+
+
+\begin{exercise}{24}
+
+    Not even going to attempt this one. I've wasted too much time on this stupid problem.
+
+    The solution is to divide the equation by $y^2$ and recognize that you can find an integrating factor $\mu$ for the exact differential equation by trying to find $\frac{d\mu}{dx}$. Good luck o7.
 \end{exercise}
 
 \end{document}
