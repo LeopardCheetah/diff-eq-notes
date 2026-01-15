@@ -1,0 +1,87 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}[Differential Operator L]
+    A general differential operator \textit{does stuff}. 
+    
+    For now, for continuous functions $\alpha$ and $\beta$ on some open interval $I$ and for any function $\phi$ twice differentiable on $I$, we define the \textbf{differential operator L} as 
+
+    $$L[\phi] = \phi'' + \alpha\phi' + \beta\phi\text{.}$$    
+
+    Note that the result of applying $L$ to some function $f$ is another function $g$.
+\end{definition}
+
+In this section we wil examine the equation $L[y] = 0$.
+
+\vspace{0.3cm}
+
+\begin{definition}[Existence and Uniqueness Theorem]
+    (Reproduced from page 110.) \\
+    Consider the initial value problem
+
+    $$y'' + p(t)y' + q(t)y = g(t), \ \ y(t_0) = y_0, \ y'(t_0) = y_0'\text{,}$$
+
+    where $p$, $q$, and $g$ are continuous on an open interval $I$ with $t_0 \in I$. This problem has exactly one solution $y = \phi(t)$, and the solution exists throughout the interval $I$.    
+\end{definition}
+This existence theorem is pretty similar to Theorem 2.4.1 but generalized to second-order linear differential equations. Note once again the guarantee and uniqueness of a solution to the given differential equation over a certain interval.
+
+
+\vspace{0.3cm}
+
+\begin{definition}[Principle of Superposition]
+    If $y_1$ and $y_2$ are two solutions to the differential equation $L[y] = 0$, then $c_1y_1 + c_2y_2$ is also a solution to the given differential equation for any $(c_1, c_2) \in \mathbb{R}^2$.
+\end{definition}
+
+\vspace{0.3cm}
+\begin{definition}{Wronskian Determinant}
+    The \textbf{Wronskian Determinant} for the system 
+    $$\begin{cases}
+        c_1y_1(t_0) + c_2y_2(t_0) = y_0, \\ 
+        c_1y_1'(t_0) + c_2y_2'(t_0) = y_0' 
+    \end{cases}$$
+
+    is 
+    $$W = \begin{vmatrix}
+        y_1(t_0) & y_2(t_0) \\ y_1'(t_0) & y_2'(t_0)
+    \end{vmatrix} = y_1(t_0)y_2'(t_0) - y_1'(t_0)y_2(t_0)\text{.}$$
+    
+    If $W$ is non-zero, then there is a unique solution to the differential equation $L[y] = 0$ with \textbf{any} given initial condition. Otherwise, there are initial conditions to the differential equation that cannot be satisfied no matter how $c_1$ and $c_2$ are chosen (113).
+\end{definition}
+
+
+Note that if the Wronskian $W$ is non-zero, the two solutions $y_1$ and $y_2$ to $L[y] = 0$ are said to form a \textbf{fundamental set of solutions}.
+
+(There's a lot more discussion here about uniqueness of solutions, Wronksians, and other things I frankly don't care about.)
+
+
+\vspace{0.3cm}
+Regarding complex valued solutions, if $y = u(t) + iv(t)$ satisfies $L[y] = 0$, then $u$ and $v$ are also solutions to the differential equation $L[y] = 0$ (Theorem 3.2.6, Page 117). This is pretty important and notable!
+
+
+\vspace{0.3cm}
+For another theorem in this long section, we have....
+\begin{definition}[Abel's Theorem]
+    
+\end{definition}
+
+\end{document}

@@ -1,5 +1,5 @@
 Current progress:    
-- 01/14 - Start ch 3, section 3.1
+- 01/14 - Start ch 3, section 3.1, started reading 3.2
 - 01/09 - finish chapter 2. this was painful. spent ~1.5h on 4 problems and I really only solved 1. and this is just regular differential equations.
 - 01/08 - Section 2.9, Miscallaneous Problems (finish ch2!)
 - 01/04 - Finishing section 2.8.

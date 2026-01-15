@@ -69,6 +69,18 @@
 % taken from analysis
 \tcolorboxenvironment{exercise}{colframe=Orange, colback=White, after skip=10pt}
 \AtEndEnvironment{exercise}{\qed}
+
+
+
+
+% Source - https://tex.stackexchange.com/a
+% Posted by Christian Lindig, modified by community. See post 'Timeline' for change history
+% Retrieved 2026-01-14, License - CC BY-SA 3.0
+
+\newif\ifall
+\allfalse % or \draftfalse
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -87,6 +99,7 @@
 
 %--------------------------------------------------- end header ----------------------------
 
+
 \section*{Remarks}
 
 This notes thing was started on 10/19/2025.
@@ -96,6 +109,16 @@ I am to work through the WHOLE of the textbook (Elementary Differential Equation
 Hopefully, I'll also get around ~20-40\% of the problems in the textbook done.
 
 \newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIG COMMENT BEING PUT HERE!!!!
+
+\section{A}
+\section{B} % ensure that we are in the n.x sections
+
+% use this to only compile select things
+\ifall
 
 \section{Introduction}
 
@@ -168,6 +191,9 @@ for chapter 2, all diffy qs will be first order.
 \subsection{Miscallaneous Problems}
 \subfile{chapters/ch2/misc_problems.tex}
 
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % chapter 3!!
@@ -181,9 +207,9 @@ $$y'' + p(t)y' + q(t)y = g(t)\text{.}$$
 \subfile{chapters/ch3/3-1.tex}
 
 
-%% \spacer
-%% \subsection{Solutions of Linear Homogenous Equations | the Wronskian}
-
+\spacer
+\subsection{Solutions of Linear Homogenous Equations | the Wronskian}
+\subfile{chapters/ch3/3-2.tex}
 
 
 
