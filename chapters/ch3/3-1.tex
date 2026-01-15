@@ -1,0 +1,93 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Remember, a \textbf{linear} second-order differential equation is of the form 
+$$P(t)y'' + Q(t)y' + R(t)y = G(t)\text{.}$$
+
+\textbf{Nonlinear} differential equations are super hard and annoying to tackle and as such they're just not tackled in this book :/.
+
+In second-order differential equations, a problem with an initial condition has initial condition of the form 
+
+$$\begin{cases}
+y(t_0) = y_0 \\ 
+y'(t_0) = y_0'
+\end{cases}\ \text{.}$$
+
+Note that there are two initial equations given - the location of $y$ at time $t_0$, and the slope of $y$ at time $t_0$.
+
+
+\begin{definition}[Homogenous]
+    A \textbf{homogenous} differential equation has no `constant' terms (terms without $y$). In the case for our second-order linear differential equations, a homogenous equation of that form can be written as 
+
+    $$P(t)y'' + Q(t)y' + R(t)y = 0\text{.}$$    
+\end{definition}
+
+Anyways, it turns out if we solve the homogenous version of the differential equation $P(t)y'' + Q(t)y' + R(t)y = G(t)$, we can actually find an expression for $y$ (that may or may not have an integral in it). That's pretty cool.
+
+\vspace{0.3cm}
+
+For this chapter (unfortunately), we will only consider the cases when $\boxed{P, \ Q, \text{ and } R \text{ are \textbf{constants}}}$.
+
+\vspace{0.3cm}
+
+Thus, our differential equation becomes $ay'' + by' + cy = 0$. Letting $y = e^{rt}$, we find that our equation now becomes 
+
+$$\rightarrow ar^2e^{rt} + bre^{rt} + ce^{rt} = e^{rt}(ar^2 + br + c) = 0$$
+
+with $ar^2 + br + c$ called the \textbf{characteristic equation} for the general differential equation with constant coefficients shown above.
+
+\vspace{0.3cm}
+
+If we let $r_1$ and $r_2$ be two real roots that satisfy the characteristic equation above, then the \textbf{general solution} to our differential equation is $y = c_1e^{r_1t} + c_2e^{r_2t}$ with $c_1$ and $c_2$ being arbitrary constants. Initial conditions can be solved for summarily.
+
+
+
+\begin{exercise}{1-4}
+
+    1. $y = c_1e^t + c_2e^{-3t}$. \\
+    2. $y = c_1e^{t} + c_2e^{2t}$. \\ 
+    3. $y = c_1e^{t/2} + c_2e^{-t/3}$. \\
+    4. $y = c_1 + c_2e^{-5t}$. 
+\end{exercise}
+
+\begin{exercise}{13}
+    
+    If a differential equation's solution is $\mathlarger{c_1e^2t + c_2e^{-3t}}$, we have $r_1 = 2$, $r_2 = -3$ and as such our differential equation is $y'' + y' - 6y = 0$.
+
+    It probably can be shown that no other differential equation produces the general solution given in the problem.
+\end{exercise}
+
+\begin{exercise}{16}
+
+    The characteristic equation for our differential equation is $n^2 - n - 2 = 0$ and as such we have roots $r_1 = 2$, $r_2 = -1$. As such, the general solution to the equation is $y = c_1e^{2t} + c_2e^{-t}$. 
+
+    To make the solution approach $0$ as $t \to \infty$, we need $c_1 = 0$ as in any other case, $e^{2t}$ will spiral out to infinity and our solution is unbounded. Thus, we can plug this solution into the second part of the initial value problem $y'(0) = 2$:
+
+    $$y'(0) = 2 \rightarrow 2 = 2\cdot 0e^{2t} + (-1)\cdot c_2e^{-0} \rightarrow c_2 = -2\text{.}$$
+
+    Thus, our final solution to the differential equation is $y_{sol} = -2e^{-t}$ and $y_{sol}(0) = \alpha = -2$. 
+\end{exercise}
+
+
+
+\end{document}
