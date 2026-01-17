@@ -24,14 +24,14 @@
 \begin{definition}[Differential Operator L]
     A general differential operator \textit{does stuff}. 
     
-    For now, for continuous functions $\alpha$ and $\beta$ on some open interval $I$ and for any function $\phi$ twice differentiable on $I$, we define the \textbf{differential operator L} as 
+    For now, for continuous functions $\alpha$ and $\beta$ on some open interval $I$ and for any function $\phi$ twice differentiable on $I$, we define the \textbf{differential operator} $L$ as 
 
     $$L[\phi] = \phi'' + \alpha\phi' + \beta\phi\text{.}$$    
 
     Note that the result of applying $L$ to some function $f$ is another function $g$.
 \end{definition}
 
-In this section we wil examine the equation $L[y] = 0$.
+In this section we will examine the equation $L[y] = 0$.
 
 \vspace{0.3cm}
 
@@ -49,7 +49,7 @@ This existence theorem is pretty similar to Theorem 2.4.1 but generalized to sec
 \vspace{0.3cm}
 
 \begin{definition}[Principle of Superposition]
-    If $y_1$ and $y_2$ are two solutions to the differential equation $L[y] = 0$, then $c_1y_1 + c_2y_2$ is also a solution to the given differential equation for any $(c_1, c_2) \in \mathbb{R}^2$.
+    If $y_1$ and $y_2$ are two solutions to the differential equation $L[y] = 0$, then $y_3 = c_1y_1 + c_2y_2$ is also a solution to the given differential equation for any $(c_1, c_2) \in \mathbb{R}^2$.
 \end{definition}
 
 \vspace{0.3cm}
@@ -75,13 +75,105 @@ Note that if the Wronskian $W$ is non-zero, the two solutions $y_1$ and $y_2$ to
 
 
 \vspace{0.3cm}
-Regarding complex valued solutions, if $y = u(t) + iv(t)$ satisfies $L[y] = 0$, then $u$ and $v$ are also solutions to the differential equation $L[y] = 0$ (Theorem 3.2.6, Page 117). This is pretty important and notable!
+Regarding complex valued solutions, if $y = u(t) + iv(t)$ satisfies $L[y] = 0$, then $u$ and $v$ are also solutions to the differential equation $L[y] = 0$ (Theorem 3.2.6, Page 117). This is important for later sections.
 
 
 \vspace{0.3cm}
 For another theorem in this long section, we have....
 \begin{definition}[Abel's Theorem]
+    If $y_1$ and $y_2$ are solutions for the differential equation $L[y] = 0$ (and some other general conditions are satisfied), then the Wronksian $W[y_1, y_2](t)$ is given by 
+
+    $$W[y_1, y_2](t) = c \exp\left(-\int p(t) \ dt\right)$$
     
+    where $c$ is a constant dependent on $y_1$ and $y_2$ but not on $t$ (Theorem 3.2.7, Page 117)
 \end{definition}
+
+
+\vspace{0.3cm}
+In summary (page 118), to solve $L[y] = 0$ over some open interval $I$, we first find two solutions $y_1$ and $y_2$ then make sure that $W[y_1, y_2](i) \not = 0$ for some $i \in I$. If this is achieved, $y_1$ and $y_2$ would then be a fundamental set of solutions to the given differential equation from which initial-value problems can be solved.
+
+
+\begin{exercise}{12}
+
+    We evaluate the differential equation with $y = c\phi(t)$:
+
+    $$y'' + p(t)y' + q(t)y = c\phi''(t) + cp(t)\phi'(t) + cq(t)\phi(t) = c(\phi''(t) + p(t)\phi'(t) + q(t)) = g(t)\text{.}$$
+
+    Since we know $\phi(t)$ is a solution to the differential equation, we thus have $c(g(t)) = g(t)$ which cannot hold if $c \not = 1$ and $g(t) \not = 0$.
+
+    This does not violate Theorem 3.2.2 (Principle of Superposition) as that principle arises from the special case of when $g(t) = 0$.    
+\end{exercise}
+
+\begin{exercise}{13}
+
+    No. 
+
+    If $y = \sin\left(t^2\right)$ is a solution to $L[y] = 0$, then 
+
+    $$2\cos\left(t^2\right) - 4t^2 \sin\left(t^2\right) + p(t)2t\cos\left(t^2\right) + q(t)\sin\left(t^2\right) = \cos\left(t^2\right)(2 + p(t)2t) + \sin\left(t^2\right)(-4t^2 + q(t)) = 0\text{.}$$
+
+    To make $L[\sin\left(t^2\right)]$ equal to $0$, we thus have to have $2 + p(t)2t = 0$ and $-4t^2 + q(t) = 0$. The latter case is easy to solve but the former implies $p(t) = -\frac{1}{t}$, which is a non-continuous function around the point $t = 0$. 
+
+    In any case, if we change $q(t)$ to `cancel' the residue $2\cos\left(t^2\right)$ in the equation above, then in some form or another part of $q(t)$ would contain the fraction $\cot\left(t^2\right)$ meaning $q$ would also be a non-continous function around $t = 0$. 
+
+    As such, it is impossible to find continuous $p$ and $q$ satisfying $L[\sin\left(t^2\right)] = 0$ over an open interval $I$ containing the point $t = 0$.
+\end{exercise}
+
+\begin{exercise}{15}
+
+    $$W[f + 3g, g - g] = (f + 3g)'(f - g) - (f + 3g)(f - g)' = f'(f - g) + 3g'(f - g) - f'(f + 3g) + g'(f + 3g)$$ 
+    $$= ff' - f'g + 3fg' - 3gg' - ff' - 3f'g + f'g + 3gg' = -4(f'g - fg') = 4\sin t - 4t\cos t\text{.}$$
+\end{exercise}
+
+\begin{exercise}{17}
+
+    Two solutions $y_1$, $y_2$ to this differential equation are $ce^t$ and $ce^{-2t}$ for any $c \in \mathbb{R}$. To construct the fundamental set of solutions, we need to reshape our solutions such that $y_a(0) = 1$ and $y'_a(0) = 0$ and also $y_b(0) = 0$ and $y'_b(0) = 1$. 
+
+    \vspace{0.2cm}
+
+    Since our two solutions $y_1$, $y_2$ seem pretty dissimilar, we first assume that $y_a = c_1y_1 + c_2y_2$. From here, we just solve for the properties we need; since $y_a = 1$, $c_1 + c_2 = 1$. Similarly, since $y'_a(0) = 0$, $c_1 - 2c_2 = 0$ so $(c_1, c_2) = (2/3, \, 1/3)$. 
+
+    Doing something similar for $y_b$, we find that the corresponding $(c_1, c_2) = (1/3, \, -1/3)$. As such, 
+
+    $$\begin{cases}
+        y_a = \frac{2}{3}e^t + \frac{1}{3}e^{-2t} \\ 
+        y_b = \frac{1}{3}e^t - \frac{1}{3}e^{-2t}        
+    \end{cases}\, \text{.}$$
+\end{exercise}
+
+\begin{exercise}{23}
+
+    $$W = c \exp\left(-\int p(t) \ dt\right) = c \exp\left(- \int \frac{-t(t + 2)}{t^2} \ dt\right) = c \exp\left(\int 1 + \frac{2}{t} \ dt\right) = ce^{t + 2 \ln t} = ct^2e^t\text{.}$$  
+\end{exercise}
+
+\begin{exercise}{25}
+
+    $$W = c \exp\left(-\int p(x) \ dx\right) = c \exp\left(- \int \frac{-2x}{1 - x^2} \ dx\right) = c \exp\left(\int -\frac{1}{u} \ du\right) = ce^{\ln(1/u)} = \frac{c}{1 - x^2}\text{.}$$  
+\end{exercise}
+
+
+\begin{exercise}{31}
+    Exact Equations.
+
+    Expanding the given expression, we get 
+
+    $$P'(x)y' + P(x)y'' + f'(x)y + f(x)y' = P(x)y'' + y'(P'(x) + f(x)) + f'(x)y = 0\text{.}$$
+
+    Equating the coefficients to the general form of a differential equation, we thus have $P'(x) + f(x) = Q(x)$ and $f'(x) = R(x)$.
+
+    Taking the derivative of that first equation, we thus have $P''(x) + f'(x) = Q'(x)$ or $P''(x) - Q'(x) + R(x) = 0$ which is exactly the equation that was desired.
+\end{exercise}
+
+\begin{exercise}{32}
+    
+    32. $P''(x) - Q'(x) + R(x) = 0 - 1 + 1 = 0$ so the equation is exact. Namely, $f(x) = Q(x) - P'(x) = x$ so the problem can be restated as $(y')' + (xy)' = 0 \rightarrow y' + xy = c$. This equation is solvable with integrating factor $e^{x^2/2}$ but then the error function pops out so I'm not going to finish this integral.
+\end{exercise}
+
+\begin{exercise}{34}
+
+    Since $2 - 1 + (-1) = 0$, we can find $f(x) = -x$. The differential equation then becomes $(x^2y')' + (-xy)' = 0 \rightarrow x^2y' - xy = c$. 
+
+    Solving, we find $y = -\frac{c_1}{3x} + c_2x$.
+\end{exercise}
 
 \end{document}
