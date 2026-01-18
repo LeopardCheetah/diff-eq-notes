@@ -1,0 +1,79 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+What happens when the roots of the characteristic equation $ar^2 + br + c = 0$ for a general differential equation $ay'' + by' + cy = 0$ are imaginary?
+
+\vspace{0.2cm}
+
+Let the roots $r_1$ and $r_2$ of the characteristic equation be $r_1 = \alpha + i\beta$ and $r_2 = \alpha - i\beta$ for real $\alpha$, $\beta$. Then, the corresponding solutions to the differential equation are 
+
+$$\begin{cases}
+    y_1 = e^{(\alpha + i \beta)t} = e^{\alpha t}\cos(\beta t) + ie^{\alpha t}\sin(\beta t) \text{ and} \\
+    y_2 = e^{(\alpha - i \beta)t} = e^{\alpha t}\cos(\beta t) - ie^{\alpha t}\sin(\beta t) 
+\end{cases} \; \text{.}$$
+
+In Section 3.2 (Thereom 3.2.6), it was mention that the real and imaginary parts of any solution to a given differential equation are each solutions to the given differential equation. In our case thus, $y_3 = e^{\alpha t}\cos(\beta t)$ and $y_4 = e^{\alpha t}\sin(\beta t)$ are also solutions to $ay'' + by' + cy = 0$, with $W[y_3, y_4] = \beta e^{2\alpha t} \not = 0$.
+
+\vspace{0.2cm}
+\hr
+\vspace{0.2cm}
+
+\begin{exercise}{6-8}
+
+    6. The quadratic yields roots $r_1, r_2 = 1 \pm i\sqrt{5}$ so the corresponding general solution is $c_1e^t\cos(\sqrt{5}t) + c_2e^t\sin(\sqrt{5}t)$. \\ 
+    7. $y = c_1e^{-t}\cos(t) + c_2e^{-t}\sin(t)$. \\ 
+    8. $y = c_1e^{-3t}\cos(2t) - c_2e^{-3t}\sin(2t)$.
+\end{exercise}
+
+\begin{exercise}{25}
+
+    (a): $\mathlarger{\frac{dy}{dt} = \frac{dy}{dx}\frac{dx}{dt} = \frac{1}{t}\frac{dy}{dx}}$. \\
+    $\mathlarger{\frac{d^2y}{dt^2} = \frac{d}{dt}\left(\frac{1}{t} \cdot \frac{dy}{dx}\right) = -\frac{1}{t^2}\frac{dy}{dx} + \frac{dx}{dt}\frac{d}{dx}\left(\frac{dy}{dx}\right) = \frac{1}{t^2}\left(\frac{d^2y}{dx^2} - \frac{dy}{dx}\right)}$.
+
+    \vspace{0.2cm}
+
+    (b): Simplify substitute everything we just derived in into the equation .\_.
+\end{exercise}
+
+\begin{exercise}{26-29}
+    
+    As seen from question 25, we can transform the coefficients of the differential equation $(t^2, \alpha t, \beta)$ into $(1, \alpha - 1, \beta)$. In this case, $\alpha = 1$ and $\beta = 1$ so our new differential equation is 
+
+    $$\frac{d^2y}{dx^2} + y = 0$$
+
+    which has solutions $y_1 = \cos(x)$, $y_2 = \sin(x)$. As such, since $x = \ln t$, $y_1 = \cos(\ln t)$ and $y_2 = \sin(\ln t)$ are a set of solutions to the differential equation in terms of $t$.
+
+    \hr
+
+    27: $\alpha = 4$ and $\beta = 2$ so $y_1 = e^{-x} = \frac{1}{t}$ and $y_2 = e^{-2x} = \frac{1}{t^2}$.
+
+    28: $y_1 = \frac{1}{t}$ and $y_2 = t^6$.
+    
+    29: $y_1 = t^2$ and $y_2 = t^3$. 
+\end{exercise}
+
+
+
+
+\end{document}
