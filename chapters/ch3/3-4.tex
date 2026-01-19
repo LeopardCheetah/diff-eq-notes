@@ -1,0 +1,111 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the characteristic equation $ar^2 + br + c$, if the discriminant $\Delta = b^2 - 4ac > 0$, then we are bound to find two real roots $r_1$ and $r_2$ and from there derive a general solution to the differential equation (Section 3.1). If in fact $b^2 - 4ac < 0$, then we will have two complex roots which, as shown in Section 3.3, correspondingly lead to a real solution to the given differential equation. But what happens when $b^2 - 4ac = 0$? 
+
+\vspace{0.2cm}
+
+Assume that $r_1 = r_2 = -\frac{b}{2a}$. Like before, we conclude that one solution to the differential equation $ay'' + by' + cy = 0$ would be $y_1 = e^{-bt/2a}$. But what about the second solution? It turns out $y_2 = te^{-bt/2a}$ is the second solution we need\footnote{Consult Example 1 in Section 3.4 in the textbook for a proof}.
+
+
+So to summarize, when solving the equation $ay'' + by' + cy = 0$, 
+the solutions are 
+
+$$
+\begin{cases}
+    y_{1, 2} = e^{r_{1, 2t}} \text{ if } b^2 - 4ac > 0, \\ 
+    y_1 = e^{\lambda t}\cos(\mu t), \ y_2 = e^{\lambda t}\sin(\mu t) \text{ if } b^2 - 4ac < 0, \\ 
+    y_1 = e^{r_1t}, y_2 = te^{r_1t} \text{ (when $b^2 - 4ac = 0$.)}
+\end{cases}
+$$
+
+
+\hr 
+
+\subsubsection{Reduction of Order}
+
+D'Alembert's Method of finding `extra' (more) solutions is to assume the new solution is of the form $y_2(t) = v(t)y_1(t)$ and solve from there. Namely, in second order differential equations, if we know a solution $y_1$ to $L[y] = 0$, we let 
+
+$$y_2 = v(t)y_1 \text{ so } y'_2 = v'(t)y_1 + v(t)y'_1 \text{ and }y''_2 = v''(t)y_1 + 2v'(t)y'_1 + v(t)y''_1\text{.}$$
+
+As such, plugging this back into our differential equation, $L[y_2] = 0$ becomes 
+
+$$y''_2 + P(t)y'_2 + Q(t)y_2 = 0 \Longrightarrow v''(t)y_1 + 2v'(t)y'_1 + v(t)y''_1 + P(t)(v'(t)y_1 + v(t)y'_1) + Q(t)v(t)y_1$$
+$$= y_1v''(t) + (2y'_1 + P(t)y_1)v'(t) + (y''_1 + P(t)y'_1 + Q(t)y_1)v(t) = 0\text{.}$$
+
+Since $y_1$ is a solution and thus $L[y_1] = 0$, that right most term is actually 0 so our new differential equation is now 
+$$y_1v'' + (2y'_1 + P(t)y_1)v' = 0$$
+
+which is a first order differential equation with respect to $v'$. This is known as \textbf{reduction of order} since our differential equation went from being a second-order to a first-order differential equation.
+
+
+
+\begin{exercise}{1-8}
+
+    (Note: The general solution $y$ can be expressed as $y = c_1y_1 + c_2y_2$ for arbitrary $c_1, c_2$. Below, I only find $y_1$ and $y_2$.)
+
+    \vspace{0.3cm}
+
+    1. Since $b^2 - 4ac = 0$, $y_1 = e^{-bt/2a} = e^t$, and $y_2 = te^t$. \\
+    2. Since $b^2 - 4ac = 0$, $y_1 = e^{-bt/2a} = e^{-t/3}$ and $y_2 = te^{-t/3}$. \\ 
+    3. Since $b^2 - 4ac = 16 + 4(4)(3) = 64 > 0$, we can simplify find the roots of the equation and derive a general solution that way. The roots to $4n^2 - 4n - 3 = 0$ are $n = \frac{3}{2}, -\frac{1}{2}$ so the two solutions are $y_1 = e^{3t/2}$, $y_2 = e^{-t/2}$. \\
+    4. $b^2 - 4ac = -36$ so the roots to this quadratic equation are $1 \pm 3i$ (quadratic formula). As such, $y_1 = e^t\cos(3t)$ and $y_2 = e^t\sin(3t)$. \\ 
+    5. Since $b^2 = 4ac$, $y_1 = e^{3t}$ and $y_2 = te^{3t}$. \\ 
+    6. $y_1 = e^{-4t}$, $y_2 = e^{-t/4}$. \\
+    7. $y_1 = e^{-3t/4}$, $y_2 = ty_1$. \\ 
+    8. $y_1 = e^{-1/2}\cos(t/2)$, $y_2 = e^{-1/2}\sin(t/2)$.    
+\end{exercise}
+
+
+\begin{exercise}{14}
+    
+    Let $r_1$, $r_2$ be the roots of the characteristic equation to the differential equation $ay'' + by' + cy = 0$. As discussed above, the general solution to this equation is $y = c_1e^{r_1t} + c_2e^{r_2t}$ for arbitrary constants $c_1$ and $c_2$. 
+
+    If we let $y = 0$, we can rearrange and show 
+    $$-\frac{c_1}{c_2} = e^{(r_2 - r_1)t}\text{.}$$
+
+    Notably, the left hand side of the equation is constant for a given solution ($c_1$ and $c_2$ are chosen after all) and $r_2 - r_1$ is also constant. As such, since the exponential function is a bijective function for all real inputs, there is only one $t$ value that makes the above equation true which means if the differential equation has a non-trivial solution (e.g. not $c_1 = c_2 = 0 \rightarrow y(t) = 0$), there is only one $t$ value that makes a given solution to the differential equation ($y$) $0$.
+\end{exercise}
+
+\begin{exercise}{18-22}
+
+    18. Reducting the order, you eventually get $v''t^4 = 0 \rightarrow v'' = 0 \rightarrow v = c_1t + c_2$ so $y_2 = t^3$ as the constant $c_1$ is arbitrarily chosen (in this case I take $c_1 = 1$) and the latter term $c_2t^2$ is a multiple of $y_1$ and thus not worth mentioning. \\ 
+    19. The post-reduction equation ends up being $tv'' + 4v' = 0$ which yields the solution $y = \frac{C_1}{t^3}$ which means the final second solution is $y_2 = \frac{1}{t^2}$. (Note: I'm ignoring the second $+C$ at the end as it's inclusion is not necessary; the final solution ends up being $y_2 = \frac{C_1}{t^2} + C_2t = \frac{C_1}{t^2} + C_2y$ which means the latter term has no meaning and can be ignored.) \\
+    20. $y_2 = \frac{\ln t}{t}$. \\ 
+    21. It's long and tricky but you eventually get $y_2 = -C\cot(x^2) \cdot y_1 \rightarrow \cos(x^2)$. \\ 
+    22. The integration required in this exercise is basically the same as the ones done in exercise 21. As such, it should be relatively straightforward to show that $y_2 = -C\cos x\frac{1}{\sqrt{x}} \rightarrow y_2 = \frac{\cos x}{\sqrt{x}}$.    
+\end{exercise}
+
+
+\begin{exercise}{32-33}
+
+    To recap Euler's equations, we transform $t^2y'' + \alpha t y' + \beta y = 0$ into $y'' + (\alpha - 1)y' + \beta y = 0$ where in the first case the derivative of $y$ is taken with respect to $t$ and in the second, the derivative of $y$ is taken with respect to $x = \ln t$. 
+
+    \vspace{0.3cm}
+
+    32. $y_1 = e^{-x/2} = t^{-1/2} = \frac{1}{\sqrt{t}}$, $y_2 = \frac{x}{\sqrt{t}} = \frac{\ln t}{\sqrt{t}}$. I have manually verified that both solutions do indeed solve the differential equation posed. 
+
+    33. $y_1 = e^{-x} = \frac{1}{t}$, $y_2 = \frac{\ln t}{t}$.     
+\end{exercise}
+
+\end{document}
