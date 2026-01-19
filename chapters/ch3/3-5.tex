@@ -1,0 +1,144 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}[Homogenous Differential Equation]
+
+    A differential equation where there is no isolated $g(t)$ term is called a \textbf{homogenous} differential equation. In our case, the differential equation $L[y] = y'' + p(t)y' + q(t) y = 0$ is homogenous while equations of the form $L[y] = g(t) \not = 0$ are nonhomogenous second-order linear differential equations.
+\end{definition}
+
+Theorem 3.5.1 asserts that if $Y_1$ and $Y_2$ are two solutions to $L[y] = g(t)$, then $Y_1 - Y_2$ is a solution to $L[y] = 0$. Notably, that means if we want to find all solutions to a differential equation $L[y] = g(t)$, we only need to find 1 exact solution $Y_1$ to the nonhomogenous form as the general solution is thus $c_1y_1 + c_2y_2 + Y_1$ where $y_1$ and $y_2$ are solutions to $L[y] = 0$.
+
+\vspace{0.2cm}
+
+Note that the general solution of the homogenous differential equation ($c_1y_1 + c_2y_2$) is commonly called the \textbf{complementary solution} and is denoted $y_c(t)$. The solution $Y_1$ that we find in particular is called the \textbf{particular solution}.
+
+
+\vspace{0.3cm}
+
+So how do we find $Y_1$? We can either use the \textbf{Method of Undetermined Coefficients} (3.5) or use the \textbf{Variation of Parameters} method (3.6).
+
+\subsection*{Method of Undetermined Coefficients}
+
+(a.k.a. educated guess and check)
+
+\vspace{0.2cm}
+
+Essentially, based on the coefficients in the equation ($p(t)$, $q(t)$, $g(t)$), make a good \textit{guess} about what $Y_1$ could look at (using general constant coefficients) then solve for those constant coefficients (and hope you're right in your guess).
+
+
+\vspace{0.3cm}
+
+For good guidelines about guessing:
+\begin{itemize}
+    \item If the nonhomogenous term $g(t)$ is of the form $e^{\alpha t}$, assume $Y = Ae^{\alpha t}$.
+    \item If $g(t)$ looks like $\sin(\beta t)$ or $\cos(\beta t)$, let $Y = A\sin(\beta t) + B\cos(\beta t)$.
+    \item If $g(t)$ looks like some polynomial up to $t^{\gamma}$, let $Y = a_1t^{\gamma} + a_2t^{\gamma - 1} + \dots + a_{\gamma}t + a_{\gamma + 1}$.
+    \item If $g(t)$ looks like two (or more) of the above functions added together (e.g. $g(t) = e^{-3t} + \sin(4t)$), split up the differential equation to find the respective solutions to when $g(t) = e^{-3t}$ and $g(t) = \sin(4t)$ then add those solutions together.
+    \item If $g(t)$ looks like two of the above functions multiplied together (e.g. $g(t) = (t^2 + t - 4)(e^{3t})$), let $Y$ be the product of the two relevant guesses; in this case, we should let $Y = (At^2 + Bt + C)e^{3t}$. 
+    \item If guessing a $Y$ for $g(t)$ fails, try $Y^{*} = tY$. Maybe that'll work :).
+\end{itemize}
+
+
+\begin{exercise}{1-7}
+    
+    1. Assuming $Y = Ae^{2t}$, we soon find $A = -1$. Thus, a particular solution to this equation is $Y = -e^{2t}$. Since the general solution to the given differential equation is $y_c = c_1e^{3t} + c_2e^{-t}$, the general general solution is thus $\boxed{\phi = c_1e^{3t} + c_2e^{-t} - e^{2t}}$ for arbitrary constants $c_1$, $c_2$.
+
+    \vspace{0.3cm}
+
+    2. Assuming $Y = At^2 + Bt + C$, we derive, substitute, and solve to find $A = -2$, $B = 3$, and $C = -7/2$. Since the homogenous solution is $c_1e^{2t} + c_2e^{-t}$, we thus have the general solution $\phi$ being of the form $\boxed{c_1e^{2t} + c_2e^{-t} - 2t^2 + 3t - \frac{7}{2}}$.  
+
+    \vspace{0.3cm}
+    
+    3. Since $g(t)$ is composed of two exponential terms, we similarly assume $Y = Ae^{3t} + Be^{-2t}$ and we find $A = 2$ and $B = -3$. With the solution from the non-homogenous equation, we thus find that $\phi = c_1e^{2t} + c_2e^{-3t} + 2e^{3t} - 3e^{-2t}$. 
+
+    \vspace{0.3cm}
+    
+    4. While assuming $Y = (At + B)e^{-t}$ yields no satisfactory results, assuming $Y = (At^2 + Bt + C)e^{-t}$ (one level up) leads us to find $A = 3/8$ and $B = 3/16$. Thus, the general solution to the differential equation is $\phi = t(3t/8 + 3/16)e^{-t} + c_1e^{3t} + c_2e^{-t}$. 
+
+    \vspace{0.3cm}
+    
+    5. This differential equation is pretty funny since as there is no $y$ term involved, this is a linear first order differential equation with respect to $y'$. Nevertheless, viewing this from a second-order DE perspective, we can split $g(t) = 3 + 4\sin(2t)$ into $g_1(t) = 3$ and $g_2(t) = 4\sin(2t)$ and solve the differential equations $y'' + 2y' = g_i(t)$ separately to get a particular solution $\mathlarger{Y = -\frac{1}{2}\cos(2t) - \frac{1}{2}\sin(2t) + \frac{3}{2}t + C}$ (arbitrary constant $C$), meaning the general solution $\phi$ is $c_1 + c_2e^{-2t} + Y$.
+    
+    \vspace{0.3cm}
+
+    6. Solving the homogenous version of the differential equation, we have $y_c = c_1e^{-t} + c_2te^{-t}$. As such, while we would normally set $Y = Ae^{-t}$, we can't since this solution is already included in the complementary solution. Similarly, $Y = Ate^{-t}$ also doesn't work and to solve, we assume $Y = At^2e{-t}$ and find the general solution $\phi$ to be $\phi = e^{-t}(t^2 + c_2t + c_1)$. 
+
+    \vspace{0.3cm}
+
+    7. I did a big messy equation and assumed $Y = A\sin(2t) + B\cos(2t) + Ct\sin(2t) + Dt\cos(2t)$ (and to make matters worse I substituted in $\sin(2t)$ with $\triangle$ and $\cos(2t)$ with $\square$ ostensibly to save writing \textendash \ but this just made everything worse). Eventually, I found $A = -\frac{5}{9}$, $D = -\frac{1}{3}$, and $B = C = 0$. Thus, $\phi = c_1\sin t + c_2\cos t - \frac{1}{3}t\cos(2t) - \frac{5}{9}\sin(2t)$.
+\end{exercise}
+
+
+\begin{exercise}{8-10}
+
+    (Continuation from Exercises 1-7) \\ 
+    8. Assuming $U = A\cos(\omega t) + B\sin(\omega t)$, we eventually have $A\cos(\omega t)(\omega_0^2 - \omega^2) = \cos(\omega t)$ and $B\sin(\omega t)(\omega_0^2 - \omega^2) = 0$. Since it is given that $\omega_0 ^2 \not = \omega^2$, $A = \frac{1}{\omega_0^2 - \omega^2}$ and $B = 0$. As such, $\phi = c_1\cos(\omega_0 t) + c_2\sin(\omega_0 t) + \frac{1}{\omega_0^2 - \omega^2}\cos(\omega t)$.
+    
+    \vspace{0.3cm}
+
+    9. Resuming the same path as before, since $\omega = \omega_0$ in this case, we have to assume $U = At\cos(\omega t) + Bt\sin(\omega t)$ which leads us to find $B = \frac{1}{2\omega_0}$. As such, $\phi = \frac{t \sin(\omega_0 t)}{2\omega_0} + c_1\sin(\omega_0 t) + c_2\cos(\omega_0 t)$.
+
+    \vspace{0.3cm}
+
+    10. The particular solution is quite easy to find in this case; although $\sinh t$ is scary, it is easily mitigated by letting $Y = Ae^t + Be^{-t} \rightarrow A = \frac{1}{6}, \ B = -\frac{1}{4}$. In contrast, the roots of the characteristic equation are $-\frac{1}{2} \pm \frac{i\sqrt{15}}{2}$ so the general solution is 
+    $\mathlarger{\phi = c_1e^{-t/2}\sin\left(\frac{\sqrt{15}}{2}t\right) + c_2e^{-t/2}\cos\left(\frac{\sqrt{15}}{2}t\right) + \frac{1}{6}e^t - \frac{1}{4}e^{-t}}$.
+\end{exercise}
+
+\begin{exercise}{23}
+
+    From many problems before, it can be intuited that $y_c = c_1\cos(\lambda t) + c_2\sin(\lambda t)$. For the particular solution, we consider the differential equation of an arbitrary term in the summation $a_k\sin(k\pi t)$:
+
+    $$y'' + \lambda^2 y = a_k\sin(k \pi t)\text{.}$$
+
+    Some uncomplicated guessing and checking ($Y = A\sin(k \pi t) + B\cos(k \pi t)$) leads us to find that for this arbitrary case, a particular solution is $Y_k = \frac{a_k}{\lambda^2 - k^2\pi^2}\sin(k\pi t)$ which lets us reasonably conclude that
+
+    $$\phi = c_1\cos(\lambda t) + c_2\sin(\lambda t) + \sum_{m = 1}^{N}\frac{a_m}{\lambda^2 - m^2\pi^2}\sin(m \pi t)$$ 
+
+    is the general solution to this scary-looking differential equation.    
+\end{exercise}
+
+
+\begin{exercise}{28-30}
+    
+    Note: Everything in exercise 27 (which this problem is based off of) is true. I'm not sure how to verify it because each step seems somewhat trivially obvious. 
+
+    \vspace{0.3cm}
+
+    28. $y'' - 3y - 4y = 3e^{2t} = y(D - 4)(D + 1)$. As such, leetting $u = (D + 1)y$, our aim is to find $y$ by first finding $u$ by solving the differential equation $(D - 4)u = g(t)  \rightarrow u' - 4u = 3e^{2t}$. This first differential equation can be done with an integrating factor $\mu = e^{-4t}$ which leads us to find $u = -\frac{3}{2}e^{2t}$ (screw the constant).
+
+    Having found $u$, we can now find $y$ with the equation $(D - r_2)y = u \rightarrow y' + y = -\frac{3}{2}e^{2t}$. With integrating factor $\mu = e^t$, we easily find $y = -\frac{1}{2}e^{2t}$ as a particular solution to the given differential equation, and solve the problem correspondingly.
+
+    \vspace{0.3cm}
+
+    29. Our two first-order equations are $(D + 1)u = 2e^{-t}$ and $(D + 1)y = u$. Solving the first, we have $u' + u = 2e^{-t}$ so with integrating factor $e^t$ we find $u = 2te^{-t}$. Next, we solve $y' + y = 2te^{-t}$ and find $y = t^2e^{-t}$ (same simple integrating factor, same process) which is indeed a particular solution to the given differential equation.
+
+    \vspace{0.3cm}
+
+    30. Our two equations are $(D + 2)u = 3 + 4 \sin(2t)$ and $Dy = u$ (root order doesn't matter mathematically). Solving the first differential equation, with integrating factor $\mu = e^{2t}$, we find\footnote{The complicated $\int e^t\sin t$ integral is solved cleverly using integration by parts.}
+
+    $$(e^{2t}u) = \frac{3}{2}e^{2t} + 4\int e^{2t}\sin(2t) \ dt \longrightarrow u = \frac{3}{2} + \sin(2t) - \cos(2t)\text{.}$$
+
+    The second differential equation is simply $y' = u$ or $y = \int u$ so a particular solution $y$ that we find is $y = \frac{3}{2}t - \frac{1}{2}\cos(2t) - \frac{1}{2}\sin(2t)$.\footnote{Remark: In this case, the strategem of solving two first order DEs to find a particular solution works much faster (and cleaner) than the method of undetermined coefficients. It also feels a lot more straightforward.}
+\end{exercise}
+
+\end{document}
