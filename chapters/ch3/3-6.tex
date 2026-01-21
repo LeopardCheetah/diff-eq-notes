@@ -1,0 +1,66 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Thank you Lagrange for this method.
+
+Lagrange's idea to solving general differential equations $L[y] = g(t)$ is to replace constants with functions:
+
+Say we have a differential equation $y'' + p(t)y' + q(t)y = g(t)$ and we know the complementary solution $y_c(t) = c_1y_1 + c_2y_2$ to the homogenous version of the differential equation. From here, the idea is to replace the constants $c_1$ and $c_2$ with functions $u_1$ and $u_2$ so $y = u_1y_1 + u_2y_2$ ends up being a particular solution to the differential equation.
+
+Assuming this, we differentiate our particular solution:
+
+$$\longrightarrow y' = u'_1 y_1 + u_1y'_1 + u'_2y_2 + u_2y'_2\text{.}$$
+
+Since we're not interested in solving another second-order differential equation and we have a free condition we can impose on the equation, we let $u'_1 y_1 + u'_2y_2 = 0$ so that we have 
+$$y' = u_1y'_1 + u_2y'_2\text{.}$$
+
+As such, differentiating again, we have 
+
+$$y'' = u'_1 y'_1 + u_1 y''_1 + u'_2 y'_2 + u_2 y''_2\text{.}$$
+
+From here, substituting in $y''$ and $y'$ and $y$ into the general differential equation, much simplifcation eventually leads us to find $u'_1 y'_1 + u'_2 y'_2 = g(t)$.
+
+Thus, with this equation, we have a linear system from which we can solve for $u_1$ and $u_2$:
+
+$$\begin{cases}
+    u'_1 y'_1 + u'_2 y'_2 = g(t) \text{ (derived)} \\ 
+    u'_1 y_1 + u'_2y_2 = 0 \text{ (mandated \textendash \ see above)}
+\end{cases}\text{.}$$
+
+\vspace{0.25cm}
+
+The solutions to this system ends up being 
+$$
+\mathlarger{
+\begin{cases}
+    u_1 = -\int \frac{y_2g}{W[y_1, y_2]} \ dt + c_1 \\ 
+    u_2 = \int \frac{y_1g}{W[y_1, y_2]} \ dt + c_2
+\end{cases}
+}
+$$
+
+with $W[a, b](t) = a(t)b'(t) - a'(t)b(t)$. Thanks Lagrange :).
+
+Note that this methodology is not a silver bullet \textemdash \ $y_1$ and $y_2$ may be hard to find solutions for if $p(t)$ and $q(t)$ are complicated, and the integrals solving for $u_1$ and $u_2$ may vary in nice-ness to solve.
+
+\end{document}
