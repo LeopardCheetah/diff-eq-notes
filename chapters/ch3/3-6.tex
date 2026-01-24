@@ -23,6 +23,8 @@
 
 Thank you Lagrange for this method.
 
+\vspace{0.2cm}
+
 Lagrange's idea to solving general differential equations $L[y] = g(t)$ is to replace constants with functions:
 
 Say we have a differential equation $y'' + p(t)y' + q(t)y = g(t)$ and we know the complementary solution $y_c(t) = c_1y_1 + c_2y_2$ to the homogenous version of the differential equation. From here, the idea is to replace the constants $c_1$ and $c_2$ with functions $u_1$ and $u_2$ so $y = u_1y_1 + u_2y_2$ ends up being a particular solution to the differential equation.
@@ -62,5 +64,57 @@ $$
 with $W[a, b](t) = a(t)b'(t) - a'(t)b(t)$. Thanks Lagrange :).
 
 Note that this methodology is not a silver bullet \textemdash \ $y_1$ and $y_2$ may be hard to find solutions for if $p(t)$ and $q(t)$ are complicated, and the integrals solving for $u_1$ and $u_2$ may vary in nice-ness to solve.
+
+
+\begin{exercise}{4-8}
+
+    4. The complementary solution to this equation is $y_c = c_1\cos t + c_2 \sin t$. Calculating the respective functions $u_1$ and $u_2$, we find that $u_2 = -\cos t$ (which is useless since that's included in the complementary function) and $u_1 = \sin t - \ln|\sec t + \tan t|$. As such, the general solution to this equation would be $\boxed{\phi = c_1 \cos t + c_2 \sin t - (\cos t)\ln|\sec t + \tan t|}$.
+
+    \vspace{0.2cm}
+    
+    5. The general solution here is $y_c = c_1\cos(3t) + c_2\sin(3t)$. Using the plug and chug formulas, we find $u_1 = -\sec(3t)$ and $u_2 = \ln|\sec(3t) + \tan(3t)|$. Thus, the general solution $\phi$ is of the form $\boxed{c_1\cos(3t) + c_2\sin(3t) - 1 + \sin(3t)\ln|\sec(3t) + \tan(3t)|}$.
+
+    \vspace{0.2cm}
+
+    6. $u_1 = -\ln t$, $u_2 = -\frac{1}{t}$, so the general solution is $\phi = c_1e^{-2t} + c_2te^{-2t} - \ln t e^{-2t}$ (the last term can be merged in with the constant).
+
+    \vspace{0.2cm}
+
+    7. $\phi(t) = c_1\cos\left(\frac{t}{2}\right) + c_2 \sin\left(\frac{t}{2}\right) + 8\cos\left(\frac{t}{2}\right)\ln\left|\cos\left(\frac{t}{2}\right)\right| + 4t\sin\left(\frac{t}{2}\right)$. Note that the last two terms can each be divided by 4 yielding the solution in the back of the book.
+
+    \vspace{0.2cm}
+
+    8. $\phi(t) = c_1e^t + c_2te^t - \frac{1}{2}e^t\ln(1 + t^2) + te^t\arctan(t)$. Note that the absolute value can be removed from the natural log as it is assumed that the domain of $t$ is $\mathbb{R}$ and as such $1 + t^2 > 0$ for all $t$. 
+\end{exercise}
+
+
+\begin{exercise}{23-25} 
+    Reduction of Order.
+
+    (Note: These problems are similar to those exercises covered in section 3.4.)
+
+    23. Plugging $v(t)y_1(t)$\footnote{Note that $y_1(t)$ need only be a solution for the homogenous second-order linear DE} in for $y$, we simplify the general differential equation: 
+
+    $$(vy_1)'' + p(t)(vy_1)' + q(t)(vy_1) = g(t) \rightarrow v''y_1 + 2v'y'_1 + vy''_1 + p(t)v'y_1 + p(t)vy'_1 + q(t)vy_1 = g(t)$$
+    $$\rightarrow v''(y_1) + v'(2y'_1 + p(t)y'_1) + v(y''_1 + p(t)y'_1 + q(t)y_1) = g(t)\text{.}$$
+    
+    Since the expression $y''_1 + p(t)y'_1 + q(t)y_1$ simplifies to $0$, the desired equation given in the textbook soon follows. Notably, as the textbook mentions, the equation above is a first-order differential equation for $v'$. Once $v'(t)$ is found, $v(t)$ and $v(t)y_1(t)$ soon follow.
+
+    \spacer
+
+    24. Rearranging, our DE is $y'' - \frac{2}{t}y + \frac{2}{t^2}y = 4$ which correspondingly means $p(t) = -2/t$ and $g(t) = 4$. As such, our `formula' for $v'$ is 
+
+    $$t\frac{dv'}{dt} + (2 - 2)v' = 4 \rightarrow v' = 4 \ln t + c_1\text{.}$$
+
+    Thus, $v(t) = 4(t \ln t - t) + c_1t + c_2$ and our general solution is $y = y_1(t)v(t) = \boxed{4t^2 \ln t - 4t^2 + c_1t^2 + c_2t}$ (that second term is redundant).
+
+    \vspace{0.25cm}
+
+    25. Our `formula' tells us 
+    $$\frac{1}{t}\frac{dv'}{dt} + \left(\frac{-2}{t^2} + \frac{7}{t}\frac{1}{t}\right)v' = \frac{1}{t} \longrightarrow \frac{dv'}{dt} + \frac{5}{t}v' = 1\text{.}$$
+
+    From here, a simple integration factor of $\mu = t^5$ leads us to find $\mathlarger{v' = \frac{1}{6}t + \frac{c_1}{t^5}}$ so $\mathlarger{v = \frac{1}{12}t^2 - \frac{c_1}{5t^4} + c_2}$ so $y = \phi(t) = \mathlarger{\boxed{\frac{1}{12}t - \frac{c_1}{5t^5} + \frac{c_2}{t}}}$ (with that 5 in $5t^5$ being extraneous due to the constant $c_1$).
+\end{exercise}
+
 
 \end{document}
