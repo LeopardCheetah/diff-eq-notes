@@ -1,0 +1,75 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+// Derivation and example of a mass on a string with simple harmonic motion derived (page 151). Equations for a damped mass on a spring are also studied. //
+
+\subsubsection{Electric Circuits} 
+
+(Page 156) In a classic RLC circuit (R-C-L arranged in sequential order), we know these facts:
+
+\begin{itemize}
+    \item $I = \frac{dQ}{dt}$.
+    \item $V_r$ (voltage across the resistor) $ = IR$.
+    \item $V_c = \frac{Q}{C}$.
+    \item $V_l = L \frac{dI}{dt}$.
+    \item $V_r + V_c + V_l = V(t)$.
+\end{itemize}
+
+As such, by substituting in $I$ for $\frac{dQ}{dt}$ in subsequent equations, we find a second-order linear differential equation with constant coefficients:
+
+$$L\frac{d^2Q}{dt^2} + R\frac{dQ}{dt} + \frac{1}{C}Q = V\text{.}$$
+
+\vspace{0.3cm}  
+
+(I'm skipping all the non-electrical problems because I'm not a physicist).
+
+\begin{exercise}{1-2}
+
+    1. $R\cos(\omega_0t - \delta) = (R\cos\delta)\cos\omega_0t + (R\sin\delta)\sin\omega_0t$. As such, in the case for this problem, $w_0 = 2$ and we have to solve $R\cos\delta = 3$ and $R\sin\delta = 4$. Squaring and summing both equations, we find $R = 5$ and thus $\delta = \arccos\left(\frac{3}{5}\right)$.
+
+    Our final equation is thus $u = 5\cos\left(2t - \arccos\frac{3}{5}\right)$.
+
+
+    \vspace{0.2cm}
+
+
+    2. $u = -\sqrt{13}\cos\left(\pi t - \arccos\frac{2}{\sqrt{13}}\right)$.    
+\end{exercise}
+
+\begin{exercise}{7}
+
+    The differential equation we set up is 
+
+    $$0.2Q'' + 300Q' + 10^5Q = V(t) = 0$$
+    
+    since the problem says nothing about voltage. The general solution for this equation is $Q(t) = c_1e^{1000t} + c_2e^{500t}$, and to satisfy the given initial conditions, we find $c_1 = -10^{-6}$ and $c_2 = 2\cdot 10^{-6}$. Our final equation for $Q$ is thus $\mathlarger{\boxed{ -\frac{e^{1000t}}{10^6} + \frac{2e^{500t}}{10^6} }}$.    
+\end{exercise}
+
+\begin{exercise}{12}
+
+    For motion to be critically damped, $\gamma = 2\sqrt{km}$, with the values $\gamma$, $k$, and $m$ being taken from the damped differential equation $mu'' + \gamma u' + ku = 0$. 
+
+    In the case for this electric circuit, our differential equation is $0.2Q'' + RQ' + 1.25 \cdot 10^6Q = 0$. As such, our `$\gamma$' value ($R$) would be equal to $2\sqrt{0.2 \cdot 1.25 \cdot 10^6} = 1000$ ($\Omega$).
+\end{exercise}
+
+\end{document}
