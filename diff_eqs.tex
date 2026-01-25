@@ -79,7 +79,7 @@
 
 % do we compile all?
 \newif\ifall
-\allfalse % or \draftfalse
+\alltrue % or \draftfalse
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -115,8 +115,6 @@ Hopefully, I'll also get around ~20-40\% of the problems in the textbook done.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BIG COMMENT BEING PUT HERE!!!!
 
-\section{A}
-\section{B} % ensure that we are in the n.x sections
 
 % use this to only compile select things
 \ifall
@@ -192,7 +190,15 @@ for chapter 2, all diffy qs will be first order.
 \subsection{Miscallaneous Problems}
 \subfile{chapters/ch2/misc_problems.tex}
 
+\else
+
+% spacer sections
+
+\section{A}
+\section{B} 
+
 \fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -242,6 +248,10 @@ $$y'' + p(t)y' + q(t)y = g(t)\text{.}$$
 \subsection{Mechanical and Electrical Vibrations}
 \subfile{chapters/ch3/3-7.tex}
 
+
+\spacer 
+\subsection{Forced Periodic Vibrations}
+\subfile{chapters/ch3/3-8.tex}
 
 
 %% todo: do more homogenous differential equation problems for the sake of practice (the ones where you replace y = vx kinda shit)
