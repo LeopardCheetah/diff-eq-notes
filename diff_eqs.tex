@@ -79,7 +79,7 @@
 
 % do we compile all?
 \newif\ifall
-\alltrue % or \draftfalse
+\allfalse % or \draftfalse
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,16 +189,7 @@ for chapter 2, all diffy qs will be first order.
 \spacer 
 \subsection{Miscallaneous Problems}
 \subfile{chapters/ch2/misc_problems.tex}
-
-\else
-
-% spacer sections
-
-\section{A}
-\section{B} 
-
-\fi
-
+ 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -252,6 +243,41 @@ $$y'' + p(t)y' + q(t)y = g(t)\text{.}$$
 \spacer 
 \subsection{Forced Periodic Vibrations}
 \subfile{chapters/ch3/3-8.tex}
+
+
+\newpage 
+
+\section{Higher Order Linear Differential Equations}
+
+TBD.
+
+\spacer
+
+\section{Series Solutions for 2nd-order ODEs}
+
+TBD. 
+
+
+\else
+
+% spacer sections
+
+\section{A}
+\section{B} 
+\section{C}
+\section{D}
+\section{E}
+
+The above sections are spacer sections.
+
+\fi
+
+\newpage 
+
+\section{The Laplace Transform}
+
+\subsection{Definition of the Laplace}
+\subfile{chapters/ch6/6-1.tex}
 
 
 %% todo: do more homogenous differential equation problems for the sake of practice (the ones where you replace y = vx kinda shit)

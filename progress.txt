@@ -1,5 +1,7 @@
 Current progress:    
-- 01/24 - 3.8 (skim), 3.7                                   -|-  (35m)
+- 01/25 - 6.1, Laplace Transforms :)            -|-  (45m)
+
+- 01/24 - 3.8 (skim), 3.7                       -|-  (45m)
 - 01/23 - finishing 3.6                         -|-  (1h30m)
 - 01/20 - working on 3.6                        -|-  (30m)?
 - 01/19 - 3.5!                                  -|-  (2h35m)
@@ -7,6 +9,7 @@ Current progress:
 - 01/17 - Started + Completed s3.3
 - 01/16 - Finish s3.2
 - 01/14 - Start ch 3, section 3.1, started reading 3.2
+
 - 01/09 - finish chapter 2. this was painful. spent ~1.5h on 4 problems and I really only solved 1. and this is just regular differential equations.
 - 01/08 - Section 2.9, Miscallaneous Problems (finish ch2!)
 - 01/04 - Finishing section 2.8.
@@ -24,6 +27,7 @@ Current progress:
 - 11/09 - finished 2.1 problems, read ch 2.2, did some 2.2 problems
 - 11/08 - did some 2.1 problems
 - 11/06 - started ch 2, read thru ch 2.1
+
 - 10/25 - finished s1.3 (did problems), finished chapter 1.
 - 10/24 - started s1.3 
 - 10/19 - started this textbook   

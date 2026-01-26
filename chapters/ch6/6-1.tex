@@ -1,0 +1,96 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+An improper integral is an integral that has an infinity in one of its bounds or has its function be otherwise discontinuous. Examples of discontinuous integrals are 
+
+$$\int_a^{\infty} f(t) \ dt \text{ or } \int_0^5 \frac{1}{x - 3} \ dx \text{.}$$
+
+Sometimes these integrals converge, sometimes they diverge. 
+
+\begin{definition}[Piecewise Continuous]
+    We call a function $f$ \textbf{piecewise continuous} over an interval $\alpha \leq t \leq \beta$ if we can find a finite number of points $\alpha = t_0 < t_1 < \cdots < t_n = \beta$ such that 
+    \begin{enumerate}
+        \item $f$ is continuous on each open subinterval $t_{i - 1} < t < t_i$, and
+        \item Approaching $f$'s endpoints of each subinterval from within the subinterval results in a finite limit.
+    \end{enumerate}
+    
+    As the book sums it up nicely, $f$ is piecewise ocntinuous if it is ``continuous except for a finite number of jump discontinuities.''
+
+
+    The integral of a piecewise function $f$ is just the sum of its parts:
+
+    $$\int_{\alpha}^{\beta} f(t) \ dt = \sum_{i = 0}^{n - 1} \int_{t_i}^{t_{i + 1}} f(t) \ dt = \int_{\alpha}^{t_1} f(t) \ dt + \int_{t_1}^{t_2} f(t) \ dt + \cdots + \int_{t_{n - 1}}^{\beta} f(t) \ dt \text{.}$$
+\end{definition}
+
+
+With that, we get our first theorem on divergence and convergence:
+
+\begin{definition}[Integral Convergence (Theorem 6.1.1)]
+    If $f$ is piecewise continuous for $t \geq \alpha$ and $|f(t)| \leq g(t)$ when $t > C$ for some constant $C$, if $\mathlarger{\int_C^{\infty} g(t) \ dt }$ converges, then $\mathlarger{\int_a^{\infty} f(t) \ dt }$ also converges.
+
+    Moreover, if $f(t) \geq g(t) \geq 0$ for all $t \geq C$, if $\mathlarger{\int_C^{\infty} g(t) \ dt }$ diverges, then $\mathlarger{\int_a^{\infty} f(t) \ dt }$ also diverges.
+\end{definition}
+
+Essentially, this theorem states that if $f$ is bounded above and the bounding function is convergent, $f$ is similarly convergent. Also, if $f$ is bounded below and the integral of the bounding function diverges, then $f$ is similarly divergent.
+
+
+\subsubsection{The Laplace Transform}
+
+\begin{definition}[Integral Transform]
+    An integral transform is a relation of the form 
+
+    $$F(s) = \int_{\alpha}^{\beta} K(s, t)f(t) \ dt$$
+
+    where $K$ is called the \textbf{kernel} of the transformation and limits $\alpha$ and $\beta$ are given. $F$ is called the \textbf{transform} of $f$.
+\end{definition}
+
+In our case, the laplace transform for a given function $f$ is defined as 
+
+$$\mathcal{L}\{f(t)\} = F(s) = \int_0^{\infty} e^{-st} f(t) \ dt$$
+
+if this improper integral converges. Thus, the kernel function used here is $K(s, t) = e^{-st}$.
+
+\vspace{0.2cm}
+
+In general, to solve a differential equation, we use a laplace transform on a function $f$ to derive $F$, solve for $F$, then un-transform and recover $f$. In general, $s$ may also be a complex number.
+
+\begin{definition}[Laplace Transform Existence (Theorem 6.1.2)]
+    If $f$ is piecewise continuous for all $t \geq 0$ and there exist constnats $K > 0$, $a$, and $M > 0$ such that 
+
+    $$\left|f(t)\right| \leq Ke^{at} \text{ when } t \geq M\text{,}$$
+
+    then the laplace transform $\mathcal{L}\{f\} = F$ as defined above exists for all $s > a$.
+\end{definition}
+
+If a function $f$ satisfies Theorem 6.1.2, then $f$ is described as being piecewise continuous and of \textbf{exponential order} as $t \to \infty$ (e.g. The highest `order' the function can be is $O(e^{at})$).
+
+\vspace{0.2cm}
+
+// (Some examples of the Laplace transformation being used out in the wild are given!!) // 
+
+
+Note that the Laplace transform is a \textbf{linear operator}; that is, 
+
+$$\mathcal{L}\{c_1f_1(t) + c_2f_2(t)\} = c_1\mathcal{L}\{f_1(t)\} + c_2\mathcal{L}\{f_2(t)\}\text{.}$$
+
+\end{document}
