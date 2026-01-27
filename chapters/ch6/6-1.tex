@@ -93,4 +93,93 @@ Note that the Laplace transform is a \textbf{linear operator}; that is,
 
 $$\mathcal{L}\{c_1f_1(t) + c_2f_2(t)\} = c_1\mathcal{L}\{f_1(t)\} + c_2\mathcal{L}\{f_2(t)\}\text{.}$$
 
+
+\begin{exercise}{6-11}
+
+    The laplace transform of $\mathlarger{e^{\alpha t} = \frac{1}{s - b}}$, assuming $s > b > 0$. Thus, for (6), 
+
+    $$\mathcal{L}\{\cosh(bt)\} = \mathcal{L}\left\{\frac{e^{bt}}{2} + \frac{e^{-bt}}{2}\right\} = \frac{1}{2}\mathcal{L}\{e^{bt}\} + \frac{1}{2}\mathcal{L}\{e^{-bt}\} = \frac{1}{2(s - b)} + \frac{1}{2(s + b)}\text{.}$$
+
+    The rest of the exercises similarly follow; 
+
+    $$\text{(7): } \mathcal{L}\{\sinh(bt)\} = \frac{1}{2}\mathcal{L}\{e^{bt}\} - \frac{1}{2}\mathcal{L}\{e^{-bt}\} = \frac{1}{2(s - b)} - \frac{1}{2(s + b)}\text{.}$$
+
+    $$\text{(8): } \L{\sin(bt)} = \frac{1}{2i}\L{e^{ibt}} - \frac{1}{2i}\L{e^{-ibt}} = \frac{1}{2i(s - ib)} - \frac{1}{2i(s + ib)} = \frac{(s + ib) - (s - ib)}{2i(s - ib)(s + ib)} = \frac{b}{s^2 + b^2}\text{.}$$
+
+    $$\text{(9): } \L{\cos(bt)} = \frac{1}{2}\L{e^{ibt}} + \frac{1}{2}\L{e^{-ibt}} = \frac{1}{2(s - ib)} + \frac{1}{2(s + ib)}\text{.}$$
+
+    $$\text{(10): } \L{e^{at}\sin(bt)} = \frac{1}{2i}\L{e^{t(a + ib)}} - \frac{1}{2i}\L{e^{t(a - ib)}} = \frac{1}{2i((s - a) - ib)} - \frac{1}{2i((s - a) + ib)}$$ 
+    $$= \frac{(s - a + ib) - (s - a - ib)}{2i((s - a) + ib)((s - a) - ib)} = \frac{b}{b^2 + (s - a)^2}\text{.}$$
+
+    $$\text{(11): } \L{e^{at}\cos(bt)} = \frac{1}{2}\L{e^{t(a + ib)}} + \frac{1}{2}\L{e^{t(a - ib)}} = \frac{1}{2(s - a - ib)} + \frac{1}{2(s - a + ib)}$$
+    $$= \frac{s - a + ib + s - a - ib}{2(s - a - ib)(s - a + ib)} = \frac{s - a}{(s - a)^2 + b^2}\text{.}$$
+\end{exercise}
+
+
+\begin{exercise}{4}
+
+    Recall from above that $\mathlarger{\mathcal{L}\{f\} = \int_0^{\infty}e^{-st} f \ dt }$. Now, to find $\mathcal{L}\{t^{n}\}$, assume we know $\mathcal{L}\{t^{n - 1}\} = g(s)$ $(t > 1)$.
+
+    Then, by integration by parts,
+
+    $$\mathcal{L}\{t^n\} = \int_0^{\infty} e^{-st}t^n \ dt = \left[\frac{t^n}{s}e^{-st}\right]_0^{\infty} + \frac{n}{s} \int_0^{\infty} e^{-st}t^{n - 1}\text{.}$$
+
+    The second expression simply simplifies to $\mathlarger{\frac{n}{s}g(s)}$ by definition of the laplace transform, and the first expression is 0 as when plugging in the upper bound $t = 0$, $t^n = 0$, and when plugging the lower bound $t = \infty$, $e^{st}$ outgrows $t^n$ (assuming $s > 0$) so $\mathlarger{\frac{1}{s} \cdot \frac{t^n}{e^{st}} = 0}$ as $t \to \infty$.
+\end{exercise}
+
+\begin{exercise}{5}
+    
+    $$\mathcal{L}\{\cos(at)\} = I = \int_0^{\infty} e^{-st}\cos(at) \ dt \Rightarrow \left[\frac{1}{s}e^{-st}\cos(at)\right]_0^{\infty} - \frac{a}{s}\int_0^{\infty} e^{-st} \sin(at) \ dt$$
+    $$= \frac{1}{s} - \frac{a}{s}\left(\left[\frac{1}{s}e^{-st}\sin(at)\right]_0^{\infty} + \frac{a}{s}\int_0^{\infty} e^{-st}\cos(at)\right) = \frac{1}{s} - \frac{a}{s}\left(\frac{a}{s}I\right) \rightarrow \boxed{I = \frac{1}{s\left(1 + \frac{a^2}{s^2}\right)}}\text{.}$$
+\end{exercise}
+
+% do 16-18, 24
+
+\begin{exercise}{16-18}
+    
+    \vspace{0.2cm}
+
+    16. $\mathlarger{\L{f} = \int_0^{\infty} e^{-st}f \ dt = \int_0^{\pi} e^{-st} \ dt = \frac{1}{s}(1 - e^{-s\pi}) }$.
+
+    \vspace{0.2cm}
+
+    17. $\mathlarger{\L{f} = \int_0^1 e^{-st}t \ dt + \int_1^{\infty} e^{-st} \ dt = \left[-\frac{1}{s}e^{-st}\right]_1^{\infty} + \left[\frac{t}{s}e^{-st}\right]_1^0 + \frac{1}{s}\int_0^1 e^{-st} \ dt = \frac{1 - e^{-s}}{s^2}}$.
+
+    \vspace{0.2cm}
+
+    18. 
+    $$ \L{f} = \int_0^1 e^{-st}t \ dt + \int_1^2 e^{-st}(2 - t) \ dt = \left(-\frac{e^{-s}}{s} + \frac{1}{s^2} - \frac{e^{-s}}{s^2}\right) + 2 \int_1^2 e^{-st} \ dt - \int_1^2 e^{-st}t \ dt $$
+    $$ = \left(-\frac{e^{-s}}{s} + \frac{1}{s^2} - \frac{e^{-s}}{s^2}\right) + \frac{2e^{-s}}{s} - \frac{2e^{-2s}}{s} - \left(\left[-\frac{t}{s}e^{-st}\right]_1^2 + \frac{1}{s} \int_1^2 e^{-st} \ dt \right) $$ 
+    
+    $$= -\frac{e^{-s}}{s} + \frac{1}{s^2} - \frac{e^{-s}}{s^2} + \frac{2e^{-s}}{s} - \frac{2e^{-2s}}{s} - \frac{e^{-s}}{s} + \frac{2}{s}e^{-2s} - \frac{e^{-s}}{s^2} + \frac{e^{-2s}}{s^2} = \boxed{\frac{1 - 2e^{-s} + e^{-2s}}{s^2}}\text{.}$$
+\end{exercise}
+
+% do 24
+\begin{exercise}{24}
+
+    24(ab): Making the substitution $x = st$ and $dx = s \ dt$ (and assuming $s > 0$ else the integral bounds must be switched), 
+
+    $$\L{t^p} = \int_0^{\infty} e^{-x} \left(\frac{x}{s}\right)^p \ \frac{dx}{s} = \frac{1}{s^{p + 1}} \int_0^{\infty} e^{-x} x^p \ dx$$
+
+    which is exactly what needs to be shown. By definition, the integral we have in the simplified form of $\L{t^p}$ evaluates to $\Gamma(p + 1)$\footnote{the textbook question for this part of the question is wrong :/}, so 
+
+    $$\L{t^p} = \frac{\Gamma{p+1}}{s^{p + 1}} = \frac{n!}{s^{n + 1}}$$
+
+    if $n \in \mathbb{N}$. 
+    
+    \vspace{0.2cm}
+
+    24(c): We essentially make the substitution $x = y^2$ ($\sqrt{x} = y$, $dx = 2y \ dy$):
+
+    $$\L{t^{-1/2}} = \frac{1}{\sqrt{s}} = \int_0^{\infty} e^{-x} \frac{1}{\sqrt{x}} \ dx \ \longrightarrow \ \frac{1}{\sqrt{s}} \int_{\sqrt{0} = 0}^{\sqrt{\infty} = \infty} e^{-y^2} \frac{1}{y} \ 2y \ dy = \frac{2}{\sqrt{s}} \int_0^{\infty} e^{-y^2} \ dy $$ 
+
+    which is exactly what's asked for.
+
+    \vspace{0.2cm}
+
+    24(d): 
+    $$\L{t^{1/2}} = \frac{1}{s\sqrt{s}} \int_0^{\infty} e^{-x} \sqrt{x} \ dx \rightarrow \frac{1}{s \sqrt{s}} \int_0^{\infty} (y)\left(2ye^{-y^2}\right) \ dy = \frac{1}{s\sqrt{s}}\left(\left[-ye^{-y^2}\right]_0^{\infty} + \int_0^{\infty} e^{-y^2} \ dy\right) = \boxed{\frac{\sqrt{\pi}}{2s\sqrt{s}}}\text{.}$$
+\end{exercise}
+
+
 \end{document}

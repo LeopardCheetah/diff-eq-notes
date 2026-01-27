@@ -1,4 +1,5 @@
 Current progress:    
+- 01/27 - Finishing up 6.1                      -|-  (75m)
 - 01/25 - 6.1, Laplace Transforms :)            -|-  (45m)
 
 - 01/24 - 3.8 (skim), 3.7                       -|-  (45m)
