@@ -45,6 +45,7 @@
 
 % for laplace
 \renewcommand{\L}[1]{\mathcal{L} \{ #1 \}}
+\newcommand{\invL}[1]{\mathcal{L}^{-1} \{ #1 \}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -82,7 +83,7 @@
 
 % do we compile all?
 \newif\ifall
-\allfalse % or \draftfalse
+\alltrue % or \draftfalse
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -283,6 +284,17 @@ The above sections are spacer sections.
 \subfile{chapters/ch6/6-1.tex}
 
 
-%% todo: do more homogenous differential equation problems for the sake of practice (the ones where you replace y = vx kinda shit)
+% on new page; no spacer needed
+\subsection{Solutions to IVPs}
+\subfile{chapters/ch6/6-2.tex}
+
+
+% spacer not needed for 6-3 when i get around to doing that
+
+
+% < move \fi when starting 7.4 >
+
+
+
 %% todo: go over and redo the wording for all my solutions
 \end{document}

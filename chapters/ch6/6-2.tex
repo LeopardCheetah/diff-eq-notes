@@ -1,0 +1,131 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}[Theorem 6.2.1 (Page 248)]
+    Suppose $f$ is continuous on some interval $I$ $(0 \leq t \leq A)$ and $f'$ is also piecewise continuous over some inerval of $I$. Then, if $O(2^t) \geq f(t)$ (or formally, there exists constants $K$, $a$, and $M$ such that $Ke^{at} \geq \left|f(t)\right|$ for all $t \geq M$), then $\L{f'(t)}$ exists for $s > a$ and moreover,
+
+    $$\L{f'(t)} = s\L{f(t)} - f(0)\text{.}$$    
+\end{definition}
+
+As a corollary,
+
+\begin{definition}{Corollary 6.2.2}
+    If $f$, $f'$, $f''$, $\dots$, $f^{(n-1)}$ all satisfy the conditions laid out in Theorem 6.2.1, and $f^{(n)}$ is piecewise continuous, then 
+
+    $$\L{f^{(n)}(t)} = s^n\L{f(t)} - s^{n - 1}f(0) - s^{n - 2}f'(0) - \cdots - sf^{(n-2)}(0) - f^{(n-1)}(0)\text{.}$$    
+\end{definition}
+
+As long as the derivatives of $f$ are all continuous, the theorem can then be applied successively to get the laplace transform of the $n$th derivative of $f$.
+
+\vspace{0.2cm}
+
+In general, while the laplace transform converts a differential equation into an algebraic equation, the challenge lies in inverting the laplace transform to find a function $y$ such that $\L{y} = Y$.
+
+\vspace{0.2cm}
+
+Note by the linearlity of the laplace transform, if $F = F_1 + F_2 + F_3 + \cdots$, then $\invL{F} = \invL{F_1} + \invL{F_2} + \cdots$.
+
+
+\begin{exercise}{1-7}
+
+    \vspace{0.2cm}
+    1. $\mathlarger{F(s) = \frac{3}{2}\frac{2}{s^2 + 2^2} \rightarrow \invL{F(s)} = \frac{3}{2}\sin(2t)}$. 
+
+    2. $\mathlarger{F(s) = 2 \frac{2!}{(s - 1)^{2 + 1}} \rightarrow \invL{F(s)} = 2t^2e^t}$.
+
+    3. By partial fractions, $\mathlarger{F(s) = \frac{2/5}{s - 1} + \frac{2/5}{s + 4}}$ so $\mathlarger{\invL{F} = \frac{2}{5}e^t - \frac{2}{5}e^{-4t}}$.
+    
+    4. $\mathlarger{F(s) = 2\frac{s - (-1)}{(s - (-1))^2 + 2^2} \rightarrow \invL{F(s)} = 2e^{-t}\cos 2t}$.
+
+    5. $\invL{F(s)} = \frac{e^{2t}}{4} + \frac{7e^{-2t}}{4}$.
+    
+    6. While I initially decomposed $F(s)$ into $\mathlarger{\frac{A}{s} + \frac{B}{s + 2i} + \frac{C}{s - 2i}}$ (and got imaginary values for $B$ and $C$), a much simpler way is to recognize that $F(s)$ decomposes into $\mathlarger{\frac{3}{s} + 5\frac{s}{s^2 + 2^2} - 2\frac{2}{s^2 + 2^2}}$ from which it is immediately evident that $\invL{F(s)} = 3 + 5\cos(2t) - 2\sin(2t)$.
+
+    7. $\invL{F(s)} = -2e^{-2t}\cos(t) + 5e^{-2t}\sin t$.
+\end{exercise}
+
+
+\begin{exercise}{8-9}
+    
+    8. To solve the differential equation (with initial values given) $y'' - y' - 6y = 0$, we recall that $\L{y'} = s\L{y} - y(0)$ and $\L{y''} = s\L{y'} - y'(0) = s(s\L{y} - y(0)) - y'(0)$; thus, we can rewrite our differential equation as 
+    $$s^2\L{y} - sy(0) - y'(0) - s\L{y} + y(0) - 6s\L{y} = 0 \rightarrow \L{y}(s^2 - s - 6) - s + 1 + 1 = 0 \rightarrow \L{y} = \frac{s - 2}{s^2 - s - 6}\text{.}$$
+
+    Un-laplacing the transform, we find $\mathlarger{y = \frac{1}{5}e^{3t} + \frac{4}{5}e^{-2t}}$.
+
+    9. $\mathlarger{\L{y} = \frac{s + 3}{(s + 1)(s + 2)}}$ so $y = 2e^{-2} - e^{-2t}$.
+\end{exercise}
+
+
+For all the problems below, note that $y'' + ay' + by = g(t)$ can be transformed into 
+$$L(s^2 + as + b) - (s + a)f(0) - f'(0) = \L{g(t)} \rightarrow L = \frac{\L{g(t)} + (s + a)f(0) + f'(0)}{s^2 + as + b}$$ 
+where $L = \L{y}$ and $y = f(t)$ is the solution to the initial value problem.
+
+\begin{exercise}{10-16}
+
+    10. $y = e^t\sin t$. \\ 
+    11. $y = 2e^t \cos\left(\sqrt{3}t\right) - \frac{2}{\sqrt{3}}e^t\sin\left(\sqrt{3}t\right)$. \\
+    12. $y = 2e^{-t}\cos(2t) + \frac{1}{2}e^{-t}\sin(2t)$. \\ 
+    13. After lots of simplication, we find $\mathlarger{\L{y} = \frac{s^2 - 4s + 7}{(s - 1)^4}}$. We can decompose piece-wise and find $y = te^t - t^2e^t + \frac{2}{3}t^3e^t$. \\ 
+    14. $y = \frac{1}{2}e^t + \frac{1}{2}e^{-t}$. 
+
+    \vspace{0.2cm}
+
+    15. $$\L{y} = \frac{1}{\omega^2 - 4}\frac{s}{s^2 + 4} + \frac{\omega^2 - 5}{\omega^2 - 4}\frac{s}{s^2 + \omega^2}$$
+
+    so $\mathlarger{ y = \frac{1}{\omega^2 - 4}\cos(2t) + \frac{\omega^2 - 5}{\omega^2 - 4}\cos(\omega t)   }$.
+
+    \vspace{0.2cm}
+
+    16. $y = \mathlarger{ \frac{1}{5}\left(e^{-t} - e^t\cos t + 7e^t \sin t\right)   }$.
+\end{exercise}
+
+
+% 29 (trivial), 2
+
+\begin{exercise}{22}
+
+    Since $F'(s) = \L{-tf(t)}$, letting $f(t) = -e^{at}$, we thus have $\L{te^{at}} = F'(s)$. 
+
+    Since $\mathlarger{F(s) = \int_0^{\infty} e^{-st}(-e^{at}) \ dt = -\frac{1}{s - a}}$,
+
+    $$\L{te^{at}} = \L{-t(-e^{at})} = F'(s) = \frac{d}{ds}\left[-\frac{1}{s - a}\right] = \frac{1}{(s - a)^2}
+    \text{.}$$    
+\end{exercise}
+
+\begin{exercise}{29}
+
+    29(a): Taking the book's suggestion and multiplying equation (36) by $s - r_k$, our equation becomes 
+
+    $$\frac{P(s)(s - r_k)}{Q(s)} = \frac{A_1(s - r_k)}{s - r_1} + \cdots + A_k + \cdots + \frac{A_n(s - r_k)}{s - r_n}\text{.}$$
+
+    Now, taking the limit as $s \to r_k$, each term on the RHS has that has the expression $(s - r_k)$ in the numerator goes to 0 which means we have $\mathlarger{A_k = \lim_{s \to r_k}\frac{P(s)(s - r_k)}{Q(s)}}$, where the RHS of this limit is not simplifiable due to the fact that $r_k$ is a root of $Q$ and the numerator is 0 when $s = r_k$. By L'hopital, $\mathlarger{A_k = \lim_{s \to r_k}\frac{P(s)(s - r_k)}{Q(s)} = \lim_{s \to r_k} \frac{P'(s)(s - r_k) + P(s)}{Q'(s)}}$ and since this limit is evaluatable, we find the desired expression for $A_k$. 
+
+    \vspace{0.2cm}
+
+    29(b): Piecewise, the inverse laplace transform of $\frac{A_i}{s - r_i}$ is simply $A_ie^{r_it}$ so when summing over all $i$, 
+
+    $$\invL{F(s)} = \sum_{i = 1}^{n} A_ie^{r_it} = \sum_{i = 1}^{n}\frac{P(r_i)}{Q'(r_i)} e^{r_it}\text{.}$$
+\end{exercise}
+
+
+\end{document}
