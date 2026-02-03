@@ -1,0 +1,51 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+This subsection focuses on equations of the form 
+
+$$\matr{x'} = \matr{A}\matr{x}$$ 
+
+where $\matr{A}$ is a $n \times n$ matrix of real-valued constants.
+
+\vspace{0.2cm}
+
+Assuming\footnote{Some stuff about a phase portrait/plane is talked about here although those tools are primarily used for visualization purposes.} $\matr{x} = \xi e^{rt}$, after substituting it into the above equation, we eventually derive the equation 
+
+$$(\matr{A} - r\matr{I})\xi = 0\text{,}$$
+
+which means solutions to $\matr{x}$ are given pairs of eigenvalue-eigenvector combinations $(r, \xi)$. When $\matr{A}$ is specifically a $2 \times 2$ matrix, if the eigenvalues of $\matr{A}$ have opposite signs, then the origin is a saddle point and an unstable equilibrium. If on the other hand, the eigenvalues of $\matr{A}$ have the same sign, then the origin is a \textbf{node} and $\matr{0}$ is a stable equlibrium if the eigenvalues are negative and unstable if the eigenvalues are positive.
+
+\vspace{0.2cm}
+
+Returning to the more general case of when $\matr{A}$ is a $n \times n$ matrix, the eigenvalues of $\matr{A}$ ($r_1$, $r_2$, $\dots$, $r_n$) can either be 
+\begin{enumerate}
+    \item all real and different from one another,
+    \item some eigenvalues are complex conjugate pairs of each other, or 
+    \item some eigenvalues are repeated.
+\end{enumerate}
+
+The first case is easy to take care of; if all $n$ eigenvalues are real and different, then their corresponding eigenvectors ($\xi^{(i)}$) will all be linearly independent and as such $\matr{x} = c_1\xi^{(1)}e^{r_1t} + \cdots + c_n\xi^{(n)}e^{r_nt}$. Section 7.6 deals with case two, of when some eigenvalues are complex conjugate pairs of each other. Section 7.8 deals with the case of repeated eigenvalues.
+
+
+\end{document}
