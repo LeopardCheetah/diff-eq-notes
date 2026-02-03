@@ -1,0 +1,61 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(a.k.a. A review of section 3.2 but with matrices instead of second-order linear differential equations.)
+
+
+To examine a system of $n$ first-order linear equations each of the form $x'_i = p_{i1}(t)x_1 + p_{i2}(t)x_2 + \dots + p_{in}(t)x_n + g_i(t)$, we can rewrite everything in matrix form and obtain the equation 
+
+$$\matr{x'} = \matr{P}(t)\matr{x} + \matr{g}(t)$$
+
+where $\matr{x} = [x_1 \ x_2 \ \dots \ x_n]^T$, $\matr{g}(t) = [g_1(t) \ g_2(t) \ \dots \ g_n(t)]^T$, and 
+$\matr{P}(t) = \begin{pmatrix}
+    p_{11}(t) & \dots & p_{1n}(t) \\ 
+    \vdots & \ddots & \vdots \\ 
+    p_{n1}(t) & \dots & p_{nn}(t)
+\end{pmatrix}$.
+
+\vspace{0.2cm}
+
+With matrix equations, multiple solutions ($\matr{x}^{(1)}(t)$, $\matr{x}^{(2)}(t)$, $\dots$, $\matr{x}^{(k)}(t)$) for $\matr{x}$ may exist. Moreover, if $\matr{x}^{(1)}$ and $\matr{x}^{(2)}$ are two solutions to a first-order homogenous matrix differential equation ($\matr{g} = \matr{0}$), then $c_1\matr{x}^{(1)} + c_2\matr{x}^{(2)}$ is also a solution to said equation for arbitrary constants $c_1$, $c_2$ (Theorem 7.4.1, Page 305).
+
+\vspace{0.2cm}
+
+If we make a big matrix $\matr{X} = [\matr{x}^{(1)} \ \matr{x}^{(2)} \ dots \ \matr{x}^{(n)}]$, then we can calculate its determinant; namely, $\det\matr{X} = W[\matr{x}^{(1)}, \dots, \matr{x}^{(n)}]$ and as such if $\det\matr{X} \not = 0$ at some particular point $t = t_0$, then the solutions $\matr{x}^{(1)}$, $\dots$ are all linearly independent at that point. 
+
+\begin{definition}[Generalized Abel's Theorem]
+    If $\matr{x}^{(1)}$, $\dots$, $\matr{x}^{(n)}$ are solutions to a homogenous first-order set of linear differential equations over some open interval $I$, then over $I$, either $W[\matr{x}^{(1)}, \dots, \matr{x}^{(n)}] = 0$ or $ W[\matr{x}^{(1)}, \dots, \matr{x}^{(n)}](t) \not = 0 \ \ \forall t \in I$.
+\end{definition}
+
+Abel's theorem is super helpful as we only need to evaluate the Wronskian / determinant over one point to conclude the linear dependence/independence of our solutions. (Note: some stuff about a fundamental set of solutions is talked about here but honestly I don't really care :/.)
+
+\vspace{0.2cm}
+
+Similarly to when we looked at real-valued solutions to differential equations, we can turn complex-valued solutions into real solutions:
+\newpage % would love a better spacer here lowkey but it is what it is
+\begin{definition}[Theorem 7.4.5]
+    If $\matr{x} = \matr{u} + i\matr{v}$ is a solution to the equation $\matr{x'} = \matr{P}(t)\matr{x}$, then solely the real part $\matr{u}$ and solely the imaginary part $\matr{v}$ are also solutions to the above equation.
+\end{definition}
+
+
+\end{document}

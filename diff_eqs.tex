@@ -46,6 +46,8 @@
 % for laplace
 \renewcommand{\L}[1]{\mathcal{L} \{ #1 \}}
 \newcommand{\invL}[1]{\mathcal{L}^{-1} \{ #1 \}}
+
+\newcommand{\matr}[1]{\mathbf{#1}} % taken from stack overflow
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -83,7 +85,7 @@
 
 % do we compile all?
 \newif\ifall
-\alltrue % or \draftfalse
+\allfalse % or \draftfalse
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -261,21 +263,6 @@ TBD.
 
 TBD. 
 
-
-\else
-
-% spacer sections
-
-\section{A}
-\section{B} 
-\section{C}
-\section{D}
-\section{E}
-
-The above sections are spacer sections.
-
-\fi
-
 \newpage 
 
 \section{The Laplace Transform}
@@ -292,7 +279,33 @@ The above sections are spacer sections.
 % spacer not needed for 6-3 when i get around to doing that
 
 
-% < move \fi when starting 7.4 >
+\else
+
+% spacer sections
+
+\section{A}
+\section{B} 
+\section{C}
+\section{D}
+\section{E}
+\section{F}
+The above sections are spacer sections.
+
+\fi 
+
+
+
+% ch 7
+\newpage 
+\section{Systems of First-Order Linear Equations}
+
+\subfile{chapters/ch7/7-1_7-3.tex}
+
+\hr
+\subsection{Basic Theory of Systems of First-Order Linear Equations}
+\subfile{chapters/ch7/7-4.tex}
+
+
 
 
 
