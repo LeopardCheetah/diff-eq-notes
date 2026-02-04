@@ -51,7 +51,7 @@ The first case is easy to take care of; if all $n$ eigenvalues are real and diff
 
 Remember: To find eigenvalues, solve the characteristic polynomial $\det(\matr{A} - r\matr{I}_n) = 0$, and to get the corresponding eigenvectors, RREF $\matr{A} - r\matr{I}_n$ for a given $r$.
 
-\begin{exercise}{7-8}
+\begin{exercise}{7-9}
     
     7. After finding our eigenvalues to be $r = \{4, -1, 1\}$ and the associated eigenvectors to be $\xi = \{[1 \ 1 \ 1]^T, [1 \ 0 \ -1]^T, [-1 \ 2 \ -1]^T\}$, we conclude that $\matr{x} = c_1\begin{pmatrix}1 \\ 1 \\ 1\end{pmatrix}e^{4t} + c_2\begin{pmatrix}1 \\ 0 \\ -1\end{pmatrix}e^{-t} + c_3\begin{pmatrix} -1 \\ 2 \\ -1 \end{pmatrix}e^t$ for arbitrary constants $c_1$, $c_2$, $c_3$.
 
@@ -64,13 +64,83 @@ Remember: To find eigenvalues, solve the characteristic polynomial $\det(\matr{A
     \end{pmatrix} e^{-t} + c_3 \begin{pmatrix}
         2 \\ 1 \\ 2
     \end{pmatrix}e^{8t}$.
+
+
+    \vspace{0.2cm}
+
+    9. $\matr{x} = c_1\begin{pmatrix}
+        -1 \\ 4 \\ 1
+    \end{pmatrix}e^t + c_2\begin{pmatrix}
+        -1 \\ 1 \\ 1 
+    \end{pmatrix}e^{-2t} + c_3\begin{pmatrix}
+        1 \\ 2 \\ 1
+    \end{pmatrix}e^{3t}$.
 \end{exercise}
 
-% ehrm recalculate the determinant ._.
-% tackle this later
-\begin{exercise}{9}
+\begin{exercise}{20}
     
-    Finally, a non-uniform/symmetric matrix.
+    20a: Note that this problem operates under the assumption $A$ and $\xi^{(1)}$ are matrices with constant coefficients. \\ 
+    For the sake of the argument, assume $(\matr{A} - r_1\matr{I})\xi^{(1)} = \matr{v} \not = \matr{0}$. As such, since matrix multiplication is distributive, we can rearrange the equation and get $\matr{A}\xi^{(1)} = r_1\matr{I}\xi^{(1)} + \matr{v} = r_1\xi^{(1)} + \matr{v}$ as per properties from the identity matrix. 
+
+    Returning back to our original equation $\matr{x'} = \matr{A}\matr{x}$, since the given solution for $\matr{x}$ holds for any coefficients $c_1$ and $c_2$, we let $c_1 = 1$ and $c_2 = 0$ and thus a particular solution to our differential equation is $\matr{x} = \xi^{(1)}e^{r_1t}$. 
+
+    We plug this particular solution of our differential equation into our differential equation and derive 
+    $$\left(\xi^{(1)}e^{r_1t}\right)' = \matr{A}\left(\xi^{(1)}e^{r_1t}\right) \rightarrow r_1e^{r_1t}\xi^{(1)} = e^{r_1t}\matr{A}\xi^{(1)} \rightarrow r_1\xi^{(1)} = \matr{A}\xi^{(1)}\text{.}$$
+
+    Substituting in our other expression for the RHS, we find $r_1\xi^{(1)} = r_1\xi^{(1)} + \matr{v}$ which implies $\matr{v} = \matr{0}$, a contradiction! Thus, our original assumption that $\matr{v} \not = \matr{0}$ is false and $(\matr{A} - r_1\matr{I})\xi^{(1)} = \matr{0}$. (A symmetrical argument holds for proving why ($\matr{A} - r_2\matr{I})\xi^{(2)} = \matr{0}$.)
+
+    \vspace{0.25cm}
+
+    20b: $(\matr{A} - r_2\matr{I})\xi^{(1)} = \matr{A}\xi^{(1)} - r_2\xi{(1)} = r_1\xi^{(1)} - r_2\xi{(1)}$ since $(\matr{A} - r_1\matr{I})\xi^{(1)} = \matr{0} \rightarrow \matr{A}\xi^{(1)} = r_1\xi^{(1)}$.
+
+    \vspace{0.25cm}
+
+    20c: $(\matr{A} - r_2\matr{I})(c_1\xi^{(1)} + c_2\xi^{(2)}) = c_1(\matr{A} - r_2\matr{I})\xi^{(1)} + c_2(\matr{A} - r_2\matr{I})\xi^{(2)} = c_1(r_1 - r_2)\xi^{(1)}$. However, $(\matr{A} - r_2\matr{I})(c_1\xi^{(1)} + c_2\xi^{(2)}) = (\matr{A} - r_2\matr{I})\matr{0} = \matr{0}$. Thus, $c_1(r_1 - r_2)\xi^{(1)} = \matr{0}$ which means either $c_1 = 0$, $r_1 = r_2$, or $\xi^{(1)} = \matr{0}$ (or some combination of the above). 
+    
+    Since we assume $r_1 \not = r_2$, the second statement must be false, and if $\xi^{(1)} = \matr{0}$, then the wronskian of our solution would be $0$, contradicting our assumption that the general solution for $\matr{x}$ is a fundamental solution with respect to $\xi^{(1)}e^{r_1t}$ and $\xi^{(2)}e^{r_2t}$. Thus, this leads us to conclude that $c_1 = 0$ which is a contradiction, meaning our original supposition (that $\xi^{(1)}$ and $\xi^{(2)}$ are linearly dependent) is false.
+\end{exercise}
+
+\begin{exercise}{21}
+
+    21a: We can rewrite this second order linear differential as 
+    $$\begin{cases}
+        x'_1 = x_2 \\ 
+        x'_2 = -\frac{c}{a}x_1 - \frac{b}{a}x_2
+    \end{cases} \rightarrow \begin{pmatrix}
+        x_1 \\ x_2
+    \end{pmatrix}' = \begin{pmatrix}
+        0 & 1 \\ -\frac{c}{a} & -\frac{b}{a}
+    \end{pmatrix} \begin{pmatrix}
+        x_1 \\ x_2
+    \end{pmatrix}\text{.}$$
+    
+    21b: The eigenvalue equation is simply the determinant of $\matr{A} - \lambda\matr{I}$ which is $$0 = -\lambda\left(-\frac{b}{a} - \lambda\right) - (1)\left(-\frac{c}{a}\right) = \lambda^2 + \frac{b}{a}\lambda + \frac{c}{a} \rightarrow a\lambda^2 + b\lambda + c\text{.}$$
+\end{exercise}
+
+\begin{exercise}{24}
+
+    24a. The general equation for eigenvalues of this matrix is $\lambda^2 + \left(\frac{R_1}{L} + \frac{1}{CR_2}\right)\lambda + \left(\frac{R_1 + R_2}{CLR_2}\right) = 0$. Plugging in the specific values given, we eventually find eigenvalues of $-1$ and $-2$ and the general solution corresponding is $\begin{pmatrix}
+        I \\ V
+    \end{pmatrix} = c_1\begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}e^{-t} + c_2 \begin{pmatrix}
+        1 \\ 3
+    \end{pmatrix}e^{-2t}$. Specific values that make the initial conditions hold are $\mathlarger{c_1 = \frac{3I_0 - V_0}{2}}$ and $\mathlarger{c_2 = \frac{V_0 - I_0}{2}}$. 
+
+    24b. Since both terms in the above equation have $e^{-t}$ in them, as $t \to \infty$ $\begin{pmatrix}
+        I \\ V
+    \end{pmatrix} \to \begin{pmatrix}
+    0 \\ 0
+    \end{pmatrix}$ since the decay of $e^{-t}$ is too much for the constants in the equation to handle.
+\end{exercise}
+
+\begin{exercise}{25}
+
+    25a. $b^2 - 4ac > 0$ so $\left(\frac{R_1}{L} + \frac{1}{CR_2}\right)^2 - 4\left(\frac{R_1 + R_2}{CLR_2}\right) > 0$. 
+
+    25b. Since all the coefficients in the characteristic polynomial are positive since $R_1$, $R_2$, $C$, and $L$ cannot take on negative values (negative resistance?!), it is impossible for an eigenvalue $\lambda$ to be greater than 0 as each term in the equation would thus be bigger than 0. As such, both $I$ and $V$ will eventually become $0$ as $t$ goes to $\infty$.
+
+    25c. If the eigenvalues are complex or repeated, it is possible that both $I$ and/or $V$ blow up to infinity (e.g. if you have negative resistance that adds energy to the circuit) or $I$ and $V$ settle into a stable equilibrium solution (see an $LC$ clock circuit \textemdash \ no energy is being lost since there is no resistor in the circuit).
 \end{exercise}
 
 \end{document}
