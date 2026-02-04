@@ -47,5 +47,30 @@ Returning to the more general case of when $\matr{A}$ is a $n \times n$ matrix, 
 
 The first case is easy to take care of; if all $n$ eigenvalues are real and different, then their corresponding eigenvectors ($\xi^{(i)}$) will all be linearly independent and as such $\matr{x} = c_1\xi^{(1)}e^{r_1t} + \cdots + c_n\xi^{(n)}e^{r_nt}$. Section 7.6 deals with case two, of when some eigenvalues are complex conjugate pairs of each other. Section 7.8 deals with the case of repeated eigenvalues.
 
+\vspace{0.2cm}
+
+Remember: To find eigenvalues, solve the characteristic polynomial $\det(\matr{A} - r\matr{I}_n) = 0$, and to get the corresponding eigenvectors, RREF $\matr{A} - r\matr{I}_n$ for a given $r$.
+
+\begin{exercise}{7-8}
+    
+    7. After finding our eigenvalues to be $r = \{4, -1, 1\}$ and the associated eigenvectors to be $\xi = \{[1 \ 1 \ 1]^T, [1 \ 0 \ -1]^T, [-1 \ 2 \ -1]^T\}$, we conclude that $\matr{x} = c_1\begin{pmatrix}1 \\ 1 \\ 1\end{pmatrix}e^{4t} + c_2\begin{pmatrix}1 \\ 0 \\ -1\end{pmatrix}e^{-t} + c_3\begin{pmatrix} -1 \\ 2 \\ -1 \end{pmatrix}e^t$ for arbitrary constants $c_1$, $c_2$, $c_3$.
+
+    \vspace{0.35cm}
+
+    8. This is a nice symmetric matrix with eigenvalues. Solving, we eventually find the characteristic polynomial to be $(\lambda - 8)(\lambda + 1)(\lambda + 1) = 0$ which means the corresponding eigenvaues are $\lambda = r = 8, -1$. Solving for eigenvectors and plugging them in, we find $\matr{x} = c_1\begin{pmatrix}
+        -1 \\ 2 \\ 0
+    \end{pmatrix} e^{-t} + c_2 \begin{pmatrix}
+        0 \\ 2 \\ -1 
+    \end{pmatrix} e^{-t} + c_3 \begin{pmatrix}
+        2 \\ 1 \\ 2
+    \end{pmatrix}e^{8t}$.
+\end{exercise}
+
+% ehrm recalculate the determinant ._.
+% tackle this later
+\begin{exercise}{9}
+    
+    Finally, a non-uniform/symmetric matrix.
+\end{exercise}
 
 \end{document}
