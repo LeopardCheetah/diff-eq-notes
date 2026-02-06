@@ -1,0 +1,89 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Essentially, if the eigenvalues of $\matr{A}$ are complex\footnote{All entries in $\matr{A}$ must be real as otherwise complex roots may not come in conjugate pairs.} (in conjugate pairs), then the resulting graph of $\matr{x}$ will look like a spiral either convergering at the origin or diverging away from it (depending on whether the eigenvalues have positive or negative real part). If the real part is 0, then the graph will basically make a loop around the origin.
+
+\vspace{0.2cm}
+
+For the general linear differential equation $\matr{x'} = \matr{A}\matr{x}$, if $r_2 = \overline{r_1}$, then $\xi^{(2)} = \overline{\xi^{(1)}}$. Thus, a particular solution to $\matr{x}$ would be 
+
+$$\matr{x} = \matr{x}^{(1)} = \xi^{(1)}e^{r_1t} \rightarrow (\matr{a} + i\matr{b})e^{(\lambda + i \mu)t} = e^{\lambda t}(\matr{a}\cos(\mu t) - \matr{b}\sin(\mu t)) + ie^{\lambda t}(\matr{a}\sin(\mu t) + \matr{b}\cos(\mu t))$$
+
+where we made the substitutions $\xi^{(1)} = \matr{a} + i\matr{b}$ and $r_1 = \lambda + i\mu$. Thus, if we let $\matr{x}^{(1)}t = \matr{u}(t) + i\matr{v}(t)$ with $\matr{u}$ and $\matr{v}$ corresponding to the real and imaginary parts above, we have a particular solution for $\matr{x}$.
+
+But since we want a real solution for $\matr{x}$, by that one weird theorem (Theorem 7.4.5) covered above, $\matr{u}$ and $\matr{v}$ are themselves individual solutions to $\matr{x}$ and we can write $\matr{x} = c_1\matr{u} + c_2\matr{v} + \dots$ where the dots indicate the solutions stemming from the other roots of $\matr{x}$.
+
+\begin{exercise}{5-6}
+    
+    5. Our eigenvalues for this matrix are $\lambda = 1, 1 \pm 2i$. The eigenvector for $\lambda = 1$ is $\xi = [2 \ -3 \ 2]^T$, and the eigenvector for $\lambda = 1 + 2i$ is $\xi = [0 \ 0 \ 1]^T + i[0 \ 1 \ 0]^T$. Thus, our final solution is 
+    $$\matr{x} = c_1e^t\left(\begin{pmatrix}
+        0 \\ 0 \\ 1 \end{pmatrix} \cos(2t) - \begin{pmatrix}
+            0 \\ 1 \\ 0
+        \end{pmatrix} \sin(2t)\right) + c_2e^t\left(\begin{pmatrix}
+            0 \\ 0 \\ 1
+        \end{pmatrix}\sin(2t) + \begin{pmatrix}
+            0 \\ 1 \\ 0
+        \end{pmatrix}\cos(2t)\right) + c_3\begin{pmatrix}
+            2 \\ -3 \\ 2
+    \end{pmatrix}e^t\text{.}$$
+
+    6. This one was hard (calculation-wise) and the answer is dicey. The eigenvalues are $\lambda = -2, -1 \pm i \sqrt{2}$ and the final solution is 
+
+    $$\matr{x} = c_1\begin{pmatrix}
+    2 \\ -2 \\ 1
+    \end{pmatrix}e^{-2t} + c_2e^{-t}\begin{pmatrix}
+        -\sqrt{2}\sin(\sqrt{2}t) \\ \cos(\sqrt{2}t) \\ -\cos(\sqrt{2}t) - \sqrt{2}\sin(\sqrt{2}t)
+    \end{pmatrix}  
+    + c_3e^{-t}\begin{pmatrix}
+        \sqrt{2}\cos(\sqrt{2}t) \\ \sin(\sqrt{2}t) \\ -\sin(\sqrt{2}t) + \sqrt{2}\cos(\sqrt{2}t)
+    \end{pmatrix} \text{.}$$
+\end{exercise}
+
+\begin{exercise}{20}
+    
+    20a. By Kirchoff's voltage law, across the triangle formed by $R_1$, $C$, and $L$, we find
+    $$L\frac{dI}{dt} + V + R_1I = 0 \rightarrow \frac{dI}{dt} = -\frac{R_1}{L}I - \frac{1}{L}V$$
+    which is the first row of our matrix equation. 
+
+    Summing the current at the point joined by $C$, $R_2$, and $L$, we find 
+    $$\frac{V}{R_2} + C\frac{dV}{dt} = I \rightarrow \frac{dV}{dt} = \frac{1}{C}I - \frac{1}{CR_2}V\text{.}$$
+
+    Note that the reason why voltage across resistor $R_2$ is $V$ is because summing the voltage loop over the rectangle $C$ and $R_2$, we must have $V + (-V_{R_2}) = 0$ so $V_{R_2} = V$. Note that there is a negative sign over $V_{R_2}$ as when tracing the loop across the resistor, our loop goes against the current of the circuit. 
+
+    Thus, turning both equations into matrix form, we have 
+    $$\begin{cases}
+        \frac{dI}{dt} = -\frac{R_1}{L}I - \frac{1}{L}V \\ 
+        \frac{dV}{dt} = \frac{1}{C}I - \frac{1}{CR_2}V
+    \end{cases} \rightarrow \begin{bmatrix}
+        I' \\ V' 
+    \end{bmatrix} = \begin{bmatrix}
+        -\frac{R_1}{L} & - \frac{1}{L} \\ 
+        \frac{1}{C} & -\frac{1}{CR_2}
+    \end{bmatrix}\begin{bmatrix}
+        I \\ V
+    \end{bmatrix}\text{.}$$
+
+    20b. a
+\end{exercise}
+
+\end{document}

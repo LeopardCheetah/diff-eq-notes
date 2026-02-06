@@ -1,4 +1,5 @@
 Current progress:    
+- 02/05 - Started on 7.6 (note taking/problems) -|-  (80m)
 - 02/04 - Finished 7.5                          -|-  (85m)
 - 02/03 - Decided not to do 7.4 problems; 7.5   -|-  (75m)
 - 02/02 - 7.1-7.3; some notes on 7-4            -|-  (45m)
@@ -41,4 +42,4 @@ Current progress:
 ---
 
 Sections to do (as required by the university course that I'm taking):    
-7.5, 7.6, 7.8, 7.9, 9.1, 9.2, 9.3, 9.4, 9.5
+7.6, 7.8, 7.9, 9.1, 9.2, 9.3, 9.4, 9.5
