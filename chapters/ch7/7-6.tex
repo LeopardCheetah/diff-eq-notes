@@ -83,7 +83,45 @@ But since we want a real solution for $\matr{x}$, by that one weird theorem (The
         I \\ V
     \end{bmatrix}\text{.}$$
 
-    20b. a
+    20b. The particular eigenvalues for the matrix $\matr{A}$ given in the problem are $\lambda = -\frac{1}{2} \pm i\frac{1}{2}$. As such, the corresponding eigenvectors are $\xi = \begin{pmatrix}
+        0 \\ -4 
+    \end{pmatrix} \pm i \begin{pmatrix}
+        1 \\ 0
+    \end{pmatrix}$. As such, the final general solution we find (after plugging everything in) is:
+
+    $$\begin{bmatrix}
+        I \\ V
+    \end{bmatrix} = c_1e^{-\frac{t}{2}}\left(\begin{bmatrix}
+        -\sin\left(\frac{t}{2}\right) \\ -4\cos\left(\frac{t}{2}\right)
+    \end{bmatrix}\right) + c_2e^{-\frac{t}{2}}\left(\begin{bmatrix}
+        \cos\left(\frac{t}{2}\right) \\ -4\sin\left(\frac{t}{2}\right)
+    \end{bmatrix}\right)\text{.}\footnote{Note: The solution in the back of the book uses the eigenvector $\xi = [1 \  \ -4i]^T$.}$$
+
+
+    20c. For the particular case given above, $c_1 = -\frac{3}{4}$ and $c_2 = 2$. \\
+    20d. Since the exponential in both terms of the equation are negative, as $t \to \infty$, both $I$ and $V$ tend towards 0 regardless of the initial conditions given.
 \end{exercise}
+
+\begin{exercise}{21}
+    
+    21a. The characteristic polynomial of this matrix is $\lambda^2 + \frac{1}{RC}\lambda + \frac{1}{LC}$ from which it follows that the discriminant is $\frac{1}{R^2C^2} - \frac{4}{LC} = L - 4R^2C$. \\ 
+    21b. $\lambda = -1 \pm i$, and a specific eigenvector that's yielded is $\xi = \begin{bmatrix}
+        1 \\ -2
+    \end{bmatrix} + i \begin{bmatrix}
+        -1 \\ 0
+    \end{bmatrix}$. As such, our final general solution is 
+    $$\begin{bmatrix}
+        I \\ V
+    \end{bmatrix} = e^{-t}\left(c_1\begin{bmatrix}
+        \cos(t) - \sin(t) \\ -2\cos(t)
+    \end{bmatrix} + c_2\begin{bmatrix}
+        -\sin(t) - \cos(t) \\ -2\sin(t)
+    \end{bmatrix}\right)\text{.}\footnote{I think I'm right; the fact that $(1 + i)(1 - i) = 2$ is making my answer not match to the one in the back of the book. Honestly atp idfk.}$$
+
+    21c. $c_1 = -\frac{1}{2}$, $c_2 = -\frac{5}{2}$. \\ 
+    21d. Obviously not, as $t \to \infty$, $I \to 0$ and $V \to 0$ regardless of $c_1$ and $c_2$.
+\end{exercise}
+
+These problems are genuinely ragebaiting me.
 
 \end{document}

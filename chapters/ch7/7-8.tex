@@ -1,0 +1,212 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+So what happens if there is an eigenvalues of $\matr{A}$ that has a multiplicity $m > 1$? Long story short, we basically use the variation of parameters method with $e^{rt}$ and $te^{rt}$ to find our answer. 
+
+\vspace{0.2cm}
+
+In more detail, assume that there is an eigenvalue $\lambda = \lambda_m$ such that the multiplicity of $\lambda_m$ is $m$ (e.g. $(\lambda_m - \lambda)^m$ is in the characteristic polynomial of $\matr{A} - \lambda\matr{I}$). In this case, one trivial solution is simply $\matr{x} = \xi e^{\lambda_m t}$. Assuming no other linearly independent eigenvectors can be found, to find the second solution, we let $\matr{x} = \alpha_1 te^{\lambda_m t} + \alpha_2 e^{\lambda_m t}$, plug this particular solution into the differential equation, and simplify to find what $\alpha_1$ and $\alpha_2$ are. We then repeat this process (e.g. assume $\matr{x} = \alpha_1 \frac{t^n}{n!}e^{\lambda_m t} + \alpha_2 \frac{t^{n - 1}}{(n - 1)!}e^{\lambda_m t} + \cdots + \alpha_{n + 1}e^{\lambda_m t}$) until we get $m$ linearly independent solutions for $\matr{x}$. Note that your various solutions for $\matr{x}$ along the way will include previous derived solutions (e.g. $\matr{x} = \begin{pmatrix}
+    2 \\ 1 \\ 0
+\end{pmatrix}\frac{t^2}{2} e^t + \begin{pmatrix}
+    100 \\ -32 \\ -101
+\end{pmatrix}te^t + \begin{pmatrix}
+    \pi \\ \zeta(3) \\ e^{e^{\gamma}}
+\end{pmatrix}e^t$).
+
+\vspace{0.2cm}
+
+(Some stuff about Jordan Forms and Fundamental Matrices discussed in Section 7.7 are brought up for discussion again here.)
+
+% do 4-5, 6a-8a, 9a, 10a, 14, 15(?!), 17, 18 (?!)
+\begin{exercise}{4}
+    
+    4. The characteristic equation is $(\lambda - 2)^2(\lambda + 1) = 0$ which leads to the eigenvectors $\xi = \begin{bmatrix}
+        -3 \\ 4 \\ 2 
+    \end{bmatrix}, \begin{bmatrix}
+        0 \\ 1 \\ -1
+    \end{bmatrix}$ with the latter $\xi$ coming from the eigenvalue $\lambda = 2$. 
+
+    To find the extra solution then, we let $\matr{x} = \alpha te^{2t} + \beta e^{2t}$ and find 
+    $$2\beta e^{2t} + \alpha e^{2t} + 2\alpha t e^{2t} = \matr{A}(\alpha te^{2t} + \beta e^{2t})\text{.}$$
+
+    Comparing coefficients, we come to the conclusion that 
+    $2 \alpha = \matr{A}\alpha$ and $2\beta + \alpha = \matr{A}\beta$. The first equation ($(\matr{A} - 2I)\alpha = \matr{0}$) is already solved for us as that was the eigenvalue we found before, so we then solve $(\matr{A} - 2I)\beta = \alpha$, finding the general solution to be $\beta = \begin{bmatrix}
+        1 \\ 0 \\ 1
+    \end{bmatrix} - a\begin{bmatrix}
+        0 \\ 1 \\ -1
+    \end{bmatrix}$. 
+
+    As such, our final solution is 
+    $$\matr{x} = \begin{bmatrix}
+        0 \\ 1 \\ -1
+    \end{bmatrix}te^{2t} + \begin{bmatrix}
+        1 \\ 0 \\ 1 
+    \end{bmatrix}e^{2t} - a\begin{bmatrix}
+        0 \\ 1 \\ -1
+    \end{bmatrix}e^{-2t} = \begin{bmatrix}
+        0 \\ 1 \\ -1
+    \end{bmatrix}te^{2t} + \begin{bmatrix}
+        1 \\ 0 \\ 1 
+    \end{bmatrix}e^{2t}$$
+
+    since the third term in the solution is already covered by our general solution. 
+    As such, the general solution for the system of equations is 
+
+    $$\matr{x} = c_1\begin{bmatrix}
+        -3 \\ 4 \\ 2
+    \end{bmatrix}e^{-t} + c_2\begin{bmatrix}
+        0 \\ 1 \\ -1
+    \end{bmatrix}e^{2t} + c_3e^{2t}\begin{bmatrix}
+        1 \\ t \\ 1 - t
+    \end{bmatrix}\text{.}$$
+\end{exercise}
+
+\begin{exercise}{5}
+    
+    Following the same process as in problem 4, we find the characteristic polynomial to be $(\lambda - 2)(\lambda + 1)^2 = 0$, and the eigenvectors to be $\begin{bmatrix}
+        1 \\ 1 \\ 1
+    \end{bmatrix}$ for $\lambda = 2$ and $\begin{bmatrix}
+        1 \\ -1 \\ 0
+    \end{bmatrix}, \begin{bmatrix}
+        1 \\ 0 \\ -1
+    \end{bmatrix}$ to be the eigenvectors for $\lambda = -1$. Since the eigenvectors for the repeated eigenvalue we have found are linearly independent, we can proceed directly to the solution and conclude that 
+    $$\matr{x} = c_1\begin{bmatrix}
+        1 \\ 1 \\ 1
+    \end{bmatrix}e^{2t} + c_2\begin{bmatrix}
+        1 \\ -1 \\ 0
+    \end{bmatrix}e^{-t} + c_3\begin{bmatrix}
+        1 \\ 0 \\ -1
+    \end{bmatrix}e^{-t}\text{.}$$
+\end{exercise}
+
+
+
+\begin{exercise}{6a-10a}
+    
+    6a. $\matr{x} = 2\begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix}e^{-3t} + 4\begin{bmatrix}
+        \frac{1}{4} + t \\ t 
+    \end{bmatrix}e^{-3t} = \begin{bmatrix}
+        3 + 4t \\ 2 + 4t
+    \end{bmatrix}e^{-3t}$. 
+    
+    7a. $\matr{x} = -\begin{bmatrix}
+        1 \\ 1
+    \end{bmatrix}e^{-t} -6\begin{bmatrix}
+        -\frac{2}{3} + t \\ t 
+    \end{bmatrix}e^{-t} = \begin{bmatrix}
+        3 + 6t \\ -1 + 6t
+    \end{bmatrix}e^{-t}$. 
+
+    8a. $\matr{x} = 4\begin{bmatrix}
+        -3 \\ 1
+    \end{bmatrix} -14 \begin{bmatrix}
+        -1 - 3t \\ t 
+    \end{bmatrix} = \begin{bmatrix}
+        2 + 42t \\ 4 - 14t
+    \end{bmatrix}$.
+
+    \vspace{0.25cm}
+
+    9a. $\matr{x} = 3\begin{bmatrix}
+        0 \\ 0 \\ 1
+    \end{bmatrix}e^{2t} + 2\begin{bmatrix}
+        0 \\ 1 \\ -6
+    \end{bmatrix}e^t + 4\begin{bmatrix}
+        -\frac{1}{4} \\ t \\ -\frac{21}{4} - 6t
+    \end{bmatrix}e^t = \begin{bmatrix}
+        0 \\ 0 \\ 3
+    \end{bmatrix}e^{2t} + \begin{bmatrix}
+        -1 \\ 2 + 4t \\ -33 - 24t
+    \end{bmatrix}e^t$.
+
+    \vspace{0.25cm}
+
+    10a. $\matr{x} = \mathlarger{\frac{4}{3}\begin{bmatrix}
+        1 \\ 1 \\ 1
+    \end{bmatrix}e^{-\frac{t}{2}} - \frac{5}{3}\begin{bmatrix}
+        1 \\ -1 \\ 0
+    \end{bmatrix}e^{-\frac{7t}{2}} + \frac{7}{3}\begin{bmatrix}
+        1 \\ 0 \\ -1 
+    \end{bmatrix}e^{-\frac{7t}{2}}}$.
+
+\end{exercise}
+
+\begin{exercise}{14}
+    
+    14a. Trivial; the discriminant is literally $L - 4R^2C$ so the result follows. \\ 
+    14b. The repeated root is $\lambda = -\frac{1}{2}$, and the solution is 
+    $$\begin{bmatrix}
+        I \\ V
+    \end{bmatrix} = -\begin{bmatrix}
+        1 \\ -2 
+    \end{bmatrix}e^{-\frac{t}{2}} + \begin{bmatrix}
+        2 + t \\ -2t 
+    \end{bmatrix}e^{-\frac{t}{2}} = \begin{bmatrix}
+        1 + t \\ 2 - 2t
+    \end{bmatrix}e^{-\frac{t}{2}}\text{.}$$
+\end{exercise}
+
+\begin{exercise}{15}
+    
+    15a. $(\matr{A} - 2\matr{I})((\matr{A} - 2\matr{I})\eta) = \matr{0} \rightarrow (\matr{A} - 2\matr{I})^2\eta = \matr{0}$. \\ 
+    15b. In this case, we can manually verify that $\begin{pmatrix}
+        -1 & -1 \\ 1 & 1
+    \end{pmatrix}^2 = \matr{0}$. \\ 
+    15c. Simple matrix multiplication shows $\xi = (1, -1)^T$. \\ 
+    15d. More matrix multiplication shows $\xi = (-1, 1)^T$. \\ 
+    15e. As long as $k_1 \not = -k_2$, $\xi$ and $\eta$ will be independent; $\xi = (-k_1 - k_2, k_1 + k_2)^T$. $\xi$ in this case will be a multiple of $\xi^{(1)}$.
+\end{exercise}
+
+\begin{exercise}{17a-d}
+    
+    17a. The characteristic polynomial ends up being $-\lambda^3 + 6\lambda^2 - 12\lambda + 8 = -(\lambda - 2)^3 = 0$ which yields an eigenvalue $2$ of multiplicity $3$. Going eigenvector hunting reveals that indeed, $\xi = (0, 1, -1)^T$ is the only eigenvector. \\ 
+    17b. $\matr{x}^{(1)} = \xi e^{2t}$. 
+
+    \vspace{0.2cm}
+
+    17c. I mean they just kinda do satisfy those equations. Solving for $\eta$ and neglecting the part we already found, we find $\eta = (1, 1, 0)^T$, meaning our second solution is literally $\matr{x}^{(2)} = \xi te^{2t} + \eta e^{2t}$ for the $\xi$ and $\eta$ we have found. 
+
+    \vspace{0.2cm}
+
+    17d. One particular solution for $\zeta$ is $\zeta = (-2, 3, 0)^T$, which means our final general solution can be written as 
+    
+    $$\matr{x} = c_1\begin{pmatrix}
+        0 \\ 1 \\ -1
+    \end{pmatrix}
+    e^{2t} + c_2\left(t\begin{pmatrix}
+        0 \\ 1 \\ -1
+    \end{pmatrix} + \begin{pmatrix}
+        1 \\ 1 \\ 0
+    \end{pmatrix}\right)e^{2t} + c_3\left(\frac{t^2}{2}\begin{pmatrix}
+        0 \\ 1 \\ -1
+    \end{pmatrix} + t\begin{pmatrix}
+        1 \\ 1 \\ 0
+    \end{pmatrix} + \begin{pmatrix}
+        -2 \\ 3 \\ 0
+    \end{pmatrix}\right)e^{2t}\text{.}$$
+\end{exercise}
+
+\end{document}
