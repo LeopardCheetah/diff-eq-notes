@@ -22,7 +22,81 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-I'll do this one later (maybe).
 
+So it turns out learning/getting a glimpse of this section (7.7) is pretty helpful for understanding the rest of the content in the chapter. 
+
+\subsubsection{Fundamental Matrices}
+
+Suppose $\matr{x}^{(1)}$, $\matr{x}^{(2)}$, $\dots$, $\matr{x}^{(n)}$ are a set of fundamental solutions for $\matr{x'} = \matr{P}\matr{x}$ (their Wronskian is non-zero). Then, we define the matrix 
+
+$$\matr{\Psi}(t) = \left(\matr{x}^{(1)} \ \matr{x}^{(2)} \ \cdots \ \matr{x}^{(n)} \right) = \begin{pmatrix}
+    x^{(1)}_1 & \dots & x_1^{(n)} \\ 
+    \vdots & & \vdots \\ 
+    x^{(1)}_n & \dots & x_n^{(n)}
+\end{pmatrix}$$
+
+to be a \textbf{fundamental matrix} for the nonhomogenous linear system described above. Note that this fundamental matrix $\matr{\Psi}$ has an inverse as all columns of $\matr{\Psi}$ are linearly independent.
+
+As such, to solve any initial value problem $\matr{x}(t_0) = \matr{x_0}$, we can write 
+
+$$\matr{x} = \matr{\Psi}(t)\matr{c} \rightarrow \matr{\Psi}(t_0)\matr{c} = \matr{x_0} \rightarrow \matr{c} = \matr{\Psi}^{-1}(t_0)\matr{x_0} \ \longrightarrow \ \matr{x} = \matr{\Psi}(t)\matr{\Psi}^{-1}(t_0)\matr{x_0}$$
+
+where $\matr{c}$ is a matrix of constants.
+
+\vspace{0.2cm}
+
+Note that we also define a special matrix $\matr{\Phi}$ with the property that
+
+$$\matr{\Phi}(t_0) = \begin{pmatrix}
+    1 & 0 & \dots & 0 \\
+    0 & 1 & \dots & 0 \\
+    \vdots & \vdots & \ddots & \vdots \\ 
+    0 & 0 & \dots & 1 
+\end{pmatrix} = \matr{I} \ \longleftrightarrow \ \matr{\Phi}(t) = \matr{\Psi}(t)\matr{\Psi}^{-1}(t_0)\text{.}$$
+
+
+\subsubsection{Matrix Exponentiation}
+
+Since the differential equation $\matr{x'} = \matr{A}\matr{x} \rightarrow \matr{x} = \matr{\Phi}\matr{x}^0$ looks similar to the first-order differential equation $x' = ax \rightarrow x = x_0e^{at}$, it seems tempting to exponentiate $\matr{A}$ and we can in fact do so by defining 
+
+$$\exp(\matr{A}t) = \matr{I} + \sum_{n = 1}^{\infty}\frac{\matr{A}^nt^n}{n!}$$
+
+with this definition also satisfying the property that $\frac{d}{dt}\exp{\matr{A}t} = \matr{A}\exp(\matr{A}t)$. Notably, it turns out that $\matr{\Phi} = \exp(\matr{A}t)$ as a result that they satisfy the same initial condition $\exp{\matr{A}t}|_{t = 0} = \matr{\Phi}(0) = \matr{I}$.\footnote{Assuming we let $\matr{\Phi}(t_0) = \matr{\Phi}(0) = \matr{I}$.}
+
+\subsubsection{Diagonalizable Matrices}
+
+Solving simultaneous systems of equations is hard. What if we could solve each equation individually instead? 
+
+Suppose matrix $\matr{A}$ has $n$ linearly eigenvectors $\xi^{(1)}$, $\xi^{(2)}$, $\dots$, $\xi^{(n)}$ and associated eigenvalues $\lambda_1$, $\dots$, $\lambda_n$. We define the matrix $\matr{T}$ as 
+
+$$\matr{T} = \begin{pmatrix}
+    \xi^{(1)}_1 & \xi^{(2)}_1 & \dots & \xi^{(n)}_1 \\ 
+    \xi^{(1)}_2 & \xi^{(2)}_2 & \dots & \xi^{(n)}_2 \\ 
+    \vdots & \vdots & \ddots & \vdots \\ 
+    \xi^{(1)}_n & \xi^{(2)}_n & \dots & \xi^{(n)}_n \\
+\end{pmatrix}$$
+
+where $\xi^{(i)}_j$ represents the $i$th eigenvalue of $\matr{A}$ and $j$ simply indexes the row of that eigenvalue. Since $\matr{A}\xi^{(k)} = \lambda_k\xi^{(k)} \ \forall k$, 
+
+$$\matr{A}\matr{T} = 
+\begin{pmatrix}
+    \lambda_1\xi^{(1)}_1 & \lambda_2\xi^{(2)}_1 & \dots & \lambda_n\xi^{(n)}_1 \\ 
+    \lambda_1\xi^{(1)}_2 & \lambda_2\xi^{(2)}_2 & \dots & \lambda_n\xi^{(n)}_2 \\ 
+    \vdots & \vdots & \ddots & \vdots \\ 
+    \lambda_1\xi^{(1)}_n & \lambda_2\xi^{(2)}_n & \dots & \lambda_n\xi^{(n)}_n \\
+\end{pmatrix} = \matr{T}\begin{pmatrix}
+    \lambda_1 & 0 & \dots & 0 \\ 
+    0 & \lambda_2 & \dots & 0 \\
+    \vdots & \vdots & \ddots & \vdots \\ 
+    0 & 0 & \dots & \lambda_n
+\end{pmatrix}$$ 
+
+where that last matrix of eigenvalues is denoted as $\matr{D}$. Thus, it follows that $\matr{D} = \matr{T}^{-1}\matr{A}\matr{D}$ and if $\matr{A}$ can be transformed into $\matr{D}$ like this, we say $\matr{A}$ is \textbf{diagonalizable} and \textbf{similar} to $\matr{D}$.
+
+\vspace{0.2cm}
+
+Returning back to our original system of equations $\matr{x'} = \matr{A}\matr{x}$, if $\matr{A}$ is diagonalizable, then we can define a new matrix $\matr{y}$ characterized by $\matr{x} = \matr{T}\matr{y}$ from which it follows $\matr{y'} = \matr{D}\matr{y}$, which is easily solvable since $\matr{D}$ is a linearly independent and mostly empty matrix.
+
+Namely, $\matr{\Psi} = \matr{T}\exp(\matr{D}t)$.
 
 \end{document}

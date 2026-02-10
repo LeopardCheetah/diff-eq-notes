@@ -1,5 +1,6 @@
 Current progress:    
-- 02/08 - Finished 7.6, 7.8                     -|-  (190m)
+- 02/09 - Read 7.7, started problems on 7.9     -|-  (3h15m)
+- 02/08 - Finished 7.6, 7.8                     -|-  (3h10m)
 - 02/05 - Started on 7.6 (note taking/problems) -|-  (80m)
 - 02/04 - Finished 7.5                          -|-  (85m)
 - 02/03 - Decided not to do 7.4 problems; 7.5   -|-  (75m)

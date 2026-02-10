@@ -1,0 +1,206 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+Finally, we return to the opening section and consider differential equation systems of the form 
+$$\matr{x'} = \matr{P}(t)x + \matr{g}(t)\text{.}$$
+
+Like in section 3.5, we can express all solutions $\matr{x}$ as $\matr{x}_c + \matr{x}_p$ where $\matr{x}_c$ is the solution to the homogenous differential equation $\matr{x'} = \matr{P}\matr{x}$ and $\matr{x}_p$ is a solution to the nonhomogenous system described above. So how do we find $\matr{x}_p$?
+
+\subsubsection{Diagonalization}
+
+In the differential system $\matr{x'} = \matr{A}\matr{x} + \matr{g}$, if we assume $\matr{A}$ is diagonalizable, we can make the substitution $\matr{x} = \matr{T}\matr{y}$ and find 
+
+$$\matr{T}\matr{y'} = \matr{A}\matr{T}\matr{y} + \matr{g} \ \rightarrow \ \matr{y'} = \matr{D}\matr{y} + \matr{T}^{-1}\matr{g}$$ 
+
+which is simply a set of $n$ uncoupled (unrelated(?)) first order linear differential equations that can each be solved separately, and $\matr{x}$ can be recovered by left-multiplying $\matr{y}$ by $\matr{T}$. 
+
+It is also possible to solve for $\matr{x}$ even if $\matr{A}$ is not diagonalizable by reducing $\matr{A}$ to a jordan form $\matr{J}$ (I have no clue what this is) from which it's possible to solve for $\matr{J}$ from the last row to the top (as most rows have differential equations that are not totally uncoupled).
+
+\vspace{0.25cm}
+
+If that seems too hard, you can always try the method of: 
+
+\subsubsection{Undetermined Coefficients (Hard ver).}
+
+(Note that this method is really only applicable when $\matr{P}$ is a bunch of constants and all terms in $\matr{g}$ look simple enough to be `guessed'.)
+
+Note that the difficulty level in this mode of undetermined coefficients is upped since generally, if there is a term in $\matr{g}$ of the form $\matr{u}e^{\lambda t}$, the solution must be assumed to be of the form $\matr{a}te^{\lambda t} + \matr{b}e^{\lambda t}$ for coefficient constant matrices $\matr{a}$ and $\matr{b}$.
+
+\subsubsection{Variation of Parameters}
+
+Assuming a (general) fundamental matrix $\matr{\Psi}$ has been found for the homogenous version of the differential equation $\matr{x'} = \matr{P}\matr{x} + \matr{g}$, we seek solutions to the nonhomogenous system by replacing the constant vector $\matr{c}$ that would normally be multiplied to $\matr{\Psi}$ ($\matr{\Psi}\matr{c}$) by a vector of functions $\matr{u}$. Thus, letting $\matr{x} = \matr{\Psi}\matr{u}$, we have 
+
+$$\matr{x'} = \matr{\Psi'}\matr{u} + \matr{\Psi}\matr{u'} = \matr{P}\matr{\Psi}\matr{u} + \matr{g} \ \rightarrow \ \matr{\Psi}\matr{u'} = \matr{g}$$ 
+
+since $\matr{\Psi'} = \matr{P}\matr{\Psi}$ since $\matr{\Psi}$ is after all, a solution for the homogenous version of $\matr{x}$. 
+
+\vspace{0.15cm}
+
+Since the inverse of $\matr{\Psi}$ exists (since by definition the columns of $\matr{\Psi}$ ($\matr{x}^{(1)}$, $\dots$, $\matr{x}^{(n)}$) are linearly independent), 
+
+$$\matr{u} = \int \matr{\Psi}^{-1}\matr{g} \ dt + \matr{c}$$
+
+for arbitrary constant vector $\matr{c}$. Hopefully the integrals in the above equation can be evaluated because if not, a direct solution to the differential equation might not be possible \twemoji{skull}.\footnote{Me after reading this section: \twemoji{skull and crossbones}.}
+
+
+\subsubsection{Laplace Transform (Hard Version)}
+
+We can define a laplace transform over a vector as simply the vectors whos respective elemetns are the laplace transform of the elements in the original vector. 
+
+By an extension of the Laplace transform then, 
+
+$$\L{\matr{x'}(t)} = s\L{\matr{x}} - \matr{x}(0)$$
+
+which means we can transform the differential system $\matr{x'} = \matr{A}\matr{x} + \matr{g}$ to $s\L{\matr{x}} - \matr{x}(0) = \matr{A}\L{\matr{x}} + \L{\matr{g}}$. For simplicity, if we are not solving an initial value problem, we can set $\matr{x}(0) = \matr{0}$ and do some messy calculations to find $\L{\matr{x}}$ from which we can do an inverse transform to find $\matr{L}$ (warning: messy).
+
+
+
+\begin{exercise}{1}
+    
+    Letting $\begin{pmatrix}
+        2 & -1 \\ 3 & -2 
+    \end{pmatrix} = \matr{A}$ for simplicity, we thus have to solve $\matr{x'} = \matr{A}\matr{x} + \begin{pmatrix}
+        e^t \\ t
+    \end{pmatrix}$. 
+    First, we find the general solution; chopping off the last term and solving a simple system with eigenvalues $\lambda = 1, -1$, we find our complementary solution to be $\matr{x_c} = \begin{pmatrix}
+        1 \\ 1 
+    \end{pmatrix}e^t + \begin{pmatrix}
+        1 \\ 3
+    \end{pmatrix}e^{-t}$. As such, we now seek a particular solution. 
+
+    Using the method of undetermined coefficients, since $e^t$ is an eigenvalue root, we must assume that a particular solution $\matr{x_p}$ looks of the form $\matr{x_p} = \matr{a}te^t + \matr{b}e^t + \matr{c}t + \matr{d}$. Differentiating and plugging in both sides, we conclude that 
+
+    $$\matr{a}te^t + (\matr{a} + \matr{b})e^t + \matr{c} = \matr{A}\matr{a}te^t + \matr{A}\matr{b}e^t + \matr{A}\matr{c}t + \matr{A}\matr{d} + \begin{pmatrix}
+        1 \\ 0
+    \end{pmatrix}e^t + \begin{pmatrix}
+        0 \\ 1
+    \end{pmatrix}t\text{.}$$
+
+    Matching the coefficients ($te^t$, $e^t$, $t$, $1$) on both sides of the equation, we thus have the system 
+    $$\begin{cases}
+        \matr{Aa} = \matr{a} \\
+        \matr{Ab} = \matr{a} + \matr{b} - \begin{pmatrix}
+            1 \\ 0
+        \end{pmatrix}  \\ 
+        \matr{Ac} = \begin{pmatrix}
+            0 \\ -1
+        \end{pmatrix} \\ 
+        \matr{A}\matr{d} = \matr{c}
+    \end{cases}$$
+
+    to solve. To take the simpler ones, the third equation simply tells us $\matr{c} = \begin{pmatrix}
+        1 \\ 2
+    \end{pmatrix}$ and similarly $\matr{d} = \begin{pmatrix}
+        0 \\ -1
+    \end{pmatrix}$. The first equation tells us $\matr{a}$ is of the form $\begin{pmatrix}
+        \alpha \\ \alpha
+    \end{pmatrix}$, and plugging that in to the second equation and rearranging, we have $(\matr{A} - \matr{I})\matr{b} = \begin{pmatrix}
+        \alpha - 1 \\ \alpha
+    \end{pmatrix}$. Since a simplification of the left hand side reveals $\begin{pmatrix}
+        1 & -1 \\ 3 & -3 
+    \end{pmatrix}\matr{b} = \begin{pmatrix}
+        \alpha - 1 \\ \alpha
+    \end{pmatrix}$, it follows that $3(\alpha - 1) = \alpha$ or $\alpha = \frac{3}{2}$ and thus the general solution for $\matr{b}$ is $\begin{pmatrix}
+        \frac{1}{2} + k \\ k
+    \end{pmatrix}$. Taking $k = 0$ for simplicity, our final answer to the equation (which an \href{https://mathdf.com/dif/}{online solver} agrees with) is 
+
+    $$\matr{x} = c_1\begin{pmatrix}
+        1 \\ 1 
+    \end{pmatrix}e^t + c_2\begin{pmatrix}
+        1 \\ 3
+    \end{pmatrix}e^{-t} + \begin{pmatrix}
+        \frac{3}{2} \\ \frac{3}{2}
+    \end{pmatrix}te^t + \begin{pmatrix}
+        \frac{1}{2} \\ 0
+    \end{pmatrix}e^t + \begin{pmatrix}
+        1 \\ 2
+    \end{pmatrix}t + \begin{pmatrix}
+        0 \\ -1
+    \end{pmatrix}\text{.}$$
+\end{exercise}
+
+Note: for all the exercises below (and above, frankly), there's almost no consensus (from me, \href{https://www.wolframalpha.com}{wolfram alpha}, the textbook, and an \href{https://mathdf.com/dif/}{online solver}) on what the right answer is. Tread carefully.
+
+\begin{exercise}{2}
+    
+    Again, we're going to let $\matr{A} = \begin{pmatrix}
+        2 & -5 \\ 1 & -2
+    \end{pmatrix}$ for ease of writing. Solving for the complementary solution yields eigenvalues of $\lambda = \pm i$ and a particular solution of $\matr{x_c} = c_1\begin{pmatrix}
+        2 \cos t - \sin t \\ \cos t 
+    \end{pmatrix} + c_2 \begin{pmatrix}
+        2 \sin t + \cos t \\ \sin t
+    \end{pmatrix}$. 
+
+    Now for the fun part; the particular solution, and in this case, we'll use the method of variation of parameters. Recalling that our general matrix in this case is simply $\matr{\Psi} = \begin{pmatrix}
+        x_1^{(1)} & x_1^{(2)} \\ x_2^{(1)} & x_2^{(2)}
+    \end{pmatrix} = \begin{pmatrix}
+        2 \cos t - \sin t & 2 \sin t + \cos t \\ \cos t & \sin t
+    \end{pmatrix}$ (which has a non-zero Wronskian everywhere since $\det \matr{\Psi} = -1$), we can jump straight ahead to the conclusion and try to evaluate $\matr{u}$ by finding 
+    $$\matr{u} = \int \matr{\Psi}^{-1}\matr{g} \ dt + \matr{c}\text{.}$$
+
+    Recalling that an inverse of a 2-by-2 matrix $\begin{pmatrix}
+        a & b \\ c & d
+    \end{pmatrix}$ is $\frac{1}{ad - bc}\begin{pmatrix}
+        d & -b \\ -c & a
+    \end{pmatrix}$, it turns out we can simplify our above expression and find 
+
+    $$\matr{u} = \int \begin{pmatrix}
+        - \sin t & 2 \sin t + \cos t \\ \cos t & -2 \cos t + \sin t
+    \end{pmatrix}\begin{pmatrix}
+        - \cos t \\ \sin t
+    \end{pmatrix} \ dt + \matr{c} = \int \begin{pmatrix}
+        \sin(2t) + 1 - \cos(2t) \\  -\cos(2t) - \sin(2t)
+    \end{pmatrix} \ dt + \matr{c}$$
+
+    Integrating each part, we find 
+    $$\matr{u} = \begin{pmatrix}
+        t - \frac{1}{2}\sin(2t) - \frac{1}{2}\cos(2t) \\ \frac{1}{2}\cos(2t) - \frac{1}{2}\sin(2t)
+    \end{pmatrix} + \matr{c}$$
+
+    and taking $\matr{c} = 0$ and using the equation $\matr{x_{(p)}} = \matr{\Psi}\matr{u}$ (and many simplifications and tricky substitutions (notably $\sin(\alpha - \beta) = \sin\alpha\cos\beta - \sin\beta\cos\alpha$) and the cosine addition formula), we find that 
+    $$\matr{x_p} = \begin{pmatrix}
+        2t\cos(t) - t\sin(t) - \frac{3}{2}\sin(t) - \frac{1}{2}\cos(t)   \\   t\cos(t) - \frac{1}{2}\sin(t) - \frac{1}{2}\cos(t) 
+    \end{pmatrix}$$
+
+    so our final general solution is 
+
+    $$\matr{x} = c_1\begin{pmatrix}
+        2 \cos t - \sin t \\ \cos t 
+    \end{pmatrix} + c_2 \begin{pmatrix}
+        2 \sin t + \cos t \\ \sin t
+    \end{pmatrix} + 
+    \begin{pmatrix}
+        2t\cos(t) - t\sin(t) - \frac{3}{2}\sin(t) - \frac{1}{2}\cos(t)   \\   t\cos(t) - \frac{1}{2}\sin(t) - \frac{1}{2}\cos(t) 
+    \end{pmatrix}
+    \text{.}$$
+\end{exercise}
+
+% p3 - maybe do diagonalization
+% p4 - laplace?
+% p5-8 - go crazy
+
+
+% todo: exercises 1-8 (or some of them), 9, 17 (?!)
+\end{document}
