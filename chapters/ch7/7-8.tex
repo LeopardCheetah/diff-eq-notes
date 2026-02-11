@@ -36,12 +36,14 @@ In more detail, assume that there is an eigenvalue $\lambda = \lambda_m$ such th
 
 \vspace{0.2cm}
 
-(Some stuff about Jordan Forms and Fundamental Matrices discussed in Section 7.7 are brought up for discussion again here.)
+If a matrix $\matr{A}$ cannot be diagonalized because of repeated eigenvalues leading to a shortage of eigenvectors, $\matr{A}$ can still be transformed into its \textbf{Jordan form} which is like an almost-diagonalized matrix.
+
+To turn a matrix $\matr{A}$ into its jordan form, simply do $\matr{J} = \matr{T}^{-1}\matr{A}\matr{T}$. If we then use the substitution used in 7.7 ($\matr{x} = \matr{T}\matr{y}$), we get $\matr{y'} = \matr{J}\matr{y}$. Since the last row of $\matr{J}$ always contains one element, we can solve for the function $y_n$ in the last row, then work our way upwards (solve for $y_{n - 1}$, $y_{n - 2}$, $\dots$) to eventually find the whole matrix $\matr{y}$.
 
 % do 4-5, 6a-8a, 9a, 10a, 14, 15(?!), 17, 18 (?!)
 \begin{exercise}{4}
     
-    4. The characteristic equation is $(\lambda - 2)^2(\lambda + 1) = 0$ which leads to the eigenvectors $\xi = \begin{bmatrix}
+    The characteristic equation is $(\lambda - 2)^2(\lambda + 1) = 0$ which leads to the eigenvectors $\xi = \begin{bmatrix}
         -3 \\ 4 \\ 2 
     \end{bmatrix}, \begin{bmatrix}
         0 \\ 1 \\ -1

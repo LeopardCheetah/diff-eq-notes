@@ -73,7 +73,7 @@ By an extension of the Laplace transform then,
 
 $$\L{\matr{x'}(t)} = s\L{\matr{x}} - \matr{x}(0)$$
 
-which means we can transform the differential system $\matr{x'} = \matr{A}\matr{x} + \matr{g}$ to $s\L{\matr{x}} - \matr{x}(0) = \matr{A}\L{\matr{x}} + \L{\matr{g}}$. For simplicity, if we are not solving an initial value problem, we can set $\matr{x}(0) = \matr{0}$ and do some messy calculations to find $\L{\matr{x}}$ from which we can do an inverse transform to find $\matr{L}$ (warning: messy).
+which means we can transform the differential system $\matr{x'} = \matr{A}\matr{x} + \matr{g}$ to $s\L{\matr{x}} - \matr{x}(0) = \matr{A}\L{\matr{x}} + \L{\matr{g}}$. For simplicity, if we are not solving an initial value problem, we can set $\matr{x}(0) = \matr{0}$ and do some messy calculations to find $\L{\matr{x}}$ from which we can do an inverse transform to find $\matr{x}$ (warning: messy).
 
 
 
@@ -197,10 +197,279 @@ Note: for all the exercises below (and above, frankly), there's almost no consen
     \text{.}$$
 \end{exercise}
 
-% p3 - maybe do diagonalization
-% p4 - laplace?
-% p5-8 - go crazy
+
+\begin{exercise}{3}
+
+    To solve for a solution $\matr{x}$, we will use the method of diagonalization. First, we let $\matr{A} = \begin{pmatrix}
+        1 & 1 \\ 4 & -2
+    \end{pmatrix}$ and note it is diagonalizable with eigenvalues $\lambda = 2, -3$. Thus, we make the substitution $\matr{x} = \matr{T}\matr{y} = \begin{pmatrix}
+        \xi_1^{(1)} & \xi_1^{(2)} \\ \xi_2^{(1)} & \xi_2^{(2)}
+    \end{pmatrix}\matr{y} = \begin{pmatrix}
+        1 & 1 \\ 1 & -4
+    \end{pmatrix}\matr{y}$. As such, using this substitution and some properties, we derive 
+
+    $$\matr{y'} = \matr{D}\matr{y} + \matr{T}^{-1}\matr{g} = \begin{pmatrix}
+        2 & 0 \\ 0 & -3
+    \end{pmatrix}\matr{y} + \frac{1}{5}\begin{pmatrix}
+        4 & 1 \\ 1 & -1
+    \end{pmatrix}\begin{pmatrix}
+        e^{-2t} \\ -2e^t
+    \end{pmatrix}\text{.}$$
+
+    As such, letting $\matr{y} = \begin{pmatrix}
+        y_1 \\ y_2
+    \end{pmatrix}$, we can split the two differential equations and solve: 
+    $$\matr{y'} = \begin{pmatrix}
+        2 & 0 \\ 0 & -3
+    \end{pmatrix}\matr{y} + \frac{1}{5}\begin{pmatrix}
+        4e^{-2t} - 2e^t \\ e^{-2t} + 2e^t
+    \end{pmatrix} \ \rightarrow \ \begin{cases}
+        y_1' = 2y_1 + \frac{1}{5}(4e^{-2t} - 2e^t) \\ 
+        y_2' = -3y_2 + \frac{1}{5}(e^{-2t} + 2e^t)
+    \end{cases}\text{.}$$
+
+    Since each equation is a first-order thats solvable, we can solve and get $y_1 = -\frac{1}{5}e^{-2t} + \frac{2}{5}e^t + c_1e^{2t}$ and $y_2 = \frac{1}{10}e^t + \frac{1}{5}e^{-2t} + c_2e^{-3t}$. As such, we can solve for $\matr{x}$ given that we have $\matr{T}$ and $\matr{y}$:
+
+    $$\matr{x} = \matr{T}\matr{y} = \begin{pmatrix}
+        1 & 1 \\ 1 & -4
+    \end{pmatrix}\begin{pmatrix}
+        -\frac{1}{5}e^{-2t} + \frac{2}{5}e^t + c_1e^{2t} \\ 
+        \frac{1}{10}e^t + \frac{1}{5}e^{-2t} + c_2e^{-3t}
+    \end{pmatrix} = \begin{pmatrix}
+        -\frac{1}{5}e^{-2t} + \frac{2}{5}e^t + c_1e^{2t} + \frac{1}{10}e^t + \frac{1}{5}e^{-2t} + c_2e^{-3t} \\ 
+        -\frac{1}{5}e^{-2t} + \frac{2}{5}e^t + c_1e^{2t} - \frac{2}{5}e^t - \frac{4}{5}e^{-2t} - 4c_2e^{-3t}
+    \end{pmatrix}$$
+    $$=\begin{pmatrix}
+        \frac{1}{2}e^t + c_1e^{2t} + c_2e^{-3t} \\ 
+        -e^{-2t} + c_1e^{2t} - 4c_2e^{-3t}
+    \end{pmatrix} = \begin{pmatrix}
+        0 \\ -1
+    \end{pmatrix}e^{-2t} + \frac{1}{2}\begin{pmatrix}
+        1 \\ 0
+    \end{pmatrix}e^t + c_1\begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}e^{2t} + c_2\begin{pmatrix}
+        1 \\ -4
+    \end{pmatrix}e^{-3t}\text{.}$$ 
+\end{exercise}
 
 
-% todo: exercises 1-8 (or some of them), 9, 17 (?!)
+\begin{exercise}{4}
+
+    A general solution to the homogenous version of this equation is $\matr{x_c} = c_1\begin{pmatrix}
+        1 \\ 2
+    \end{pmatrix} + c_2\begin{pmatrix}
+        t + \frac{1}{4} \\ 2t 
+    \end{pmatrix}$. 
+
+    To find a particular solution, I will use the method of variation of parameters since $\matr{A}$ is not diagonalizable, $\matr{g}$ looks like it's made up of non-elementary functions, and a Laplace transform fails here. \\ 
+    First, finding our fundamental matrix $\matr{\Psi}$, recall that $\matr{\Psi} = \begin{pmatrix}
+        x_1^{(1)} & x_1^{(2)} \\ x_2^{(1)} & x_2^{(2)}
+    \end{pmatrix} = \begin{pmatrix}
+        1 & t + \frac{1}{4} \\ 2 & 2t 
+    \end{pmatrix}$. Since the Wronksian (which is $\det \matr{\Psi}$) is non-zero everywhere, we can jump straight in and find $\matr{u}$ by evaluating 
+
+    $$\matr{u} = \int \matr{\Psi}^{-1}\matr{g} \ dt + \matr{c}\text{.}$$
+
+    So, we simply evaluate the integral; 
+    $$\rightarrow \int \frac{1}{-\frac{1}{2}}\begin{pmatrix}
+        2t & -t - \frac{1}{4} \\ -2 & 1
+    \end{pmatrix} \begin{pmatrix}
+        \frac{1}{t^3} \\ -\frac{1}{t^2}
+    \end{pmatrix} \ dt + \matr{c} = -2 \int \begin{pmatrix}
+        \frac{9}{4t^2} + \frac{1}{t} \\ -\frac{2}{t^3} - \frac{1}{t^2}
+    \end{pmatrix} \ dt + \matr{c} = -2\begin{pmatrix}
+        -\frac{9}{4t} + \ln t \\ \frac{1}{t^2} + \frac{1}{t}
+    \end{pmatrix} + \matr{c}\text{.}$$
+
+    Thus, $\matr{u}$ is whatever the garabge we got above. Then, since $\matr{x} = \matr{\Psi}\matr{u}$, we can simply do some matrix multiplication to find $\matr{x}$ (note: for simplicity, we let $\matr{c} = \matr{0}$):
+
+    $$\matr{x} = -2\begin{pmatrix}
+        1 & t + \frac{1}{4} \\ 2 & 2t 
+    \end{pmatrix}\begin{pmatrix}
+        -\frac{9}{4t} + \ln t \\ \frac{1}{t^2} + \frac{1}{t}
+    \end{pmatrix} = \begin{pmatrix}
+        \frac{2}{t} - 2\ln t - 2 - \frac{1}{2t^2} \\ \frac{5}{t} - 4 \ln t + -4
+    \end{pmatrix}\text{.}$$
+
+    As such, our final solution for $\matr{x}$ is 
+    $$\matr{x} = c_1\begin{pmatrix}
+        1 \\ 2
+    \end{pmatrix} + c_2\begin{pmatrix}
+        t + \frac{1}{4} \\ 2t 
+    \end{pmatrix} + \begin{pmatrix}
+        2 \\ 5
+    \end{pmatrix}\frac{1}{t} - \begin{pmatrix}
+        2 \\ 4
+    \end{pmatrix}\ln t - \begin{pmatrix}
+        1 \\ 0 
+    \end{pmatrix}\frac{1}{2t^2}\text{.}$$
+\end{exercise}
+
+
+\begin{exercise}{5}
+    
+    To use the Laplace transform on this system of differential equations, we first should find a complementary solution, which we can do easily to get $\matr{x_c} = c_1\begin{pmatrix}
+        1 \\ -2
+    \end{pmatrix}e^{-t} + c_2\begin{pmatrix}
+        1 \\ 2
+    \end{pmatrix}e^{3t}$. 
+
+    From here, to use the Laplace transform to solve this system, simply laplace transform the equation to get 
+
+    $$s\L{\matr{x}} - \matr{x}(0) = \matr{A}\L{\matr{x}} + \L{\matr{g}} \ \rightarrow \ (s\matr{I} - \matr{A})\L{\matr{x}} = \begin{pmatrix}
+        \frac{2}{s - 1} \\ -\frac{1}{s - 1}
+    \end{pmatrix}$$
+
+    where the assumption we're making for our particular solution is that $\matr{x}(0) = \matr{0}$. From here, we can simply calculate $(s\matr{I} - \matr{A})$ and left-multiply its inverse to both sides of the equation then do an inverse laplace transform to solve for $\matr{x}$:
+
+    $$\rightarrow \begin{pmatrix}
+        s - 1 & -1 \\ -4 & s - 1
+    \end{pmatrix}\L{\matr{x}} = \begin{pmatrix}
+        \frac{2}{s - 1} \\ -\frac{1}{s - 1}
+    \end{pmatrix} \ \rightarrow \ \L{\matr{x}} = \left(\frac{1}{(s - 1)^2 - 4}\begin{pmatrix}
+        s - 1 & 1 \\ 4 & s - 1
+    \end{pmatrix}\right)\begin{pmatrix}
+        \frac{2}{s - 1} \\ -\frac{1}{s - 1}
+    \end{pmatrix}$$
+
+    $$\rightarrow \L{\matr{x}} = \begin{pmatrix}
+        \frac{2}{(s + 1)(s - 3)} - \frac{1}{(s - 1)(s + 1)(s - 3)} \\ \frac{8}{(s - 1)(s + 1)(s - 3)} - \frac{1}{(s + 1)(s - 3)}
+    \end{pmatrix}\text{.}$$
+
+    Leveraging partial fractions (namely: $\frac{1}{(s + 1)(s - 3)} = \frac{1}{4(s - 3)} - \frac{1}{4(s + 1)}$ and $\frac{1}{(s - 1)(s + 1)(s - 3)} = \frac{1}{8(s + 1)} + \frac{1}{8(s - 3)} - \frac{1}{4(s - 1)}$) and the simplicity that the inverse Laplace transform of $\frac{1}{s - a}$ is $e^{at}$, we quickly find that a solution for $\matr{x}$ is 
+
+    $$\matr{x_p} = \frac{1}{8}\begin{pmatrix}
+        3e^{3t} - 5e^{-t} + 2e^t \\ 
+        6e^{3t} + 10e^{-t} - 16e^t
+    \end{pmatrix}$$
+
+    so a general solution would be 
+
+    $$\matr{x} = \frac{1}{4}\begin{pmatrix}
+        1 \\ 
+        -8
+    \end{pmatrix}e^t + c_1\begin{pmatrix}
+        1 \\ -2
+    \end{pmatrix}e^{-t} + c_2\begin{pmatrix}
+        1 \\ 2
+    \end{pmatrix}e^{3t}$$
+
+    since the first two terms in the particular solution we found (that has the specific property that $\matr{x_p}(0) = \matr{0}$) can be eliminated by modifying $c_1$ and $c_2$.
+\end{exercise}
+
+\begin{exercise}{6}
+    
+    A general solution is $\matr{x_c} = c_1\begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}e^t + c_2\begin{pmatrix}
+        1 \\ 3
+    \end{pmatrix}e^{-t}$. Using the method of undetermined coefficients, we assume $\matr{x}$ is of the form $\matr{\alpha}te^t + \matr{\beta}e^t$. As such, we get the equation
+    $$\matr{\alpha} e^t + \matr{\beta} e^t + \matr{\alpha} t e^t = \matr{A}\matr{\alpha}te^t + \matr{\alpha}\matr{\beta}e^t + \begin{pmatrix}
+        1 \\ -1
+    \end{pmatrix}e^t$$
+
+    which when comparing coefficients gets us 
+    $$\begin{cases}
+        \matr{A}\matr{\alpha} = \matr{\alpha} \rightarrow \matr{\alpha} = \begin{pmatrix}
+            a \\ a
+        \end{pmatrix} \\ 
+        \matr{A}\matr{\beta} = \matr{\alpha} + \matr{\beta} + \begin{pmatrix}
+            -1 \\ 1
+        \end{pmatrix}
+    \end{cases}\text{.}$$
+
+    Simplifying that second equation further, we have $(\matr{A} - \matr{I})\matr{\beta} = \matr{\alpha} + \begin{pmatrix}
+        -1 \\ 1
+    \end{pmatrix} \rightarrow \begin{pmatrix}
+        1 & -1 \\ 3 & -3 
+    \end{pmatrix}\matr{\beta} = \begin{pmatrix}
+        a - 1 \\ a + 1
+    \end{pmatrix}$ leading us to find $a = 2$ and the simplest form for $\matr{\beta}$ is $\matr{\beta} = (1, 0)^T$. As such, our final solution is 
+    
+    $$\matr{x} = c_1\begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}e^t + c_2\begin{pmatrix}
+        1 \\ 3
+    \end{pmatrix}e^{-t} + \begin{pmatrix}
+        2 \\ 2
+    \end{pmatrix}te^t + \begin{pmatrix}
+        1 \\ 0
+    \end{pmatrix}e^t\text{.}$$
+\end{exercise}
+
+\begin{exercise}{7}
+    
+    A general solution to the homogenous version of this differential equation is $\matr{x_c} = c_1\begin{pmatrix}
+        1 \\ \sqrt{2}
+    \end{pmatrix}e^{-t} + c_2\begin{pmatrix}
+        \sqrt{2} \\ -1
+    \end{pmatrix}e^{-4t}$. Using the method of undetermined coefficients and assuming $\matr{x} = \matr{\alpha}te^{-t} + \matr{\beta}e^{-t}$, we can once again set up equations similar to the ones above and find 
+    $$\begin{cases}
+        \matr{A}\matr{\alpha} = -\matr{\alpha} \\ 
+        \matr{A}\matr{\beta} = \matr{\alpha} - \matr{\beta} + \begin{pmatrix}
+            -1 \\ 1
+        \end{pmatrix}
+    \end{cases}\text{.}
+    $$
+
+    We can solve the first one to find that $\matr{\alpha}$ must be of the form $\begin{pmatrix}
+        a \\ a\sqrt{2}
+    \end{pmatrix}$, and a simplification like above for the second equation yields $\begin{pmatrix}
+        -2 & \sqrt{2} \\ \sqrt{2} & -1 
+    \end{pmatrix}\matr{\beta} = \begin{pmatrix}
+        a - 1 \\ a\sqrt{2} + 1
+    \end{pmatrix}$ leading us to find $a = \frac{1 - \sqrt{2}}{3}$ and a simple form for $\matr{\beta}$, namely $\matr{\beta} = \left(\frac{1}{3}, -\frac{1}{3}\right)^T$. Combining, we thus find a solution for $\matr{x}$ is 
+
+    $$\matr{x} = c_1\begin{pmatrix}
+        1 \\ \sqrt{2}
+    \end{pmatrix}e^{-t} + c_2\begin{pmatrix}
+        \sqrt{2} \\ -1
+    \end{pmatrix}e^{-4t} + \frac{1}{3}\begin{pmatrix}
+        1 - \sqrt{2} \\ \sqrt{2} - 2
+    \end{pmatrix}te^{-t} + \frac{1}{3}\begin{pmatrix}
+        1 \\ -1
+    \end{pmatrix}e^{-t}\text{.}\footnote{The book gives some silly/crazy answer but I'm pretty sure my answer is right; their answer is derived from a different $\beta$ value.}$$
+\end{exercise}
+
+(I skipped 8 since I don't want to spend more time in hell. Also the solution I have for 8 is super sketchy.)
+
+\begin{exercise}{9}
+
+    9a. Recall that $\Psi(t) = \begin{pmatrix}
+        x_1^{(1)} & x_1^{(2)} \\ x_2^{(1)} & x_2^{(2)}
+    \end{pmatrix}$. Since a general solution for the homogenous linear system is $\matr{x} = c_1e^{-t/2}\begin{pmatrix}
+        \cos(t/2) \\ 4 \sin(t/2) 
+    \end{pmatrix} + c_2e^{-t/2}\begin{pmatrix}
+        \sin(t/2) \\ -4\cos(t/2)
+    \end{pmatrix}$, we can simply substitute these values in and find 
+    $$\Psi = e^{-t/2}\begin{pmatrix}
+        \cos(t/2) & \sin(t/2) \\  4 \sin(t/2) & -4\cos(t/2)
+    \end{pmatrix}\text{.}$$
+
+    9b. Since we want an initial condition of $\matr{x}(0) = \matr{0}$ to be satisfied, this seems like the perfect opportunity to pull out the Laplace transform!
+
+    Namely, 
+    $$s\L{\matr{x}} - \matr{x}(0) = \matr{A}\L{\matr{x}} + \L{\matr{g}} \ \rightarrow \ (s\matr{I} - \matr{A})\L{\matr{x}} = \begin{pmatrix}
+        \frac{1}{2s + 1} \\ 0
+    \end{pmatrix} \rightarrow \L{\matr{x}} = \frac{1}{(s + \frac{1}{2})^2 + \frac{1}{4}}\begin{pmatrix}
+        s + \frac{1}{2} & -\frac{1}{8} \\ 2 & s + \frac{1}{2}
+    \end{pmatrix}\begin{pmatrix}
+        \frac{1}{2s + 1} \\ 0
+    \end{pmatrix}$$
+
+    $$= \frac{1}{(s + \frac{1}{2})^2 + \frac{1}{4}}\begin{pmatrix}
+        \frac{1}{2} \\ \frac{2}{2s + 1}
+    \end{pmatrix} = \left(
+        \frac{\frac{1}{2}}{(s + \frac{1}{2})^2 + \left(\frac{1}{2}\right)^2}, \ \frac{4}{s + \frac{1}{2}} - 4\frac{(s + \frac{1}{2})}{(s + \frac{1}{2})^2 + \left(\frac{1}{2}\right)^2}
+    \right)^T$$
+    $$\longrightarrow \matr{x} = \left(e^{-t/2}\sin(t/2), \ 4e^{-t/2} - 4e^{-t/2}\cos(t/2) \right)^T$$
+
+    so our particular solution that solves the problem and satisfies the given initial condition is 
+
+    $$\matr{x} = e^{-\frac{t}{2}}\begin{pmatrix}
+        \sin\left(\frac{t}{2}\right) \\ 4 - 4\cos\left(\frac{t}{2}\right)
+    \end{pmatrix}\text{.}$$
+\end{exercise}
+
 \end{document}
