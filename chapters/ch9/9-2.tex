@@ -1,0 +1,120 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section we will be concerned with Autonomous systems of two functions of the form
+
+$$\frac{dx}{dt} = F(x, y), \ \ \frac{dy}{dt} = G(x, y)\text{.}$$
+
+with initial condition $x(t_0) = x_0$, $y(t_0) = y_0$. This system can also be written in matrix form as 
+
+$$\frac{d\matr{x}}{dt} = \matr{f}(\matr{x}), \ \matr{x}(t_0) = \matr{x}^0$$
+
+where $\matr{x} = (x, y)^T = (x(t), y(t))^T$, $\matr{f}(\matr{x}) = (F(x, y), G(x, y))^T$, and $\matr{x}^0 = (x_0, y_0)^T$.
+
+For simplicity and so theorems hold, we will assume $F$ and $G$ are continuous and their partial derivatives are also continuous.\footnote{Rigorously speaking, their partial derivatives only need to be continuous over some domain $D$ of the $xy$-plane. But since most functions we work with are very simple, it might as well be (almost) the whole $xy$-plane over which the partial derivatives are continuous.} 
+\newpage % needed here to fix the begin definition function declaration
+
+\begin{definition}[Autonomous]
+    A differential equation system is said to be \textbf{autonomous} if the systems do not depend on time. In particular, the system given above ($\frac{dx}{dt} = F(x, y), \ \ \frac{dy}{dt} = G(x, y)$) is autonomous, and so is the system $\matr{x'} = \matr{A}\matr{x}$ as long as all terms in $\matr{A}$ do not involve the independent variable $t$.    
+\end{definition}
+
+The distinction between autonomous and nonautonomous systems is important as the condition of autonomy guarantees that there is only one trajectory crossing through the point $(x_0$, $y_0)$ regardless of time. 
+
+\subsubsection{Stability and Instability}
+
+For autonomous systems of the form $$\matr{x'} = \matr{f}(\matr{x})\text{,}$$
+
+\begin{definition}[Critical Points]
+    \textbf{Critical points} are defined as points to the above system where $\matr{f}(\matr{x}) = \matr{0}$. Since $\matr{x'} = \matr{0}$, critical points must be constant solutions to the system.
+\end{definition}
+
+\begin{definition}[Stability]
+    A critical point of the solution $\matr{x}^{\circ}$ is said to be \textbf{stable} if for any $\varepsilon > 0$, there exists $\delta > 0$ such that every solution $\matr{x}$ which at $t = 0$ satisfies 
+    $$||\matr{x}(0) - \matr{x}^{\circ}|| < \delta$$ 
+
+    exists for all $t > 0$ and satisfies 
+    $$||\matr{x}(t) - \matr{x}^{\circ}|| < \varepsilon$$
+    
+    for all $t \geq 0$.    
+\end{definition}
+
+Essentially, this definition codifies the notion that a given solution $\matr{x}^{*}$ should stay bounded within the critical point. Note however that this definition of stability does not require $\matr{x}^{*}$ to converge to $\matr{x}^{\circ}$; instead, it merely requires that $\matr{x}^{*}$ not leave an open disk\footnote{If $\matr{x}$ is $n$-dimensional, then the statement should be amended to read ``\dots not leave an open $n-1$-sphere of radius \dots''.} of radius $\varepsilon$ centered at $\matr{x}^{\circ}$ for all $t \geq 0$. 
+
+\vspace{0.2cm}
+
+Any critical points for which the condition of stability doesn't hold are said to be \textbf{unstable}.
+
+\vspace{0.2cm}
+
+The following definition thus distinguishes between stability and asymptotic stability:
+
+\begin{definition}[Asymptotic Stability]
+    A critical point $\matr{x}^{\circ}$ is said to be \textbf{asymptotically stable} if it is stable and there exists a $\delta_0 > 0$ such that if a solution $\matr{x} = \matr{x}(t)$ satisfies 
+    $$||\matr{x}(0) - \matr{x}^{\circ}|| < \delta_0\text{,}$$
+    $$\text{then } \lim_{t \to \infty} \matr{x}(t) = \matr{x}^{\circ}\text{.}$$
+
+    In english, if a trajectory starts ``sufficiently close'' to $\matr{x}^{\circ}$ (within a $\delta_0$), then it must eventually approach $\matr{x}^{\circ}$ as $t \to \infty$.
+\end{definition}
+
+\hr
+
+
+\begin{definition}[Basin of Attraction]
+    For a two-dimensional (potentially non-linear) autonomous system with at least one asymptotically critically point, we define the \textbf{basin of attraction} for a critical points to be the set of all points $P$ such that a trajectory passing through $P$ eventually converges to said critical point as $t \to \infty$. 
+
+    If there is a boundary to a \textbf{basin of attraction}, that trajectory which bounds the basin is called a \textbf{separatrix} as it seperates the trajectories that converge and the trajectories that don't.
+\end{definition}
+
+If we're lucky, we can determine trajectories of a two-dimensional autonomous system by solving just a first-order differential equation. Namely, since $F(x, y)$ and $G(x, y)$ don't depend on $t$, we have 
+
+$$\frac{dy}{dx} = \frac{dy/dt}{dx/dt} = \frac{G(x, y)}{F(x, y)}$$
+
+which is a first-order differential equation. In general, the differential equation arising from the quotient $\frac{G(x, y)}{F(x, y)}$ may not be solvable.
+
+
+
+\begin{exercise}{14a-20a}
+
+    For this exercise, I recommend using \href{https://choosedews.github.io/PhasePlane/}{this} online plotter to plot some nice looking solutions.
+
+    14a. Following the equation above, we have $\frac{dy}{dx} = \frac{G(x, y)}{F(x, y)} = \frac{8x}{2y} \rightarrow H(x, y) = y^2 - 4x^2 = c$. Solutions to this system generally look like (one-directional) hyperbolas. \\
+    15a. $\frac{dy}{dx} = \frac{-8x}{2y} \rightarrow H(x, y) = y^2 + 4x^2 = c$. As the equation suggests, solutions to this system look like an ellipse. 
+
+    \vspace{0.2cm}
+
+    16a. $\frac{dy}{dx} = \frac{2x + y}{y}$. Using the substitution $y = vx$ and $dy = vdx + xdv$, we thus have 
+
+    $$\frac{vdx + xdv}{dx} = v + \frac{dv}{dx}x = \frac{2 + v}{v} \rightarrow \frac{dv}{dx}x = \frac{2 + v - v^2}{v}$$ 
+    
+    which with partial fraction decomposition and a bunch of tedious integration simplification reveals $H(x, y) = (x + y)(y - 2x)^2 = c$.
+
+    17a. $\frac{dy}{dx} = \frac{x + y}{x - y}$. Using the substitution $y = vx$ again, we thus have $H(x, y) = \arctan\left(\frac{y}{x}\right) - \ln\left(\sqrt{\frac{y^2}{x^2} + 1}\right) - \ln x = \arctan\left(\frac{y}{x}\right) - \ln\sqrt{x^2 + y^2} = c$.
+
+    18a. While this equation looks super complicated, if you rearrange it into the form $(2xy^2 - 6xy) + (2x^2y - 3x^2 - 4y)y' = 0$, you quickly find the differential equation is exact so $H = x^2y^2 - 3x^2y - 4y^2 = c$.
+
+    19a. $\frac{dy}{dx} = \frac{-\sin x}{y} \rightarrow \frac{y^2}{2} - \cos(x) = c$.
+
+    20a. $\frac{y^2}{2} + \frac{x^2}{2} - \frac{x^4}{24} = c$.
+\end{exercise}
+
+\end{document}

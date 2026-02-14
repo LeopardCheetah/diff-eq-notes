@@ -87,7 +87,7 @@
 
 % do we compile all?
 \newif\ifall
-\alltrue % or \draftfalse
+\allfalse % or \draftfalse
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -280,22 +280,7 @@ TBD.
 
 % spacer not needed for 6-3 when i get around to doing that
 
-
-\else
-
-% spacer sections
-
-\section{A}
-\section{B} 
-\section{C}
-\section{D}
-\section{E}
-\section{F}
-The above sections are spacer sections.
-
-\fi 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ch 7
 \newpage 
@@ -330,11 +315,41 @@ The above sections are spacer sections.
 
 \hr  
 
+% chapter 8
+\section{Numerical Methods}
+
+TBD. 
 
 
-% todo: for ch 9, move the \fi and \if
+\else
 
+% spacer sections
 
+\section{A}
+\section{B} 
+\section{C}
+\section{D}
+\section{E}
+\section{F}
+\section{G}
+\section{H}
+The above sections are spacer sections.
+
+\fi 
+
+% ch 9! - page 388
+
+\newpage 
+\section{Nonlinear Differential Equations and Stability}
+
+This chapter deals with qualitative information about a differential equation and stability/instability of given solutions.
+
+\subsection{The Phase Plane: Linear Systems}
+\subfile{chapters/ch9/9-1.tex}
+
+\spacer
+\subsection{Autonomous Systems and Stability}
+\subfile{chapters/ch9/9-2.tex}
 
 %% todo: go over and redo the wording for all my solutions
 \end{document}

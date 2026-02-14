@@ -1,0 +1,42 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+When considering the system $$\frac{d\matr{x}}{dt} = \matr{A}\matr{x}\text{,}$$
+
+there are special equilibrium solutions to be aware about: namely, \textbf{critical points}, or when $\matr{A}\matr{x} = \matr{0}$. If we assume $\det\matr{A} \not = 0$, then only $\matr{x} = \matr{0}$ is the only critical point of the system. 
+
+\vspace{0.2cm}
+
+For linear systems, we can analyze the system and its trajectories by the eigenvalues of $\matr{A}$; namely, if we assume $\matr{A}$ is a $2\times 2$ matrix and $\matr{A}$ has eigenvalues $r_1$, $r_2$, then
+\begin{itemize}
+    \item if $r_1 \not = r_2$ and $r_1$ and $r_2$ have the same sign, then all trajectories will approach the origin and the origin (the critical point) will either be a \textbf{nodal source} (e.g. trajectories go away from the critical point) or a \textbf{nodal sink} (trajectories end up going towards the critical point.)
+    \item if $r_1$ and $r_2$ have differing signs (wlog $r_1 > 0 > r_2$) then as $t \to \infty$, all trajectories will converge towards the eigenvector associated with $r_1$. As $t \to -\infty$ however, since $e^{-\infty} = 0$, all trajectories will converge towards the eigenvector associated with $r_2$. As such, the critical point is known as a \textbf{saddle point} as no trajectories pass through the critical point (see textbook Page 391).
+    \item if $r_1 = r_2$ and two \textit{indepedent} eigenvectors can be found for $\matr{A}$, then all trajectories look like a line through the critical point (in this case the origin) and the critical point is called a \textbf{proper node} or \textbf{star point}.
+    \item if conversely $r_1 = r_2$ and only one eigenvector can be found, then the critical point is called an \textbf{improper node}\footnote{tbh idrk why; the graph just looks super weird} 
+    \item If eigenvalues are complex with some real part, trajectories will look like a spiral going either towards/away the origin in which case the origin is called a spiral sink/spiral source, depending on the real part.
+    \item If the eigenvalues are purely imaginary, trajectories will infinitely loop on themselves (since there is no real part, trajectories do not `decay') and the origin/critical point is called a \textbf{center} of the system. For linear systems, these trajectories look like ellipses around the origin.
+\end{itemize}
+
+Essentially, all solutions either go to infinity, go to $\matr{0}$, or go in a spiral.
+
+\end{document}
