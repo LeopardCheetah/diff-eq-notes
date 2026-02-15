@@ -1,0 +1,105 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The following table/theorem (theorem 9.3.1 in the book) recaps the stability properties of the origin for the two dimensional linear system $\matr{x'} = \matr{A}\matr{x}$.
+
+\begin{definition}[Stability of $\matr{0}$]
+    Let the eigenvalues for $\matr{A}$ be $r_1$ and $r_2$. Then, the critical point $\matr{x} = \matr{0}$ is 
+    \begin{enumerate}
+        \item asymptotically stable if $r_1$ and $r_2$ have negative real part,
+        \item stable if $r_1$ and $r_2$ have $0$ real part (e.g. $r_1$ and $r_2$ are pure imaginary eigenvalues),
+        \item unstable if either $r_1$ and $r_2$ have any sort of positive real part.
+    \end{enumerate}
+\end{definition}
+
+From the table we can conclude that small pertrubations in the roots $r_1$ and $r_2$ only really matter when $r_1$ and $r_2$ are pure imaginary eigenvalues, as any addition of a real part (either positive or negative) will cause the system to spiral inwards towards $\matr{0}$ or outwards to infinity. Thus, while $\matr{0}$ is stable if $r_1$ and $r_2$ have 0 real part, this stability is itself potentially unstable. 
+
+\subsubsection{Linear Approximations}
+
+\begin{definition}[Isolated critical point]
+    We say that a critical point $\matr{x}^{\circ}$ is an \textbf{isolated critical point} of the system if there is some disk around $\matr{x}^{\circ}$ with radius $r > 0$ such that there exists no other critical poitns in that disk.     
+\end{definition}
+
+Considering the linearization of trajectories around the origin ($\matr{x} = \matr{0})$ for the non-linear system $\matr{x'} = \matr{A}\matr{x} + \matr{g}$, we first assume $\matr{0}$ is an isolated critical point of the system. We also assume that around the critical point (in this case $\matr{x} = \matr{0}$) that $\matr{g}$ is small, or in rigorous terms,
+
+$$\lim_{\matr{x} \to \matr{0}} \frac{|\matr{g}|}{|\matr{x}|} = 0$$
+
+assuming\footnote{It is also possible to convert this limit into polar coordinates ($x = r\cos\theta$, $y = r\sin\theta$, $|\matr{x}| = r$) to make this limit easier to evaluate.} $\matr{g}$ has continuous first partial derivatives. If the above condition is satisfied, the system we described above can then be called a \textbf{locally linear system}. 
+
+\vspace{0.2cm}
+
+Anyways, here's a cool theorem we can use to determine local linearity:
+
+\begin{definition}[Theorem 9.3.2 (p. 410)]
+    The system described by 
+    $$\matr{x'} = \matr{f}(\matr{x}) = \begin{pmatrix}
+        x' \\ y'
+    \end{pmatrix} = \begin{pmatrix}
+        F(x, y) \\ G(x, y)
+    \end{pmatrix}$$
+    is locally linear in the neighborhood of a critical point $\matr{x}^{\circ}$ whenever $F$ and $G$ have continuous partial derivatives up to order two (e.g. $F$ and $G$ are twice differentiable).
+\end{definition}
+
+If the above condition holds, then the nonlinear system near $\matr{x}^{\circ} = (x^{\circ}, y^{\circ})$ can be approximated by the linear system 
+
+$$\frac{d}{dt}\begin{pmatrix}
+    x - x^{\circ} \\ y - y^{\circ}
+\end{pmatrix} = \begin{pmatrix}
+    F_x(x^{\circ}, y^{\circ}) & F_y(x^{\circ}, y^{\circ}) \\ 
+    G_x(x^{\circ}, y^{\circ}) & G_y(x^{\circ}, y^{\circ})
+\end{pmatrix}\begin{pmatrix}
+    x - x^{\circ} \\ y - y^{\circ}
+\end{pmatrix} \ \rightarrow \ \frac{d\matr{u}}{dt} = \frac{d\matr{f}}{d\matr{x}}\left(\matr{x}^{\circ}\right)\matr{u}$$
+
+where $\matr{u} = \begin{pmatrix}
+    x - x^{\circ} \\ y - y^{\circ}
+\end{pmatrix}$.
+
+
+
+The general coefficient matrix in the above equation
+
+$$\matr{J} = \matr{J}[F, G](x, y) = \begin{pmatrix}
+    F_x(x, y) & F_y(x, y) \\ 
+    G_x(x, y) & G_y(x, y)
+\end{pmatrix}$$ 
+
+is called the \textbf{Jacobian}\footnote{Recognize this from Calc 3?} of $F$ and $G$ with repsect to $x$ and $y$. For the linear approximation system above, we need to assume $\det \matr{J}(\matr{x}^{\circ}) \not = 0$ so that $\matr{x}^{\circ}$ is an isolated critical point in our linear approximation system.
+
+Anyways, to relate the properties of stability of linear and locally linear systems, here's a theorem and a table from the textbook:
+
+\begin{center}
+    \includegraphics[scale=0.6]{9-3_table.png}
+\end{center}
+
+or in summary, except for two special cases ($r_1 = r_2$, $\lambda = 0$), the non-linear terms of the nonlinear system do not affect the stability of the system determined by the linear systems.
+
+If every trajectory approaches the critical point at the origin, then the critical point $\matr{0}$ is said to be \textbf{globally asymptotically stable}.
+
+\vspace{0.2cm}
+
+/// The textbook then goes into more detail about the stability of a damped pendulum around some critical points (Page 413-415). ///
+
+
+
+\end{document}
