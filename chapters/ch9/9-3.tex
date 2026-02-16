@@ -100,6 +100,165 @@ If every trajectory approaches the critical point at the origin, then the critic
 
 /// The textbook then goes into more detail about the stability of a damped pendulum around some critical points (Page 413-415). ///
 
+\hr
+
+\begin{exercise}{1-3}
+
+    1. We verify $(0, 0)$ is a critical point by noting that $(0, 0)$ satsifies $x - y^2 = x - 2y + x^2 = 0$. 
+
+    To find the locally linear version of the system, since both $F = x - y^2$ and $G = x - 2y + x^2$ have continuous second partial derivatives, we can invoke theorem 9.3.2 which tells us that our non-linear system can be approximated by the linear system 
+
+    $$\begin{pmatrix}
+        x' \\ y' 
+    \end{pmatrix} = \begin{pmatrix}
+        F_x(0, 0) & F_y(0, 0) \\ G_x(0, 0) & G_y(0, 0)
+    \end{pmatrix}\begin{pmatrix}
+        x \\ y
+    \end{pmatrix} = \begin{pmatrix}
+        1 & 0 \\ 1 & -2
+    \end{pmatrix}\begin{pmatrix}
+        x \\ y
+    \end{pmatrix}$$ 
+    
+    which is verifiably linear. This linear system has two real, distinct eigenvalues $\lambda = 1$ and $\lambda = -2$ so by Table 9.3.1, both the linear and non-linear system around $(0, 0)$ are unstable as in both cases, the origin is a saddle point.
+
+    \vspace{0.2cm}
+
+    2. $(0, 0)$ can be verified to be a critical point, and it should be noted that it is not the only critical point of the system (see $(-2, \pi)$, $(0, 2\pi)$, etc). Since the partial derivatives of both $F$ and $G$ up to order two are continuous, we have 
+
+    $$\begin{pmatrix}
+        x' \\ y'
+    \end{pmatrix} = \begin{pmatrix}
+        0 & 1 \\ -1 & 0
+    \end{pmatrix}\begin{pmatrix}
+        x \\ y
+    \end{pmatrix}$$ 
+
+    so $\lambda = \pm i$. As such, for the linear system, the origin is a stable center. For the nonlinear system however, the origin could be either a center or a spiral point so its stability is unknown.
+
+    \vspace{0.2cm}
+
+    3. $(0, 0)$ is verifiably a critical point, and the corresponding locally linear matrix is $\matr{A} = \begin{pmatrix}
+        1 & 0 \\ 1 & 1
+    \end{pmatrix}$ which yields the eigenvalue $\lambda = 1$ with multiplicity two. Thus, the origin in both the locally linear and nonlinear systems is unstable, with the origin being an improper node\footnote{Since the system only has one eigenvector, namely $(0, 1)^T$.} in the locally linear system and either a spiral point or a node in the nonlinear system.    
+\end{exercise}
+
+(For the exercises below, \href{https://homepages.bluffton.edu/~nesterd/apps/slopefields.html}{this} website gives some marvelous slope fields/phase diagrams.)
+
+\begin{exercise}{4abc}
+    
+    4a. Critical points to the equations occur when $\frac{dx}{dt} = 0 = \frac{dy}{dt}$. Examining the first equation, $\frac{dx}{dt}$ is $0$ when $x = y$ or $x = -2$. The second equation shows $\frac{dy}{dx} = 0$ when $x = -y$ or $x = 4$. Testing out each of the 4 combination of critical equations between the points, we find that there are 3 critical points, namely $(0, 0)$, $(-2, 2)$, and $(4, 4)$.
+
+    \vspace{0.2cm}
+
+    4b. As a straightforward application of Theorem 9.3.2, for each critical point $(x^{\circ}, y^{\circ})$ found above, the locally linear system is of the form 
+
+    $$\begin{pmatrix}
+        x' \\ y' 
+    \end{pmatrix} = \begin{pmatrix}
+        y^{\circ} - 2x^{\circ} - 2 & x^{\circ} + 2 \\ 4 - y^{\circ} - 2x^{\circ} & 4 - x^{\circ}
+    \end{pmatrix}\begin{pmatrix}
+        x \\ y
+    \end{pmatrix} \rightarrow \begin{pmatrix}
+        -2 & 2 \\ 4 & 4
+    \end{pmatrix}, \begin{pmatrix}
+        0 & 4 \\ 6 & 6
+    \end{pmatrix}, \begin{pmatrix}
+        -6 & 6 \\ -8 & 0 
+    \end{pmatrix}\text{.}$$ 
+    
+
+    \vspace{0.2cm}
+
+    4c. For the system with critical point $(0, 0)$, its eigenvalues are $\lambda = 1 \pm \sqrt{17}$, which means that in the nonlinear system, the origin is an unstable saddle point. 
+
+    For the system with critical point $(-2, 2)$, its eigenvalues are $\lambda = 3 \pm \sqrt{33}$ which means in the nonlinear system, it is also an unstable saddle point.
+
+    For the system with critical point $(4, 4)$, its eigenvalues are $\lambda = -3 \pm i\sqrt{39}$ so in the nonlinear system $(4, 4)$ is an asymptotically stable spiral point.
+\end{exercise}
 
 
+\begin{exercise}{\{5, 6, 7\}abc}
+    
+    5a. The critical points are $(0, 0)$, $(1, 0)$, $\left(0, \frac{3}{2}\right)$, and $(-1, 2)$. The first three solutions can be found by solving $\frac{dx}{dt} - \frac{dy}{dt} = 0$, and the last solution can be found by solving $x - x^2 = xy = 3y - 2y^2$ as this can be broken up into two equations $1 - x = y$ and $x = 3 - 2y$.
+
+    5b. From Theorem 9.3.2, the linear matrices are of the form $\begin{pmatrix}
+        1 - 2x - y & -x \\ -y & 3 - x - 4y
+    \end{pmatrix}$ so the matrices for the critical points $(0, 0)$, $(1, 0)$, $\left(0, \frac{3}{2}\right)$, and $\left(-1, 2\right)$ are 
+
+    $$ \begin{pmatrix}
+        1 & 0 \\ 0 & 3
+    \end{pmatrix}, \begin{pmatrix}
+        -1 & -1 \\ 0 & 2
+    \end{pmatrix}, \begin{pmatrix}
+        -\frac{1}{2} & 0 \\ -\frac{3}{2} & -3 
+    \end{pmatrix}, \begin{pmatrix}
+        1 & 1 \\ -2 & -4
+    \end{pmatrix}$$
+    respectively. 
+    
+    5c. The first matrix has eigenvalues $\lambda = \{1, 3\}$ so $(0, 0)$ is an unstable node in the nonlinear system. \\ 
+    The second matrix has eigenvalues $\lambda = \{-1, 2\}$ which means $(1, 0)$ is an unstable saddle point. \\
+    The third matrix has eigenvalues $\lambda = \{-\frac{1}{2}, -3\}$ so $\left(0, \frac{3}{2}\right)$ is an asymptotically stable node. \\ 
+    The fourth matrix has eigenvalues $\lambda = \frac{1}{2}(3 \pm \sqrt{17})$ so $(-1, 2)$ is an unstable saddle point.
+
+
+    \vspace{0.3cm}
+
+
+    6. $(-1, 1) \rightarrow \begin{pmatrix}
+        0 & -1 \\ -2 & -2
+    \end{pmatrix} \rightarrow \lambda = -1 \pm \sqrt{3}$ so $(-1, 1)$ is an unstable saddle. \\ 
+    $(1, 1) \rightarrow \begin{pmatrix}
+        0 & -1 \\ 2 & -2 
+    \end{pmatrix} \rightarrow \lambda = -1 \pm i$ so $(1, 1)$ is an asymptotically stable spiral point.
+
+    \vspace{0.3cm}
+
+    7. $(0, 0) \rightarrow \begin{pmatrix}
+        -2 & 4 \\ 2 & 4
+    \end{pmatrix} \rightarrow \lambda = 1 \pm \sqrt{17}$ so $(0, 0)$ is an unstable saddle. 
+
+    $(2, 1) \rightarrow \begin{pmatrix}
+        -3 & 6 \\ -4 & 0
+    \end{pmatrix} \rightarrow \lambda = \frac{1}{2}(-3 \pm i\sqrt{87})$ so $(2, 1)$ is an asymptotically stable spiral point. 
+
+    $(2, -2) \rightarrow \begin{pmatrix}
+        0 & -6 \\ 2 & 0 
+    \end{pmatrix} \rightarrow \lambda = \pm i\sqrt{12}$ so $(2, -2)$ is either a center or a spiral point and its stability is indeterminate. 
+
+    $(4, -2) \rightarrow \begin{pmatrix}
+        0 & -8 \\ -2 & -4
+    \end{pmatrix} \rightarrow \lambda = 2 \pm \sqrt{20}$ so $(4, -2)$ is an unstable saddle point.
+\end{exercise}
+
+\begin{exercise}{23}
+    
+    (Note: (26) is just (25) with $\alpha = -1$.)
+
+    23a. Trivially, $\frac{dx}{dt} = 0 + \alpha(0)(0^2 + 0^2) = \frac{dy}{dt} = 0$ so $(0, 0)$ is a critical point of the system given in (25). To show that $(0, 0)$ is a center, we note that the system can be rewritten as 
+
+    $$\begin{pmatrix}
+        x' \\ y'
+    \end{pmatrix} = \begin{pmatrix}
+        \alpha(x^2 + y^2) & 1 \\ -1 & \alpha(x^2 + y^2)
+    \end{pmatrix}\begin{pmatrix}
+        x \\ y
+    \end{pmatrix} \rightarrow (\lambda - \alpha(x^2 + y^2))^2 + 1 = 0\text{.}$$
+
+    Since $\alpha(x^2 + y^2)$ is 0 at the point $(0, 0)$, $\lambda = \pm i$ which is pure imaginary which means that $(0, 0)$ is a center around the corresponding linear system. 
+
+    \vspace{0.2cm}
+
+    23b. (25) is twice differentiably continuous so (25) is locally linear. 
+
+    23c. $$\frac{dr}{dt} = \frac{xx' + yy'}{r} = \frac{xy + \alpha x^2 r^2 - xy + \alpha y^2 r^2}{r} = \frac{\alpha r^2 (x^2 + y^2)}{r} = \alpha r^3\text{.}$$
+
+    23d. Solving the given differential equation, we have $\alpha t + C = -\frac{1}{2r^2}$ so $\mathlarger{r = \sqrt{\frac{1}{C - 2\alpha t}}}$. If $\alpha < 0$, then as $t \to \infty$, that bottom fraction will go towards infinity so $r$ will go towards 0. 
+
+    23e. If $r(0) = r_0$, then $C = \frac{1}{r_0^2}$ so $\mathlarger{r(t) = \sqrt{\frac{1}{\frac{1}{r_0^2} - 2\alpha t}}}$. Clearly, as the bottom of that denominator becomes 0 (when $t \to 1/2\alpha r_0^2$), $r$ becomes unbounded which translates into $\sqrt{x^2 + y^2}$ becoming unbounded meaning $\frac{dx}{dt}$ and $\frac{dy}{dt}$ will grow astronmically as $t \to 1/2\alpha r_0^2$ when $\alpha > 0$.
+\end{exercise}
+
+% 4 - 15 (some/12)
+% 23
 \end{document}
