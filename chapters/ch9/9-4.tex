@@ -1,0 +1,77 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A simple model for competing species in the same environment is 
+
+$$\begin{cases}
+x' = x(\alpha_1 - \sigma_1x - \beta_1y), \\ 
+y' = y(\alpha_2 - \sigma_2x - \beta_2y)
+\end{cases}$$
+
+where $x$ and $y$ are the populations, $\alpha_1$ and $\alpha_2$ are their growth rates, $\frac{\alpha_1}{\sigma_1}$ and $\frac{\alpha_2}{\sigma_2}$ their carrying capacities, and $\beta_1$ and $\beta_2$ the degree to which the other population interferes with the population of a given species. Since this system is meant to model competing populations, we mandate $x \geq 0$ and $y \geq 0$ at all times.
+
+\vspace{0.2cm}
+
+In general, there are 4 cases for the resulting equilibrium points in the two species depending on the \textbf{nullclines} of the system. 
+
+\begin{definition}[Nullcline]
+    A \textbf{nullcline} of a system is a line where either $x' = 0$ or $y' = 0$. In the case of competing population dynamics, the nullclines are $\alpha_1 - \sigma_1x - \beta_1y = 0$ and $\alpha_2 - \sigma_2x - \beta_2y = 0$. 
+\end{definition}
+
+Essentially, the 4 cases boil down to two cases: in the first there exist $x_0$ and $y_0$ such that $\alpha_1 - \sigma_1x_0 - \beta_1y_9 = \alpha_2 - \sigma_2x_0 - \beta_2y_0 = 0$, or where no such point exists. In the former case, coexistence of the species is possible (although $(x_0, y_0)$ can either be an asymptotic node or a saddle point), and in the latter, coexistence is unfortunately impossible :/.
+
+\begin{exercise}{6}
+    
+    The set of equation has 4 critical points; 3 when either $x = 0$ or $y = 0$ (or both), and the 4th is when both $x$ and $y$ are not equal to 0. Examining that fourth equation further, since we want $x \not = 0$ and $y \not = 0$, we thus have 
+    $$\begin{cases}
+        \frac{dx}{dt} = 0 \rightarrow \varepsilon_1 - \sigma_1x - \alpha_1y = 0 \\ 
+        \frac{dy}{dt} = 0 \rightarrow \varepsilon_2 - \sigma_2y - \alpha_2x = 0
+    \end{cases} \longrightarrow \begin{cases}
+        \sigma_1x + \alpha_1y = \varepsilon_1 \\ 
+        \alpha_2x + \sigma_2y = \varepsilon_2
+    \end{cases}$$
+
+    which is an easily solvable linear system. Solving for $x$ and $y$, we find
+    $$
+    x = \frac{\varepsilon_2\alpha_1 - \varepsilon_1\sigma_2}{\alpha_1\alpha_2 - \sigma_1\sigma_2}, \ 
+    y = \frac{\varepsilon_1\alpha_2 - \varepsilon_2\sigma_1}{\alpha_1\alpha_2 - \sigma_1\sigma_2}
+    $$
+    which is problematic for our linear system. Since we are given $\varepsilon_2\sigma_1 > \varepsilon_1\alpha_2$ and $\varepsilon_2\alpha_1 > \varepsilon_1\sigma_2$, the numerators in the fractions for $x$ and $y$ have opposing signs which implies either $x < 0$ or $y < 0$. Since negative populations don't make sense, we disregard this fourth critical point and since no other critical points exist, we conclude there is no stable equilibirum where both $x > 0$ and $y > 0$ meaning as $t \to \infty$, either $x \to 0$, $y \to 0$, or both. 
+
+    \vspace{0.2cm}
+
+    A similar conclusion applies if both $\varepsilon_1\alpha_2 > \varepsilon_2\sigma_1$ and $\varepsilon_1\sigma_2 > \varepsilon_2\alpha_1$ hold (problem 6b).
+\end{exercise}
+
+\begin{exercise}{7}
+    
+    7a. Trivial; from each equation, factor out either $\varepsilon_1$ or $\varepsilon_2$. 
+
+    7b. Since the equilibrium point (with $x > 0$ and $y > 0$) exists at 
+    $$\left(\frac{B - R\gamma_1}{1 - \gamma_1\gamma_2 - 1}, \frac{R - B\gamma_2}{1 - \gamma_1\gamma_2}\right)\footnote{Since apparently $\sigma_1\sigma_2 > \alpha_1\alpha_2$, $1 > \frac{\alpha_1}{\sigma_1}\frac{\alpha_2}{\sigma_2} = \gamma_1\gamma_2$.},$$
+
+    reducing $B$ has the effect of decreasing the $x$-coordinate and increasing the $y$-coordinate of the equlibrium thus in effect pushing the equlibrium closer to the $y$-axis. As such, it follows that it is indeed possible to reduce the population of bluegill to a level in which they will die out by simply moving reducing $B$ to where $B = R\gamma_1$ at which point the equlibrium would be at the point $(0, R)$.
+\end{exercise}
+
+
+\end{document}

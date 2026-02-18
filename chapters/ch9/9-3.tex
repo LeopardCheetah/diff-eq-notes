@@ -143,7 +143,7 @@ If every trajectory approaches the critical point at the origin, then the critic
     \end{pmatrix}$ which yields the eigenvalue $\lambda = 1$ with multiplicity two. Thus, the origin in both the locally linear and nonlinear systems is unstable, with the origin being an improper node\footnote{Since the system only has one eigenvector, namely $(0, 1)^T$.} in the locally linear system and either a spiral point or a node in the nonlinear system.    
 \end{exercise}
 
-(For the exercises below, \href{https://homepages.bluffton.edu/~nesterd/apps/slopefields.html}{this} website gives some marvelous slope fields/phase diagrams.)
+
 
 \begin{exercise}{4abc}
     
@@ -177,6 +177,7 @@ If every trajectory approaches the critical point at the origin, then the critic
     For the system with critical point $(4, 4)$, its eigenvalues are $\lambda = -3 \pm i\sqrt{39}$ so in the nonlinear system $(4, 4)$ is an asymptotically stable spiral point.
 \end{exercise}
 
+(For the exercises below, \href{https://homepages.bluffton.edu/~nesterd/apps/slopefields.html}{this} website gives some marvelous slope fields/phase diagrams.)
 
 \begin{exercise}{\{5, 6, 7\}abc}
     
@@ -225,8 +226,8 @@ If every trajectory approaches the critical point at the origin, then the critic
 
     $(2, -2) \rightarrow \begin{pmatrix}
         0 & -6 \\ 2 & 0 
-    \end{pmatrix} \rightarrow \lambda = \pm i\sqrt{12}$ so $(2, -2)$ is either a center or a spiral point and its stability is indeterminate. 
-
+    \end{pmatrix} \rightarrow \lambda = \pm i\sqrt{12}$ so $(2, -2)$ has indeterminate stability and is either a center or a spiral point.
+    
     $(4, -2) \rightarrow \begin{pmatrix}
         0 & -8 \\ -2 & -4
     \end{pmatrix} \rightarrow \lambda = 2 \pm \sqrt{20}$ so $(4, -2)$ is an unstable saddle point.
@@ -252,7 +253,7 @@ If every trajectory approaches the critical point at the origin, then the critic
 
     23b. (25) is twice differentiably continuous so (25) is locally linear. 
 
-    23c. $$\frac{dr}{dt} = \frac{xx' + yy'}{r} = \frac{xy + \alpha x^2 r^2 - xy + \alpha y^2 r^2}{r} = \frac{\alpha r^2 (x^2 + y^2)}{r} = \alpha r^3\text{.}$$
+    23c. $\mathlarger{\frac{dr}{dt} = \frac{xx' + yy'}{r} = \frac{xy + \alpha x^2 r^2 - xy + \alpha y^2 r^2}{r} = \frac{\alpha r^2 (x^2 + y^2)}{r} = \alpha r^3}$.
 
     23d. Solving the given differential equation, we have $\alpha t + C = -\frac{1}{2r^2}$ so $\mathlarger{r = \sqrt{\frac{1}{C - 2\alpha t}}}$. If $\alpha < 0$, then as $t \to \infty$, that bottom fraction will go towards infinity so $r$ will go towards 0. 
 
