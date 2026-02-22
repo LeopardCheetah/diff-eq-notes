@@ -1,0 +1,46 @@
+\documentclass[../../diff_eqs.tex]{subfiles}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% docs/syntax:
+
+% definitions
+% \begin{definition}[Definition]
+%     Definition 1
+% \end{definition}
+
+% hr
+% \hr
+
+% exercise
+% \begin{exercise}{problem number}
+%
+%    problem starts
+% \end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+In 9.4, we modelled populations $x$ and $y$ asfighting over some common natural resource (such as food). Here, we will examine situations where one population preys on the other (e.g. foxes and rabbits). Note that $x$ will always represent the population of the species being preyed on, and $y$ will always represent the population of the predatorial species. 
+
+In general, under some assumptions\footnote{See page 428.}, we set up the equations 
+
+$$\frac{dx}{dt} = x(a - \alpha y),$$
+$$\frac{dx}{dt} = y(-c - \gamma x)$$
+
+where $a, c, \alpha, \gamma > 0$.\footnote{These equations are also known as the \textbf{Lotka - Volterra equations}.} The physical interpretation of these constants is that $a$ and $c$ are the growth rate of the prey and the death rate of the predator, and $\alpha$ and $\gamma$ are a measure of the effect of the interaction between the species.
+
+\vspace{0.25cm}
+
+A treatise examining solutions of the equations above are given in detail in the textbook, but the main takeaways are that:
+
+\begin{itemize}
+    \item The origin ($(0, 0)$) will always be a saddle point.
+    \item The ``center'' of the system, $\left(\frac{c}{\gamma}, \frac{a}{\alpha}\right)$, is a critical point upon which all predator-prey trajectories oscillate/circle around.
+    \item In particular, $x$ and $y$ can be solved for:
+    $$x = \frac{c}{\gamma}(1 + K\cos(\sqrt{ac}t + \phi)), \ y = \frac{a}{\alpha}\left(1 + \sqrt{\frac{c}{a}}K\sin(\sqrt{ac}t + \phi)\right)$$
+    for constants $K$, $\phi$. 
+\end{itemize}
+
+\end{document}
